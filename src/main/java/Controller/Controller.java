@@ -4,6 +4,7 @@
  */
 package Controller;
 import Model.EspecieDAO;
+import Model.Veterinario;
 import Model.VeterinarioDAO;
 import Model.Cliente;
 import Model.ClienteDAO;
@@ -25,8 +26,10 @@ import javax.swing.JTextField;
 public class Controller {
     private static Cliente clienteSelecionado = null;
     private static Animal animalSelecionado = null;
+    private static Veterinario veterinarioSelecionado = null;
     private static JTextField clienteSelecionadoTextField = null;
     private static JTextField animalSelecionadoTextField = null;
+    private static JTextField veterinarioSelecionadoTextField = null;
     
     public static void jRadioButtonClientesSelecionado(JTable table){
         setTableModel(table, new ClienteTableModel(ClienteDAO.getInstance().retrieveAll()));
@@ -51,9 +54,10 @@ public class Controller {
         setTableModel(table, new VeterinarioTableModel(VeterinarioDAO.getInstance().retrieveAll()));
     }
     
-    public static void setTextFields(JTextField cliente, JTextField animal){
+    public static void setTextFields(JTextField cliente, JTextField animal, JTextField veterinario){
         clienteSelecionadoTextField = cliente;
         animalSelecionadoTextField = animal;
+        veterinarioSelecionadoTextField = veterinario;
     }
     
     public static void setTableModel(JTable table, GenericTableModel tableModel){
@@ -73,6 +77,10 @@ public class Controller {
         else if (selected instanceof Animal){
             animalSelecionado = (Animal)selected;
             animalSelecionadoTextField.setText(animalSelecionado.getNome());
+        }
+        else if (selected instanceof Veterinario){
+            veterinarioSelecionado = (Veterinario)selected;
+            veterinarioSelecionadoTextField.setText(veterinarioSelecionado.getNome());
         }
     }
     

@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -75,7 +76,7 @@ public class ConsultaDAO extends DAO {
     
     // RetrieveAll
     public List retrieveAll() {
-        return this.retrieve("SELECT * FROM consulta");
+        return this.retrieve("SELECT * FROM consulta order by data, horario");
     }
     
     // RetrieveLast

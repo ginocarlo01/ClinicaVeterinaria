@@ -17,7 +17,6 @@ public class Principal extends javax.swing.JFrame {
      */
     
     private void clearComponents(){
-        NameInput.setText("");
         ButtonGroup.add(BtnCadCli);
         ButtonGroup.add(BtnCadAni);
         ButtonGroup.add(BtnCadEsp);
@@ -25,13 +24,14 @@ public class Principal extends javax.swing.JFrame {
         NameInput.setText("");
         AnimalInput.setText("");
         BuscaInput.setText("");
+        VeterinarioInput.setText("");
         BtnCadCli.setSelected(true);
         //controller seta tabela de cliente
         //Controller.setTableModel(MainTable, new ClienteTableModel(ClienteDAO.getInstance().retrieveAll()));
         Controller.jRadioButtonClientesSelecionado(MainTable);
         
         //controller guarda animal e cliente selecionados (vazio até agora
-        Controller.setTextFields(NameInput, AnimalInput);
+        Controller.setTextFields(NameInput, AnimalInput, VeterinarioInput);
     }
     
     public Principal() {
@@ -55,8 +55,10 @@ public class Principal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         NomeTxt = new javax.swing.JLabel();
         AnimalText = new javax.swing.JLabel();
+        VeterinarioText = new javax.swing.JLabel();
         NameInput = new javax.swing.JTextField();
         AnimalInput = new javax.swing.JTextField();
+        VeterinarioInput = new javax.swing.JTextField();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         Cadastros = new javax.swing.JPanel();
         BtnCadCli = new javax.swing.JRadioButton();
@@ -95,6 +97,8 @@ public class Principal extends javax.swing.JFrame {
 
         AnimalText.setText("Animal");
 
+        VeterinarioText.setText("Veterinario");
+
         NameInput.setEditable(false);
         NameInput.setText("Insira seu nome");
         NameInput.setVerifyInputWhenFocusTarget(false);
@@ -107,19 +111,28 @@ public class Principal extends javax.swing.JFrame {
         AnimalInput.setEditable(false);
         AnimalInput.setText("jTextField1");
 
+        VeterinarioInput.setEditable(false);
+        VeterinarioInput.setText("jTextField1");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(NomeTxt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(AnimalText, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(NameInput, javax.swing.GroupLayout.DEFAULT_SIZE, 695, Short.MAX_VALUE)
-                    .addComponent(AnimalInput))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(NomeTxt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(AnimalText, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(NameInput, javax.swing.GroupLayout.DEFAULT_SIZE, 695, Short.MAX_VALUE)
+                            .addComponent(AnimalInput)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(VeterinarioText, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48)
+                        .addComponent(VeterinarioInput)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -135,6 +148,10 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(NameInput, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(AnimalInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(VeterinarioText)
+                    .addComponent(VeterinarioInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -268,7 +285,7 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(BuscaTxt)
                     .addComponent(BuscaInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -282,7 +299,7 @@ public class Principal extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 242, Short.MAX_VALUE)
+            .addGap(0, 271, Short.MAX_VALUE)
         );
 
         jTabbedPane2.addTab("Agendar Consulta", jPanel2);
@@ -291,18 +308,19 @@ public class Principal extends javax.swing.JFrame {
         MainPanel.setLayout(MainPanelLayout);
         MainPanelLayout.setHorizontalGroup(
             MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jTabbedPane2)
             .addGroup(MainPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addComponent(jTabbedPane2)
         );
         MainPanelLayout.setVerticalGroup(
             MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MainPanelLayout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -313,7 +331,9 @@ public class Principal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(MainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(MainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
@@ -345,7 +365,7 @@ public class Principal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Selecione um cliente!");
             BtnCadCli.setSelected(true);
             Controller.jRadioButtonClientesSelecionado(MainTable);
-            Controller.setTextFields(NameInput, AnimalInput);
+            Controller.setTextFields(NameInput, AnimalInput, VeterinarioInput);
         }
         /*
         if(Controller.getClienteSelecionado() != null){
@@ -449,6 +469,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTable MainTable;
     private javax.swing.JTextField NameInput;
     private javax.swing.JLabel NomeTxt;
+    private javax.swing.JTextField VeterinarioInput;
+    private javax.swing.JLabel VeterinarioText;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
