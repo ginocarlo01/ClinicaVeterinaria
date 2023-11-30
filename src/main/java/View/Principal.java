@@ -70,6 +70,7 @@ public class Principal extends javax.swing.JFrame {
         BuscaInput = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         MainTable = new javax.swing.JTable();
+        jPanel2 = new javax.swing.JPanel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -182,6 +183,11 @@ public class Principal extends javax.swing.JFrame {
         });
 
         BtnApaga.setText("Apaga");
+        BtnApaga.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnApagaActionPerformed(evt);
+            }
+        });
 
         BuscaTxt.setText("Busca");
 
@@ -268,6 +274,19 @@ public class Principal extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Cadastros", Cadastros);
 
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 821, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 242, Short.MAX_VALUE)
+        );
+
+        jTabbedPane2.addTab("Agendar Consulta", jPanel2);
+
         javax.swing.GroupLayout MainPanelLayout = new javax.swing.GroupLayout(MainPanel);
         MainPanel.setLayout(MainPanelLayout);
         MainPanelLayout.setHorizontalGroup(
@@ -310,12 +329,23 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnCadCliActionPerformed
 
     private void BtnTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTodosActionPerformed
-       
+        Controller.getAllData(MainTable);
+        BuscaInput.setText("");
+        /*if(MainTable.getModel() instanceof ClienteTableModel){
+           Controller.jRadioButtonClientesSelecionado(MainTable);
+           //ou
+            //((GenericTableModel)MainTable.getModel()).addListOfItems(Controller.getAllClients());
+            
+            BuscaInput.setText("");
+        }*/
     }//GEN-LAST:event_BtnTodosActionPerformed
 
     private void BtnCadAniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCadAniActionPerformed
         if(!Controller.jRadioButtonAnimalSelecionado(MainTable)){
             JOptionPane.showMessageDialog(this, "Selecione um cliente!");
+            BtnCadCli.setSelected(true);
+            Controller.jRadioButtonClientesSelecionado(MainTable);
+            Controller.setTextFields(NameInput, AnimalInput);
         }
         /*
         if(Controller.getClienteSelecionado() != null){
@@ -353,11 +383,18 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_BuscaInputKeyTyped
 
     private void BtnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNovoActionPerformed
-        if(MainTable.getModel() instanceof ClienteTableModel){
-            ((GenericTableModel)MainTable.getModel()).addItem(Controller.adicionaCliente("", "", "", "", ""));
-        }
+        Controller.createNewData(MainTable);
         
     }//GEN-LAST:event_BtnNovoActionPerformed
+
+    private void BtnApagaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnApagaActionPerformed
+        if(MainTable.getModel() instanceof ClienteTableModel){
+            if(Controller.getClienteSelecionado() != null){
+                ((ClienteTableModel)MainTable.getModel()).removeItem(MainTable.getSelectedRow());
+                Controller.apagaCliente(Controller.getClienteSelecionado());
+            }
+        }
+    }//GEN-LAST:event_BtnApagaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -413,6 +450,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField NameInput;
     private javax.swing.JLabel NomeTxt;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane2;

@@ -93,12 +93,44 @@ public class Controller {
     } else if (table.getModel() instanceof EspecieTableModel) {
         ((GenericTableModel) table.getModel()).addListOfItems(EspecieDAO.getInstance().retrieveBySimilarName(nome));
     } else if (table.getModel() instanceof AnimalTableModel) {
-        ((GenericTableModel) table.getModel()).addListOfItems(AnimalDAO.getInstance().retrieveBySimilarName(nome));
+        ((GenericTableModel) table.getModel()).addListOfItems(AnimalDAO.getInstance().retrieveBySimilarName(getClienteSelecionado().getId(),nome));
     }
     }
     
     public static Cliente adicionaCliente(String nome, String end, String cep, String email, String telefone){
         return ClienteDAO.getInstance().create(nome, end, cep, email, telefone);
     }
-
+    
+    
+    
+   
+    public static void getAllData(JTable table){
+     if (table.getModel() instanceof ClienteTableModel) {
+        ((GenericTableModel) table.getModel()).addListOfItems(ClienteDAO.getInstance().retrieveAll());
+    } else if (table.getModel() instanceof VeterinarioTableModel) {
+        ((GenericTableModel) table.getModel()).addListOfItems(VeterinarioDAO.getInstance().retrieveAll());
+    } else if (table.getModel() instanceof EspecieTableModel) {
+        ((GenericTableModel) table.getModel()).addListOfItems(EspecieDAO.getInstance().retrieveAll());
+    } else if (table.getModel() instanceof AnimalTableModel) {
+        ((GenericTableModel) table.getModel()).addListOfItems(AnimalDAO.getInstance().retrieveAll());
+    }
+      
+    }
+    
+    public static void createNewData(JTable table){
+        if(table.getModel() instanceof ClienteTableModel){
+            ((GenericTableModel)table.getModel()).addItem(adicionaCliente("", "", "", "", ""));
+        }
+        
+    }
+    
+    public static void apagaCliente(Cliente cliente){
+        List<Animal> animais = AnimalDAO.getInstance().retrieveByIdCliente(getClienteSelecionado().getId());
+        for(Animal animal : animais){
+            AnimalDAO.getInstance().delete(animal);
+        }
+        
+        ClienteDAO.getInstance().delete(cliente);
+    }
+    
 }

@@ -89,8 +89,8 @@ public class AnimalDAO extends DAO {
     }
 
     // RetrieveBySimilarName
-    public List retrieveBySimilarName(String nome) {
-        return this.retrieve("SELECT * FROM animal WHERE nome LIKE '%" + nome + "%'");
+    public List retrieveBySimilarName(int idCliente, String nome) {
+        return this.retrieve("SELECT * FROM animal WHERE id_cliente = "+idCliente+ " and nome LIKE '%" + nome + "%'");
     }    
         
     // Updade
