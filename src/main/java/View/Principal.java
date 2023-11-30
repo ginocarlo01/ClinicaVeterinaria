@@ -175,6 +175,11 @@ public class Principal extends javax.swing.JFrame {
         });
 
         BtnNovo.setText("Novo");
+        BtnNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnNovoActionPerformed(evt);
+            }
+        });
 
         BtnApaga.setText("Apaga");
 
@@ -225,8 +230,9 @@ public class Principal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(BtnCadVet))
                     .addGroup(CadastrosLayout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(BtnTodos)
-                        .addGap(18, 18, 18)
+                        .addGap(12, 12, 12)
                         .addComponent(BtnNovo)
                         .addGap(18, 18, 18)
                         .addComponent(BtnApaga)
@@ -256,7 +262,7 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(BuscaTxt)
                     .addComponent(BuscaInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -300,11 +306,11 @@ public class Principal extends javax.swing.JFrame {
 
     private void BtnCadCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCadCliActionPerformed
         Controller.jRadioButtonClientesSelecionado(MainTable);
-//Controller.setTableModel(MainTable, new ClientTableModel(ClienteDAO.getInstance().retrieveAll()));
+        //Controller.setTableModel(MainTable, new ClientTableModel(ClienteDAO.getInstance().retrieveAll()));
     }//GEN-LAST:event_BtnCadCliActionPerformed
 
     private void BtnTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTodosActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_BtnTodosActionPerformed
 
     private void BtnCadAniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCadAniActionPerformed
@@ -345,6 +351,13 @@ public class Principal extends javax.swing.JFrame {
             ((GenericTableModel)MainTable.getModel()).addListOfItems(Controller.getClientsBySimilarName(BuscaInput.getText()));
         }*/
     }//GEN-LAST:event_BuscaInputKeyTyped
+
+    private void BtnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNovoActionPerformed
+        if(MainTable.getModel() instanceof ClienteTableModel){
+            ((GenericTableModel)MainTable.getModel()).addItem(Controller.adicionaCliente("", "", "", "", ""));
+        }
+        
+    }//GEN-LAST:event_BtnNovoActionPerformed
 
     /**
      * @param args the command line arguments

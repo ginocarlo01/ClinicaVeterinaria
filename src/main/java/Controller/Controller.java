@@ -95,6 +95,10 @@ public class Controller {
     } else if (table.getModel() instanceof AnimalTableModel) {
         ((GenericTableModel) table.getModel()).addListOfItems(AnimalDAO.getInstance().retrieveBySimilarName(nome));
     }
-}
+    }
+    
+    public static Cliente adicionaCliente(String nome, String end, String cep, String email, String telefone){
+        return ClienteDAO.getInstance().create(nome, end, cep, email, telefone);
+    }
 
 }
