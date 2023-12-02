@@ -29,6 +29,7 @@ C:\Users\ginoc\OneDrive\Documentos\GitHub\ClinicaVeterinaria\src\main\java\View\
 C:\Users\ginoc\OneDrive\Documentos\GitHub\ClinicaVeterinaria\src\main\java\View\Past\DeletarAnimal.java
 C:\Users\ginoc\OneDrive\Documentos\GitHub\ClinicaVeterinaria\src\main\java\Model\Consulta.java
 C:\Users\ginoc\OneDrive\Documentos\GitHub\ClinicaVeterinaria\src\main\java\Model\EspecieDAO.java
+C:\Users\ginoc\OneDrive\Documentos\GitHub\ClinicaVeterinaria\src\main\java\Model\ExameDAO.java
 C:\Users\ginoc\OneDrive\Documentos\GitHub\ClinicaVeterinaria\src\main\java\View\Past\EditarAnimal.java
 C:\Users\ginoc\OneDrive\Documentos\GitHub\ClinicaVeterinaria\src\main\java\com\mycompany\clinicaveterinaria\ClinicaVeterinaria.java
 C:\Users\ginoc\OneDrive\Documentos\GitHub\ClinicaVeterinaria\src\main\java\View\GenericTableModel.java
@@ -39,5 +40,6 @@ C:\Users\ginoc\OneDrive\Documentos\GitHub\ClinicaVeterinaria\src\main\java\View\
 C:\Users\ginoc\OneDrive\Documentos\GitHub\ClinicaVeterinaria\src\main\java\Model\AnimalDAO.java
 C:\Users\ginoc\OneDrive\Documentos\GitHub\ClinicaVeterinaria\src\main\java\View\Past\AdicionarCliente.java
 C:\Users\ginoc\OneDrive\Documentos\GitHub\ClinicaVeterinaria\src\main\java\View\Past\MarcarConsulta.java
+C:\Users\ginoc\OneDrive\Documentos\GitHub\ClinicaVeterinaria\src\main\java\View\ConsultaTableModel.java
 C:\Users\ginoc\OneDrive\Documentos\GitHub\ClinicaVeterinaria\src\main\java\View\Past\DeletarCliente.java
 C:\Users\ginoc\OneDrive\Documentos\GitHub\ClinicaVeterinaria\src\main\java\Model\VeterinarioDAO.java

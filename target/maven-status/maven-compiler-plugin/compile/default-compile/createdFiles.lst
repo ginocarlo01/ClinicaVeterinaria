@@ -11,6 +11,7 @@ View\Past\Inicio$8.class
 View\Past\DeletarCliente.class
 View\Main.class
 View\Past\ConsultarAnimal$4.class
+View\Principal$14.class
 View\Principal$7.class
 View\Past\Inicio$17.class
 View\Past\RealizarConsulta$5.class
@@ -21,7 +22,9 @@ View\Past\EditarVeterinario$3.class
 View\Past\AdicionarCliente$4.class
 View\Past\AdicionarEspecie$3.class
 View\Past\DeletarAnimal$1.class
+View\ConsultaTableModel.class
 View\Past\EditarCliente$5.class
+View\Principal$17.class
 View\Past\AtualizarEspecie$1.class
 com\mycompany\clinicaveterinaria\ClinicaVeterinaria.class
 Model\Consulta.class
@@ -51,6 +54,7 @@ View\Principal$2.class
 View\Past\AdicionarEspecie.class
 View\Past\DeletarEspecie.class
 View\Past\RealizarConsulta$3.class
+View\Principal$16.class
 Model\ConsultaDAO.class
 View\Past\ConsultarExame$1.class
 View\Past\AdicionarEspecie$1.class
@@ -83,6 +87,7 @@ View\Past\EditarAnimal$7.class
 View\Past\AtualizarEspecie$6.class
 View\Past\DeletarEspecie$3.class
 View\Past\AdicionarVeterinario$4.class
+View\Principal$15.class
 View\Past\DeletarVeterinario$2.class
 View\Past\RealizarConsulta.class
 View\Past\AdicionarExame$2.class
@@ -118,6 +123,7 @@ View\Past\Inicio$10.class
 View\Principal$5.class
 View\Past\RealizarConsulta$4.class
 View\Past\AdicionarExame$4.class
+Model\ExameDAO.class
 View\Past\AdicionarCliente$5.class
 View\Past\EditarVeterinario$4.class
 View\Past\DeletarAnimal$2.class
@@ -127,6 +133,7 @@ Model\Exame.class
 View\Past\Inicio$16.class
 View\AnimalTableModel.class
 View\Past\DeletarEspecie$1.class
+View\Principal$13.class
 View\Principal$8.class
 View\Past\AdicionarVeterinario.class
 View\Past\DeletarCliente$2.class
@@ -142,6 +149,7 @@ View\Past\EditarCliente$6.class
 Model\TratamentoDAO.class
 Model\Veterinario.class
 View\Past\Inicio$9.class
+View\Principal$19.class
 View\VeterinarioTableModel.class
 View\Past\AtualizarEspecie.class
 View\Past\ConsultarExame$4.class
@@ -162,4 +170,5 @@ View\Principal$6.class
 View\Past\Inicio$18.class
 View\Past\Inicio$11.class
 View\Past\MarcarConsulta.class
+View\Principal$18.class
 View\Past\AdicionarExame.class

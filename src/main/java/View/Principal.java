@@ -6,6 +6,7 @@ package View;
 import Controller.Controller;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JTabbedPane;
 /**
  *
  * @author gino
@@ -32,6 +33,8 @@ public class Principal extends javax.swing.JFrame {
         
         //controller guarda animal e cliente selecionados (vazio até agora
         Controller.setTextFields(NameInput, AnimalInput, VeterinarioInput);
+        
+        //Controller.setTableModel(ConsultasTable, new ConsultaTableModel(Controller.);
     }
     
     public Principal() {
@@ -52,14 +55,14 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         MainPanel = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
+        Header = new javax.swing.JPanel();
         NomeTxt = new javax.swing.JLabel();
         AnimalText = new javax.swing.JLabel();
         VeterinarioText = new javax.swing.JLabel();
         NameInput = new javax.swing.JTextField();
         AnimalInput = new javax.swing.JTextField();
         VeterinarioInput = new javax.swing.JTextField();
-        jTabbedPane2 = new javax.swing.JTabbedPane();
+        ClinicaPanel = new javax.swing.JTabbedPane();
         Cadastros = new javax.swing.JPanel();
         BtnCadCli = new javax.swing.JRadioButton();
         BtnCadAni = new javax.swing.JRadioButton();
@@ -72,7 +75,11 @@ public class Principal extends javax.swing.JFrame {
         BuscaInput = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         MainTable = new javax.swing.JTable();
-        jPanel2 = new javax.swing.JPanel();
+        ConsultasPanel2 = new javax.swing.JPanel();
+        NewConsultaBtn = new javax.swing.JButton();
+        ApagaConsultaBtn = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        ConsultasTable = new javax.swing.JTable();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -91,7 +98,7 @@ public class Principal extends javax.swing.JFrame {
 
         MainPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jPanel1.setName(""); // NOI18N
+        Header.setName(""); // NOI18N
 
         NomeTxt.setText("Cliente");
 
@@ -114,48 +121,63 @@ public class Principal extends javax.swing.JFrame {
         VeterinarioInput.setEditable(false);
         VeterinarioInput.setText("jTextField1");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout HeaderLayout = new javax.swing.GroupLayout(Header);
+        Header.setLayout(HeaderLayout);
+        HeaderLayout.setHorizontalGroup(
+            HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(HeaderLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(HeaderLayout.createSequentialGroup()
+                        .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(NomeTxt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(AnimalText, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(NameInput, javax.swing.GroupLayout.DEFAULT_SIZE, 695, Short.MAX_VALUE)
                             .addComponent(AnimalInput)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(HeaderLayout.createSequentialGroup()
                         .addComponent(VeterinarioText, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(48, 48, 48)
                         .addComponent(VeterinarioInput)))
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        HeaderLayout.setVerticalGroup(
+            HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(HeaderLayout.createSequentialGroup()
                 .addGap(8, 8, 8)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(HeaderLayout.createSequentialGroup()
                         .addComponent(NomeTxt)
                         .addGap(18, 18, 18)
                         .addComponent(AnimalText))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(HeaderLayout.createSequentialGroup()
                         .addComponent(NameInput, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(AnimalInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(VeterinarioText)
                     .addComponent(VeterinarioInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        ClinicaPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        ClinicaPanel.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                ClinicaPanelStateChanged(evt);
+            }
+        });
+        ClinicaPanel.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                ClinicaPanelFocusGained(evt);
+            }
+        });
+        ClinicaPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                ClinicaPanelMousePressed(evt);
+            }
+        });
 
         BtnCadCli.setText("Cadastro Clientes");
         BtnCadCli.addActionListener(new java.awt.event.ActionListener() {
@@ -285,41 +307,95 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(BuscaTxt)
                     .addComponent(BuscaInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jTabbedPane2.addTab("Cadastros", Cadastros);
+        ClinicaPanel.addTab("Cadastros", Cadastros);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 821, Short.MAX_VALUE)
+        ConsultasPanel2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                ConsultasPanel2FocusGained(evt);
+            }
+        });
+        ConsultasPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                ConsultasPanel2MousePressed(evt);
+            }
+        });
+
+        NewConsultaBtn.setText("Novo");
+        NewConsultaBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NewConsultaBtnActionPerformed(evt);
+            }
+        });
+
+        ApagaConsultaBtn.setText("Apaga");
+        ApagaConsultaBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ApagaConsultaBtnActionPerformed(evt);
+            }
+        });
+
+        ConsultasTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(ConsultasTable);
+
+        javax.swing.GroupLayout ConsultasPanel2Layout = new javax.swing.GroupLayout(ConsultasPanel2);
+        ConsultasPanel2.setLayout(ConsultasPanel2Layout);
+        ConsultasPanel2Layout.setHorizontalGroup(
+            ConsultasPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ConsultasPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(ConsultasPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ConsultasPanel2Layout.createSequentialGroup()
+                        .addComponent(NewConsultaBtn)
+                        .addGap(18, 18, 18)
+                        .addComponent(ApagaConsultaBtn)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 810, Short.MAX_VALUE))
+                .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 271, Short.MAX_VALUE)
+        ConsultasPanel2Layout.setVerticalGroup(
+            ConsultasPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ConsultasPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(ConsultasPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(NewConsultaBtn)
+                    .addComponent(ApagaConsultaBtn))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab("Agendar Consulta", jPanel2);
+        ClinicaPanel.addTab("Consultas", ConsultasPanel2);
 
         javax.swing.GroupLayout MainPanelLayout = new javax.swing.GroupLayout(MainPanel);
         MainPanel.setLayout(MainPanelLayout);
         MainPanelLayout.setHorizontalGroup(
             MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane2)
+            .addComponent(ClinicaPanel)
             .addGroup(MainPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         MainPanelLayout.setVerticalGroup(
             MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MainPanelLayout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
+                .addComponent(ClinicaPanel)
                 .addContainerGap())
         );
 
@@ -333,7 +409,7 @@ public class Principal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(MainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -345,6 +421,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void BtnCadCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCadCliActionPerformed
         Controller.jRadioButtonClientesSelecionado(MainTable);
+        BuscaInput.setText("");
         //Controller.setTableModel(MainTable, new ClientTableModel(ClienteDAO.getInstance().retrieveAll()));
     }//GEN-LAST:event_BtnCadCliActionPerformed
 
@@ -361,6 +438,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnTodosActionPerformed
 
     private void BtnCadAniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCadAniActionPerformed
+        BuscaInput.setText("");
         if(!Controller.jRadioButtonAnimalSelecionado(MainTable)){
             JOptionPane.showMessageDialog(this, "Selecione um cliente!");
             BtnCadCli.setSelected(true);
@@ -383,10 +461,12 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_MainTableMousePressed
 
     private void BtnCadEspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCadEspActionPerformed
+        BuscaInput.setText("");
         Controller.jRadioButtonEspecieSelecionado(MainTable);
     }//GEN-LAST:event_BtnCadEspActionPerformed
 
     private void BtnCadVetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCadVetActionPerformed
+        BuscaInput.setText("");
         Controller.jRadioButtonVeterinarioSelecionado(MainTable);
     }//GEN-LAST:event_BtnCadVetActionPerformed
 
@@ -408,13 +488,55 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnNovoActionPerformed
 
     private void BtnApagaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnApagaActionPerformed
-        if(MainTable.getModel() instanceof ClienteTableModel){
-            if(Controller.getClienteSelecionado() != null){
-                ((ClienteTableModel)MainTable.getModel()).removeItem(MainTable.getSelectedRow());
-                Controller.apagaCliente(Controller.getClienteSelecionado());
-            }
-        }
+        Controller.apagaBtn(MainTable);
     }//GEN-LAST:event_BtnApagaActionPerformed
+
+    private void ClinicaPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClinicaPanelMousePressed
+        
+    }//GEN-LAST:event_ClinicaPanelMousePressed
+
+    private void NewConsultaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewConsultaBtnActionPerformed
+         if(!Controller.createNewData(ConsultasTable)){
+             JOptionPane.showMessageDialog(this, "Selecione um cliente, um animal e um veterinario");
+         }
+    }//GEN-LAST:event_NewConsultaBtnActionPerformed
+
+    private void ApagaConsultaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ApagaConsultaBtnActionPerformed
+        if(!Controller.apagaConsulta(ConsultasTable)){
+             JOptionPane.showMessageDialog(this, "Selecione uma consulta");
+         }
+    }//GEN-LAST:event_ApagaConsultaBtnActionPerformed
+
+    private void ConsultasPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConsultasPanel2MousePressed
+        System.out.println("Pressionou Consultas");
+    }//GEN-LAST:event_ConsultasPanel2MousePressed
+
+    private void ClinicaPanelFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ClinicaPanelFocusGained
+        
+    }//GEN-LAST:event_ClinicaPanelFocusGained
+
+    private void ConsultasPanel2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ConsultasPanel2FocusGained
+        
+    }//GEN-LAST:event_ConsultasPanel2FocusGained
+
+    private void ClinicaPanelStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_ClinicaPanelStateChanged
+        JTabbedPane tabbedPane = (JTabbedPane) evt.getSource();
+        int selectedIndex = tabbedPane.getSelectedIndex();
+
+        switch (selectedIndex) {
+            case 0:
+                break;
+            case 1:
+                if((Controller.getClienteSelecionado() == null) || (Controller.getAnimalSelecionado() == null) || (Controller.getVeterinarioSelecionado() == null)){
+                    JOptionPane.showMessageDialog(this, "Selecione um cliente, um animal e um veterinario");
+                    ClinicaPanel.setSelectedIndex(0);
+                }
+                else{
+                    Controller.painelConsultasSelected(ConsultasTable);
+                }
+                break;
+    }
+    }//GEN-LAST:event_ClinicaPanelStateChanged
 
     /**
      * @param args the command line arguments
@@ -454,6 +576,7 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField AnimalInput;
     private javax.swing.JLabel AnimalText;
+    private javax.swing.JButton ApagaConsultaBtn;
     private javax.swing.JButton BtnApaga;
     private javax.swing.JRadioButton BtnCadAni;
     private javax.swing.JRadioButton BtnCadCli;
@@ -465,17 +588,20 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel BuscaTxt;
     private javax.swing.ButtonGroup ButtonGroup;
     private javax.swing.JPanel Cadastros;
+    private javax.swing.JTabbedPane ClinicaPanel;
+    private javax.swing.JPanel ConsultasPanel2;
+    private javax.swing.JTable ConsultasTable;
+    private javax.swing.JPanel Header;
     private javax.swing.JPanel MainPanel;
     private javax.swing.JTable MainTable;
     private javax.swing.JTextField NameInput;
+    private javax.swing.JButton NewConsultaBtn;
     private javax.swing.JLabel NomeTxt;
     private javax.swing.JTextField VeterinarioInput;
     private javax.swing.JLabel VeterinarioText;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

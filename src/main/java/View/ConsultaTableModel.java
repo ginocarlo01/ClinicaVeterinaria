@@ -3,9 +3,12 @@ package View;
 import java.util.List;
 import Model.Consulta;
 import Model.Animal;
+import Model.Exame;
+import Model.ConsultaDAO;
 import Model.AnimalDAO;
 import Model.ClienteDAO;
 import Model.VeterinarioDAO;
+import Model.ExameDAO;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -21,7 +24,7 @@ public class ConsultaTableModel extends GenericTableModel {
     private final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
     
     public ConsultaTableModel(List vDados) {
-        super(vDados, new String[]{"Data", "Hora", "Cliente", "Animal", "Veterinario", "Obs", "Fim"});
+        super(vDados, new String[]{"Data", "Hora", "Cliente", "Animal", "Veterinario", "Obs", "Exame", "Fim"});
 
     }
 
@@ -42,6 +45,8 @@ public class ConsultaTableModel extends GenericTableModel {
             case 5:
                 return String.class;
             case 6:
+                return String.class;
+            case 7:
                 return int.class;  
             default:
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
@@ -69,6 +74,12 @@ public class ConsultaTableModel extends GenericTableModel {
             case 5:
                 return consulta.getComentario();
             case 6:
+                Exame exame = ExameDAO.getInstance().retrieveByIdConsulta(consulta.getId());
+                if(exame != null){
+                   return exame.getNome();
+                }
+                return ""; 
+            case 7:
                 return consulta.getTerminado();
             default:
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
@@ -82,41 +93,52 @@ public class ConsultaTableModel extends GenericTableModel {
 
         switch (columnIndex) {
             case 0:
-                Calendar cal = Calendar.getInstance();
-                try{
-                    cal.setTime(dateFormat.parse((String)aValue));
-                }
-                catch(ParseException ex){
+                try {
+                    Date date = dateFormat.parse((String) aValue);
+                    consulta.setData(date);
+                } catch (ParseException ex) {
                     Logger.getLogger(ConsultaTableModel.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                consulta.setData(cal);
                 break;
-            case 1:
-                animal.setAnoNasc((Integer) aValue);
+                
+            case 1:  
+                consulta.setHorario((String)aValue);
                 break;
             case 2:
-                animal.setSexo((String) aValue);
+                
                 break;
             case 3:
-                Especie species = EspecieDAO.getInstance().retrieveByName((String) aValue);
-                if (species == null) {
-                    species = EspecieDAO.getInstance().create((String) aValue);
-                    animal.setIdEspecie(species.getId());
-                    
-                } else {
-                    animal.setIdEspecie(species.getId());
-                }
+                
+                break;
+            case 4:
+                
+                break;
+            case 5:
+                consulta.setComentario((String)aValue);
+                break;
+            case 6:
+                ExameDAO.getInstance().create((String)aValue, consulta.getId());
+                break;
+            case 7:
+                consulta.setTerminado((int)aValue);
                 break;
             default:
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
 
         }
 
-        AnimalDAO.getInstance().update(animal);
+        ConsultaDAO.getInstance().update(consulta);
     }
 
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
-        return true;
+        if((columnIndex < 2) || (columnIndex > 4)){
+            return true;
+        }
+        else{
+            return false;
+        }
+        
+        
     }
 }

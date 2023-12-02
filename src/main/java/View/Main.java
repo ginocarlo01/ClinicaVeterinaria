@@ -12,6 +12,8 @@ import Model.DAO;
 import Model.Animal;
 import Model.EspecieDAO;
 import Model.Especie;
+import Model.ExameDAO;
+import Model.Exame;
 import Model.TratamentoDAO;
 import Model.Tratamento;
 import Model.ConsultaDAO;
@@ -44,14 +46,15 @@ public class Main {
         
         AnimalDAO animal = AnimalDAO.getInstance();
         
-        //animal.create("Vitor", 2, "Masculino", 3, 4, 5);
+        animal.create("Vitor", 2, "Masculino", 0, 0, 12);
 
         // Chame métodos da instância Singleton
-        List<Animal> animais = animal.retrieveAll();
-        
-        for(Animal au : animais){
+        List<Animal> todosAnimais = animal.retrieveAll();
+        for (Animal au : todosAnimais) {
             System.out.println(au);
         }
+
+       
         
         /*deletando o último cliente:
         
@@ -95,18 +98,30 @@ public class Main {
         
         for(Consulta co : consultas){
             System.out.println(co);
+            consulta.delete(co);
         }
         
         VeterinarioDAO vet = VeterinarioDAO.getInstance();
         
         //consulta.create(minhaData1, "1", "2", 4, 4, 4, 4);
         
-        vet.create("Abudab", "gino.carlo02@gmail.com", "19982805098");
+        //vet.create("Abudab", "gino.carlo02@gmail.com", "19982805098");
         // Chame métodos da instância Singleton
         List<Veterinario> vets = vet.retrieveAll();
         
         for(Veterinario v : vets){
             System.out.println(v);
+        }
+        
+        ExameDAO exame = ExameDAO.getInstance();
+        
+        //exame.create("teste", 1);
+        
+        // Chame métodos da instância Singleton
+        List<Exame> exames = exame.retrieveAll();
+        
+        for(Exame e : exames){
+            System.out.println(e);
         }
     }
 }
