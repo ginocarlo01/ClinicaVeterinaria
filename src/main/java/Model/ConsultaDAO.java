@@ -89,6 +89,19 @@ public class ConsultaDAO extends DAO {
         List<Consulta> consultas = this.retrieve("SELECT * FROM consulta WHERE id = " + id);
         return (consultas.isEmpty()?null:consultas.get(0));
     }
+    
+   
+    public List retrieveByIdCliente(int id_cliente) {
+        return this.retrieve("SELECT * FROM consulta WHERE id_cliente = " + id_cliente);
+    }    
+    
+    public List retrieveByIdVet(int id_vet) {
+        return this.retrieve("SELECT * FROM consulta WHERE id_vet = " + id_vet);
+    }    
+    
+    public List retrieveByIdAnimal(int id_animal) {
+        return this.retrieve("SELECT * FROM consulta WHERE id_animal = " + id_animal);
+    } 
 
     // RetrieveBySimilarName
     public List retrieveBySimilarName(String nome) {

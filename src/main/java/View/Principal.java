@@ -34,7 +34,7 @@ public class Principal extends javax.swing.JFrame {
         //controller guarda animal e cliente selecionados (vazio até agora
         Controller.setTextFields(NameInput, AnimalInput, VeterinarioInput);
         
-        //Controller.setTableModel(ConsultasTable, new ConsultaTableModel(Controller.);
+        Controller.painelConsultasSelected(ConsultasTable);
     }
     
     public Principal() {
@@ -80,6 +80,12 @@ public class Principal extends javax.swing.JFrame {
         ApagaConsultaBtn = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         ConsultasTable = new javax.swing.JTable();
+        DiaBox = new javax.swing.JComboBox<>();
+        MesBox = new javax.swing.JComboBox<>();
+        AnoBox = new javax.swing.JComboBox<>();
+        VetFilter = new javax.swing.JButton();
+        AnimalFilter = new javax.swing.JButton();
+        ClienteFilter = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -270,10 +276,10 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(BtnCadCli)
                         .addGap(18, 18, 18)
                         .addComponent(BtnCadAni)
+                        .addGap(18, 18, 18)
+                        .addComponent(BtnCadVet)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(BtnCadEsp)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(BtnCadVet))
+                        .addComponent(BtnCadEsp))
                     .addGroup(CadastrosLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(BtnTodos)
@@ -285,7 +291,7 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(BuscaTxt)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(BuscaInput, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 278, Short.MAX_VALUE))
+                .addGap(0, 311, Short.MAX_VALUE))
             .addGroup(CadastrosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane2)
@@ -349,7 +355,47 @@ public class Principal extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        ConsultasTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ConsultasTableMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                ConsultasTableMousePressed(evt);
+            }
+        });
         jScrollPane3.setViewportView(ConsultasTable);
+
+        DiaBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        DiaBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                DiaBoxItemStateChanged(evt);
+            }
+        });
+
+        MesBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        AnoBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        VetFilter.setText("Filtrar Veterinario");
+        VetFilter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VetFilterActionPerformed(evt);
+            }
+        });
+
+        AnimalFilter.setText("Filtrar Animal");
+        AnimalFilter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AnimalFilterActionPerformed(evt);
+            }
+        });
+
+        ClienteFilter.setText("Filtrar Cliente");
+        ClienteFilter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ClienteFilterActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout ConsultasPanel2Layout = new javax.swing.GroupLayout(ConsultasPanel2);
         ConsultasPanel2.setLayout(ConsultasPanel2Layout);
@@ -358,12 +404,24 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(ConsultasPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(ConsultasPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3)
                     .addGroup(ConsultasPanel2Layout.createSequentialGroup()
                         .addComponent(NewConsultaBtn)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ApagaConsultaBtn)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 810, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(VetFilter)
+                        .addGap(18, 18, 18)
+                        .addComponent(AnimalFilter)
+                        .addGap(18, 18, 18)
+                        .addComponent(ClienteFilter)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(DiaBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(MesBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(AnoBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 66, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         ConsultasPanel2Layout.setVerticalGroup(
@@ -372,7 +430,13 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(ConsultasPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(NewConsultaBtn)
-                    .addComponent(ApagaConsultaBtn))
+                    .addComponent(ApagaConsultaBtn)
+                    .addComponent(DiaBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(MesBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(AnoBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(VetFilter)
+                    .addComponent(AnimalFilter)
+                    .addComponent(ClienteFilter))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(14, Short.MAX_VALUE))
@@ -384,10 +448,11 @@ public class Principal extends javax.swing.JFrame {
         MainPanel.setLayout(MainPanelLayout);
         MainPanelLayout.setHorizontalGroup(
             MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ClinicaPanel)
             .addGroup(MainPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ClinicaPanel, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
         MainPanelLayout.setVerticalGroup(
@@ -488,7 +553,9 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnNovoActionPerformed
 
     private void BtnApagaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnApagaActionPerformed
-        Controller.apagaBtn(MainTable);
+        if(!Controller.apagaBtn(MainTable)){
+            JOptionPane.showMessageDialog(this, "Selecione uma linha da coluna para poder deletar");
+        }
     }//GEN-LAST:event_BtnApagaActionPerformed
 
     private void ClinicaPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClinicaPanelMousePressed
@@ -508,7 +575,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_ApagaConsultaBtnActionPerformed
 
     private void ConsultasPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConsultasPanel2MousePressed
-        System.out.println("Pressionou Consultas");
+        
     }//GEN-LAST:event_ConsultasPanel2MousePressed
 
     private void ClinicaPanelFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ClinicaPanelFocusGained
@@ -527,16 +594,52 @@ public class Principal extends javax.swing.JFrame {
             case 0:
                 break;
             case 1:
-                if((Controller.getClienteSelecionado() == null) || (Controller.getAnimalSelecionado() == null) || (Controller.getVeterinarioSelecionado() == null)){
+                /*if((Controller.getClienteSelecionado() == null) || (Controller.getAnimalSelecionado() == null) || (Controller.getVeterinarioSelecionado() == null)){
                     JOptionPane.showMessageDialog(this, "Selecione um cliente, um animal e um veterinario");
                     ClinicaPanel.setSelectedIndex(0);
                 }
                 else{
                     Controller.painelConsultasSelected(ConsultasTable);
-                }
+                }*/
                 break;
     }
     }//GEN-LAST:event_ClinicaPanelStateChanged
+
+    private void ConsultasTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConsultasTableMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ConsultasTableMouseClicked
+
+    private void ConsultasTableMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConsultasTableMousePressed
+        Controller.setSelected(((GenericTableModel)ConsultasTable.getModel()).getItem(ConsultasTable.getSelectedRow()));
+    }//GEN-LAST:event_ConsultasTableMousePressed
+
+    private void DiaBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DiaBoxItemStateChanged
+        Object selectedItem = DiaBox.getSelectedItem();
+        
+    }//GEN-LAST:event_DiaBoxItemStateChanged
+
+    private void VetFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VetFilterActionPerformed
+        
+        if(!Controller.FiltroVetSelecionado(ConsultasTable)){
+            JOptionPane.showMessageDialog(this, "Selecione um veterinario");
+            
+        }
+        
+    }//GEN-LAST:event_VetFilterActionPerformed
+
+    private void ClienteFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClienteFilterActionPerformed
+       if(!Controller.FiltroClienteSelecionado(ConsultasTable)){
+            JOptionPane.showMessageDialog(this, "Selecione um cliente");
+            
+        }
+    }//GEN-LAST:event_ClienteFilterActionPerformed
+
+    private void AnimalFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnimalFilterActionPerformed
+        if(!Controller.FiltroAnimalSelecionado(ConsultasTable)){
+            JOptionPane.showMessageDialog(this, "Selecione um animal");
+            
+        }
+    }//GEN-LAST:event_AnimalFilterActionPerformed
 
     /**
      * @param args the command line arguments
@@ -574,8 +677,10 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AnimalFilter;
     private javax.swing.JTextField AnimalInput;
     private javax.swing.JLabel AnimalText;
+    private javax.swing.JComboBox<String> AnoBox;
     private javax.swing.JButton ApagaConsultaBtn;
     private javax.swing.JButton BtnApaga;
     private javax.swing.JRadioButton BtnCadAni;
@@ -588,15 +693,19 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel BuscaTxt;
     private javax.swing.ButtonGroup ButtonGroup;
     private javax.swing.JPanel Cadastros;
+    private javax.swing.JButton ClienteFilter;
     private javax.swing.JTabbedPane ClinicaPanel;
     private javax.swing.JPanel ConsultasPanel2;
     private javax.swing.JTable ConsultasTable;
+    private javax.swing.JComboBox<String> DiaBox;
     private javax.swing.JPanel Header;
     private javax.swing.JPanel MainPanel;
     private javax.swing.JTable MainTable;
+    private javax.swing.JComboBox<String> MesBox;
     private javax.swing.JTextField NameInput;
     private javax.swing.JButton NewConsultaBtn;
     private javax.swing.JLabel NomeTxt;
+    private javax.swing.JButton VetFilter;
     private javax.swing.JTextField VeterinarioInput;
     private javax.swing.JLabel VeterinarioText;
     private javax.swing.JScrollPane jScrollPane1;

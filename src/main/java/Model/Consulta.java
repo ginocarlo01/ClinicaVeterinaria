@@ -1,5 +1,8 @@
 package Model;
+import java.util.Calendar;
 import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class Consulta {
     private int id;
@@ -29,9 +32,88 @@ public class Consulta {
     public Date getData() {
         return data;
     }
+    
+     public String getAno() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(data);
+        return String.valueOf(calendar.get(Calendar.YEAR));
+    }
+
+    public String getDia() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(data);
+        return String.valueOf(calendar.get(Calendar.DAY_OF_MONTH));
+    }
+
+    public String getMes() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(data);
+        return String.valueOf(calendar.get(Calendar.MONTH) + 1);
+    }
 
     public void setData(Date data) {
         this.data = data;
+    }
+    
+    public boolean setAno(String ano) {
+        try {
+            int intAno = Integer.parseInt(ano);
+
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(data);
+            calendar.set(Calendar.YEAR, intAno);
+
+            data = calendar.getTime();
+            return true;
+        } catch (NumberFormatException e) {
+            // Caso a conversão falhe
+            return false;
+        }
+    }
+
+    // Método para definir o mês da consulta a partir de uma string
+    public boolean setMes(String mes) {
+        try {
+            int intMes = Integer.parseInt(mes);
+
+            if (intMes >= 1 && intMes <= 12) {
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(data);
+                // Subtraindo 1 porque os meses no Calendar começam de 0 (janeiro é 0)
+                calendar.set(Calendar.MONTH, intMes - 1);
+
+                data = calendar.getTime();
+                return true;
+            } else {
+                // Valor do mês inválido
+                return false;
+            }
+        } catch (NumberFormatException e) {
+            // Caso a conversão falhe
+            return false;
+        }
+    }
+
+    // Método para definir o dia da consulta a partir de uma string
+    public boolean setDia(String dia) {
+        try {
+            int intDia = Integer.parseInt(dia);
+
+            if (intDia >= 1 && intDia <= 31) {
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(data);
+                calendar.set(Calendar.DAY_OF_MONTH, intDia);
+
+                data = calendar.getTime();
+                return true;
+            } else {
+                // Valor do dia inválido
+                return false;
+            }
+        } catch (NumberFormatException e) {
+            // Caso a conversão falhe
+            return false;
+        }
     }
 
     public String getHorario() {

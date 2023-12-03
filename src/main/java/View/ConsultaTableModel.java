@@ -24,7 +24,7 @@ public class ConsultaTableModel extends GenericTableModel {
     private final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
     
     public ConsultaTableModel(List vDados) {
-        super(vDados, new String[]{"Data", "Hora", "Cliente", "Animal", "Veterinario", "Obs", "Exame", "Finalizada?"});
+        super(vDados, new String[]{"Dia", "Mes", "Ano", "Hora", "Cliente", "Animal", "Veterinario", "Obs", "Exame", "Finalizada?"});
 
     }
 
@@ -33,7 +33,7 @@ public class ConsultaTableModel extends GenericTableModel {
 
         switch (columnIndex) {
             case 0:
-                return Date.class;
+                return String.class;
             case 1:
                 return String.class;
             case 2:
@@ -47,6 +47,10 @@ public class ConsultaTableModel extends GenericTableModel {
             case 6:
                 return String.class;
             case 7:
+                return String.class;
+            case 8:
+                return String.class;
+            case 9:
                 return Boolean.class;  
             default:
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
@@ -60,26 +64,30 @@ public class ConsultaTableModel extends GenericTableModel {
         
         switch (columnIndex) {
             case 0:
-                return consulta.getData();
+                return consulta.getDia();
             case 1:
-                return consulta.getHorario();
+                return consulta.getMes();
             case 2:
+                return consulta.getAno();
+            case 3:
+                return consulta.getHorario();
+            case 4:
                 animal = AnimalDAO.getInstance().retrieveById(consulta.getIdAnimal());
                 return ClienteDAO.getInstance().retrieveById(animal.getIdCliente()).getNome();
-            case 3:
+            case 5:
                 animal = AnimalDAO.getInstance().retrieveById(consulta.getIdAnimal());
                 return animal.getNome();
-            case 4:
-                return VeterinarioDAO.getInstance().retrieveById(consulta.getIdVeterinario()).getNome();
-            case 5:
-                return consulta.getComentario();
             case 6:
+                return VeterinarioDAO.getInstance().retrieveById(consulta.getIdVeterinario()).getNome();
+            case 7:
+                return consulta.getComentario();
+            case 8:
                 Exame exame = ExameDAO.getInstance().retrieveByIdConsulta(consulta.getId());
                 if(exame != null){
                    return exame.getNome();
                 }
                 return ""; 
-            case 7:
+            case 9:
                 return consulta.getTerminado();
             default:
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
@@ -93,33 +101,44 @@ public class ConsultaTableModel extends GenericTableModel {
 
         switch (columnIndex) {
             case 0:
-                try {
-                    Date date = dateFormat.parse((String) aValue);
-                    consulta.setData(date);
-                } catch (ParseException ex) {
-                    Logger.getLogger(ConsultaTableModel.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                /*if (aValue instanceof Date) {
+                consulta.setData((Date) aValue);
+                } else if (aValue instanceof String) {
+                    try {
+                        Date date = dateFormat.parse((String) aValue);
+                        consulta.setData(date);
+                        fireTableCellUpdated(rowIndex, columnIndex);
+                    } catch (ParseException ex) {
+                        // Log the exception, and you can also set a red border here
+                        Logger.getLogger(ConsultaTableModel.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }*/
+                consulta.setDia((String)aValue);
                 break;
-                
-            case 1:  
-                consulta.setHorario((String)aValue);
+            case 1:
+                consulta.setMes((String)aValue);
                 break;
             case 2:
-                
-                break;
-            case 3:
-                
+                consulta.setAno((String)aValue);
+            case 3:  
+                consulta.setHorario((String)aValue);
                 break;
             case 4:
                 
                 break;
             case 5:
-                consulta.setComentario((String)aValue);
+                
                 break;
             case 6:
-                ExameDAO.getInstance().create((String)aValue, consulta.getId());
+                
                 break;
             case 7:
+                consulta.setComentario((String)aValue);
+                break;
+            case 8:
+                ExameDAO.getInstance().create((String)aValue, consulta.getId());
+                break;
+            case 9:
                 consulta.setTerminado((boolean)aValue);
                 break;
             default:
@@ -132,7 +151,7 @@ public class ConsultaTableModel extends GenericTableModel {
 
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
-        if((columnIndex < 2) || (columnIndex > 4)){
+        if((columnIndex < 4) || (columnIndex > 6)){
             return true;
         }
         else{
