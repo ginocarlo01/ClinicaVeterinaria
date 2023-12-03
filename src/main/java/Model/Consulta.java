@@ -9,9 +9,9 @@ public class Consulta {
     private int id_animal;
     private int id_vet;
     private int id_tratamento;
-    private int terminado;
+    private boolean terminado;
 
-    public Consulta(int id, Date data, String horario, String comentario, int id_animal, int id_vet, int id_tratamento, int terminado) {
+    public Consulta(int id, Date data, String horario, String comentario, int id_animal, int id_vet, int id_tratamento, boolean terminado) {
         this.id = id;
         this.data = data;
         this.horario = horario;
@@ -74,11 +74,11 @@ public class Consulta {
         this.id_tratamento = id_tratamento;
     }
 
-    public int getTerminado() {
+    public boolean getTerminado() {
         return terminado;
     }
 
-    public void setTerminado(int terminado) {
+    public void setTerminado(boolean terminado) {
         this.terminado = terminado;
     }
 

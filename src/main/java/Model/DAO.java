@@ -75,6 +75,7 @@ public abstract class DAO {
     protected final boolean createTable() {
         try {
             PreparedStatement stmt;
+            
             // Table client:
             stmt = DAO.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS cliente( \n"
                     + "id INTEGER PRIMARY KEY AUTO_INCREMENT, \n"
@@ -121,7 +122,7 @@ public abstract class DAO {
                     + "id_animal INTEGER, \n"
                     + "id_vet INTEGER, \n"
                     + "id_tratamento INTEGER, \n"
-                    + "terminado INTEGER); \n");
+                    + "terminado BOOLEAN); \n");
             executeUpdate(stmt);            
              // Table exam:
             stmt = DAO.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS exame( \n"

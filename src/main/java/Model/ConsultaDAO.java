@@ -53,7 +53,7 @@ public class ConsultaDAO extends DAO {
     private Consulta buildObject(ResultSet rs) {
         Consulta consulta = null;
         try {
-            consulta = new Consulta(rs.getInt("id"),rs.getDate("data"), rs.getString("horario"), rs.getString("comentario"), rs.getInt("id_animal"), rs.getInt("id_vet"), rs.getInt("id_tratamento"), rs.getInt("terminado"));
+            consulta = new Consulta(rs.getInt("id"),rs.getDate("data"), rs.getString("horario"), rs.getString("comentario"), rs.getInt("id_animal"), rs.getInt("id_vet"), rs.getInt("id_tratamento"), rs.getBoolean("terminado"));
         } catch (SQLException e) {
             System.err.println("Exception: " + e.getMessage());
         }
@@ -108,7 +108,7 @@ public class ConsultaDAO extends DAO {
             stmt.setInt(4, consulta.getIdAnimal());
             stmt.setInt(5, consulta.getIdVeterinario());
             stmt.setInt(6, consulta.getIdTratamento());
-            stmt.setInt(7, consulta.getTerminado());
+            stmt.setBoolean(7, consulta.getTerminado());
             stmt.setInt(8, consulta.getId());
             executeUpdate(stmt);
         } catch (SQLException e) {
