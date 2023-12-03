@@ -95,6 +95,10 @@ public class ConsultaDAO extends DAO {
         return this.retrieve("SELECT * FROM consulta WHERE id_cliente = " + id_cliente);
     }    
     
+    public List retrieveByIdCustomFilter(String filter){
+        return this.retrieve("SELECT * FROM consulta" + filter);
+    }
+    
     public List retrieveByIdVet(int id_vet) {
         return this.retrieve("SELECT * FROM consulta WHERE id_vet = " + id_vet);
     }    

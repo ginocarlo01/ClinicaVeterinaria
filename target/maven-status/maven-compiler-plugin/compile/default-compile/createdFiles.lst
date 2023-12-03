@@ -59,6 +59,7 @@ View\Past\RealizarConsulta$3.class
 View\Principal$16.class
 Model\ConsultaDAO.class
 View\Past\ConsultarExame$1.class
+View\Principal$26.class
 View\Past\AdicionarEspecie$1.class
 View\Past\EditarAnimal$1.class
 View\Past\EditarCliente$3.class
@@ -125,6 +126,7 @@ View\Past\AdicionarAnimal$8.class
 View\Past\Inicio$10.class
 View\Principal$5.class
 View\Principal$22.class
+View\Principal$25.class
 View\Past\RealizarConsulta$4.class
 View\Past\AdicionarExame$4.class
 Model\ExameDAO.class

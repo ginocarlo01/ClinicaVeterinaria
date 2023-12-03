@@ -5,6 +5,7 @@
 package View;
 import Controller.Controller;
 import java.util.ArrayList;
+import java.util.Calendar;
 import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
 /**
@@ -35,6 +36,21 @@ public class Principal extends javax.swing.JFrame {
         Controller.setTextFields(NameInput, AnimalInput, VeterinarioInput);
         
         Controller.painelConsultasSelected(ConsultasTable);
+        
+        MesBox.addItem("Mês");
+        AnoBox.addItem("Ano");
+        DiaBox.addItem("Dia");
+        
+        for (int i = 1; i <= 12; i++) {
+            MesBox.addItem(String.valueOf(i));
+        }
+        
+        for (int i = 1; i <= 31; i++) {
+            DiaBox.addItem(String.valueOf(i));
+        }
+        int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+        AnoBox.addItem(String.valueOf(currentYear));
+        AnoBox.addItem(String.valueOf(currentYear + 1));
     }
     
     public Principal() {
@@ -70,7 +86,6 @@ public class Principal extends javax.swing.JFrame {
         BtnCadVet = new javax.swing.JRadioButton();
         BtnTodos = new javax.swing.JButton();
         BtnNovo = new javax.swing.JButton();
-        BtnApaga = new javax.swing.JButton();
         BuscaTxt = new javax.swing.JLabel();
         BuscaInput = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -83,9 +98,9 @@ public class Principal extends javax.swing.JFrame {
         DiaBox = new javax.swing.JComboBox<>();
         MesBox = new javax.swing.JComboBox<>();
         AnoBox = new javax.swing.JComboBox<>();
-        VetFilter = new javax.swing.JButton();
-        AnimalFilter = new javax.swing.JButton();
-        ClienteFilter = new javax.swing.JButton();
+        VetFilter = new javax.swing.JToggleButton();
+        AnimalFilter = new javax.swing.JToggleButton();
+        TirarFiltros = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -138,10 +153,10 @@ public class Principal extends javax.swing.JFrame {
                         .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(NomeTxt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(AnimalText, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(NameInput, javax.swing.GroupLayout.DEFAULT_SIZE, 695, Short.MAX_VALUE)
-                            .addComponent(AnimalInput)))
+                        .addGap(48, 48, 48)
+                        .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(AnimalInput)
+                            .addComponent(NameInput)))
                     .addGroup(HeaderLayout.createSequentialGroup()
                         .addComponent(VeterinarioText, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(48, 48, 48)
@@ -151,21 +166,24 @@ public class Principal extends javax.swing.JFrame {
         HeaderLayout.setVerticalGroup(
             HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(HeaderLayout.createSequentialGroup()
-                .addGap(8, 8, 8)
                 .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(HeaderLayout.createSequentialGroup()
-                        .addComponent(NomeTxt)
-                        .addGap(18, 18, 18)
-                        .addComponent(AnimalText))
+                        .addGap(8, 8, 8)
+                        .addComponent(NomeTxt))
                     .addGroup(HeaderLayout.createSequentialGroup()
-                        .addComponent(NameInput, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap()
+                        .addComponent(NameInput, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(AnimalInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(VeterinarioText)
-                    .addComponent(VeterinarioInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(AnimalText)
+                            .addComponent(AnimalInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(9, 9, 9)
+                .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(HeaderLayout.createSequentialGroup()
+                        .addComponent(VeterinarioText)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(VeterinarioInput, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         ClinicaPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -227,13 +245,6 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        BtnApaga.setText("Apaga");
-        BtnApaga.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnApagaActionPerformed(evt);
-            }
-        });
-
         BuscaTxt.setText("Busca");
 
         BuscaInput.setText("jTextField2");
@@ -285,13 +296,11 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(BtnTodos)
                         .addGap(12, 12, 12)
                         .addComponent(BtnNovo)
-                        .addGap(18, 18, 18)
-                        .addComponent(BtnApaga)
-                        .addGap(44, 44, 44)
+                        .addGap(134, 134, 134)
                         .addComponent(BuscaTxt)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(BuscaInput, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 311, Short.MAX_VALUE))
+                .addGap(0, 314, Short.MAX_VALUE))
             .addGroup(CadastrosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane2)
@@ -309,7 +318,6 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(CadastrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtnTodos)
                     .addComponent(BtnNovo)
-                    .addComponent(BtnApaga)
                     .addComponent(BuscaTxt)
                     .addComponent(BuscaInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -365,16 +373,26 @@ public class Principal extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(ConsultasTable);
 
-        DiaBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        DiaBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { }));
         DiaBox.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 DiaBoxItemStateChanged(evt);
             }
         });
 
-        MesBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        MesBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {  }));
+        MesBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                MesBoxItemStateChanged(evt);
+            }
+        });
 
-        AnoBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        AnoBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {  }));
+        AnoBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                AnoBoxItemStateChanged(evt);
+            }
+        });
 
         VetFilter.setText("Filtrar Veterinario");
         VetFilter.addActionListener(new java.awt.event.ActionListener() {
@@ -384,16 +402,21 @@ public class Principal extends javax.swing.JFrame {
         });
 
         AnimalFilter.setText("Filtrar Animal");
+        AnimalFilter.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                AnimalFilterItemStateChanged(evt);
+            }
+        });
         AnimalFilter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AnimalFilterActionPerformed(evt);
             }
         });
 
-        ClienteFilter.setText("Filtrar Cliente");
-        ClienteFilter.addActionListener(new java.awt.event.ActionListener() {
+        TirarFiltros.setText("Tirar Filtros");
+        TirarFiltros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ClienteFilterActionPerformed(evt);
+                TirarFiltrosActionPerformed(evt);
             }
         });
 
@@ -409,19 +432,19 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(NewConsultaBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ApagaConsultaBtn)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(VetFilter)
-                        .addGap(18, 18, 18)
-                        .addComponent(AnimalFilter)
-                        .addGap(18, 18, 18)
-                        .addComponent(ClienteFilter)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(AnimalFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(DiaBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(MesBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(AnoBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 66, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(TirarFiltros, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 10, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         ConsultasPanel2Layout.setVerticalGroup(
@@ -436,7 +459,7 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(AnoBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(VetFilter)
                     .addComponent(AnimalFilter)
-                    .addComponent(ClienteFilter))
+                    .addComponent(TirarFiltros))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(14, Short.MAX_VALUE))
@@ -486,6 +509,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void BtnCadCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCadCliActionPerformed
         Controller.jRadioButtonClientesSelecionado(MainTable);
+        
         BuscaInput.setText("");
         //Controller.setTableModel(MainTable, new ClientTableModel(ClienteDAO.getInstance().retrieveAll()));
     }//GEN-LAST:event_BtnCadCliActionPerformed
@@ -552,12 +576,6 @@ public class Principal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_BtnNovoActionPerformed
 
-    private void BtnApagaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnApagaActionPerformed
-        if(!Controller.apagaBtn(MainTable)){
-            JOptionPane.showMessageDialog(this, "Selecione uma linha da coluna para poder deletar");
-        }
-    }//GEN-LAST:event_BtnApagaActionPerformed
-
     private void ClinicaPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClinicaPanelMousePressed
         
     }//GEN-LAST:event_ClinicaPanelMousePressed
@@ -614,32 +632,57 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_ConsultasTableMousePressed
 
     private void DiaBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DiaBoxItemStateChanged
-        Object selectedItem = DiaBox.getSelectedItem();
+        Controller.filtroAplicado(ConsultasTable, VetFilter, AnimalFilter, DiaBox, MesBox, AnoBox);
         
     }//GEN-LAST:event_DiaBoxItemStateChanged
 
     private void VetFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VetFilterActionPerformed
-        
-        if(!Controller.FiltroVetSelecionado(ConsultasTable)){
+        if(!Controller.FiltroVetSelecionado()){
             JOptionPane.showMessageDialog(this, "Selecione um veterinario");
-            
+            VetFilter.setSelected(false);
         }
-        
+        else{
+            
+            Controller.filtroAplicado(ConsultasTable, VetFilter, AnimalFilter, DiaBox, MesBox, AnoBox);
+        }
+   
     }//GEN-LAST:event_VetFilterActionPerformed
 
-    private void ClienteFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClienteFilterActionPerformed
-       if(!Controller.FiltroClienteSelecionado(ConsultasTable)){
-            JOptionPane.showMessageDialog(this, "Selecione um cliente");
-            
-        }
-    }//GEN-LAST:event_ClienteFilterActionPerformed
-
     private void AnimalFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnimalFilterActionPerformed
-        if(!Controller.FiltroAnimalSelecionado(ConsultasTable)){
-            JOptionPane.showMessageDialog(this, "Selecione um animal");
-            
-        }
+        
     }//GEN-LAST:event_AnimalFilterActionPerformed
+
+    private void AnimalFilterItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_AnimalFilterItemStateChanged
+        if(AnimalFilter.isSelected()){
+            if(!Controller.FiltroAnimalSelecionado()){
+            JOptionPane.showMessageDialog(this, "Selecione um animal");
+            AnimalFilter.setSelected(false);
+            }
+            else{
+                Controller.filtroAplicado(ConsultasTable, VetFilter, AnimalFilter, DiaBox, MesBox, AnoBox);
+            }
+        }
+        else{
+            Controller.filtroAplicado(ConsultasTable, VetFilter, AnimalFilter, DiaBox, MesBox, AnoBox);
+        }
+    }//GEN-LAST:event_AnimalFilterItemStateChanged
+
+    private void MesBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MesBoxItemStateChanged
+        Controller.filtroAplicado(ConsultasTable, VetFilter, AnimalFilter, DiaBox, MesBox, AnoBox);
+    }//GEN-LAST:event_MesBoxItemStateChanged
+
+    private void AnoBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_AnoBoxItemStateChanged
+        Controller.filtroAplicado(ConsultasTable, VetFilter, AnimalFilter, DiaBox, MesBox, AnoBox);
+    }//GEN-LAST:event_AnoBoxItemStateChanged
+
+    private void TirarFiltrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TirarFiltrosActionPerformed
+        VetFilter.setSelected(false);
+        AnimalFilter.setSelected(false);
+        DiaBox.setSelectedItem("Dia");
+        MesBox.setSelectedItem("Mês");
+        AnoBox.setSelectedItem("Ano");
+        Controller.filtroAplicado(ConsultasTable, VetFilter, AnimalFilter, DiaBox, MesBox, AnoBox);
+    }//GEN-LAST:event_TirarFiltrosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -677,12 +720,11 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AnimalFilter;
+    private javax.swing.JToggleButton AnimalFilter;
     private javax.swing.JTextField AnimalInput;
     private javax.swing.JLabel AnimalText;
     private javax.swing.JComboBox<String> AnoBox;
     private javax.swing.JButton ApagaConsultaBtn;
-    private javax.swing.JButton BtnApaga;
     private javax.swing.JRadioButton BtnCadAni;
     private javax.swing.JRadioButton BtnCadCli;
     private javax.swing.JRadioButton BtnCadEsp;
@@ -693,7 +735,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel BuscaTxt;
     private javax.swing.ButtonGroup ButtonGroup;
     private javax.swing.JPanel Cadastros;
-    private javax.swing.JButton ClienteFilter;
     private javax.swing.JTabbedPane ClinicaPanel;
     private javax.swing.JPanel ConsultasPanel2;
     private javax.swing.JTable ConsultasTable;
@@ -705,7 +746,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField NameInput;
     private javax.swing.JButton NewConsultaBtn;
     private javax.swing.JLabel NomeTxt;
-    private javax.swing.JButton VetFilter;
+    private javax.swing.JButton TirarFiltros;
+    private javax.swing.JToggleButton VetFilter;
     private javax.swing.JTextField VeterinarioInput;
     private javax.swing.JLabel VeterinarioText;
     private javax.swing.JScrollPane jScrollPane1;
