@@ -90,6 +90,8 @@ public class ConsultaDAO extends DAO {
         return (consultas.isEmpty()?null:consultas.get(0));
     }
     
+    
+    
    
     public List<String> retrieveHorarioByIdVetAndDate(int id_vet, Date data) {
     java.sql.Date sqlData = new java.sql.Date(data.getTime());

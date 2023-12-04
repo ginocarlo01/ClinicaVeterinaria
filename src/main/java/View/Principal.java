@@ -130,6 +130,8 @@ public class Principal extends javax.swing.JFrame {
         EmailBuscaInput = new javax.swing.JTextField();
         SexoBox = new javax.swing.JComboBox<>();
         jSeparator1 = new javax.swing.JSeparator();
+        DeleteBtn = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JSeparator();
         ConsultasPanel2 = new javax.swing.JPanel();
         NewConsultaBtn = new javax.swing.JButton();
         ApagaConsultaBtn = new javax.swing.JButton();
@@ -351,6 +353,18 @@ public class Principal extends javax.swing.JFrame {
                 SexoBoxItemStateChanged(evt);
             }
         });
+        SexoBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SexoBoxActionPerformed(evt);
+            }
+        });
+
+        DeleteBtn.setText("Deletar");
+        DeleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout CadastrosLayout = new javax.swing.GroupLayout(Cadastros);
         Cadastros.setLayout(CadastrosLayout);
@@ -362,44 +376,46 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(CadastrosLayout.createSequentialGroup()
                         .addGroup(CadastrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(BtnCadCli)
                             .addGroup(CadastrosLayout.createSequentialGroup()
-                                .addComponent(BtnTodos)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(BtnNovo))
-                            .addComponent(BtnCadCli))
-                        .addGroup(CadastrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(CadastrosLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(BuscaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(BuscaInput, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(CadastrosLayout.createSequentialGroup()
-                                .addGap(29, 29, 29)
-                                .addComponent(BtnCadAni)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(BuscaInput, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(CadastrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(CadastrosLayout.createSequentialGroup()
+                                .addGap(5, 5, 5)
                                 .addComponent(CelularTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(CelularBuscaInput, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(CelularBuscaInput, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CadastrosLayout.createSequentialGroup()
-                                .addComponent(BtnCadVet)
-                                .addGap(16, 16, 16)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(BtnCadAni)
+                                .addGap(93, 93, 93)))
                         .addGroup(CadastrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(CadastrosLayout.createSequentialGroup()
                                 .addComponent(EmailTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(EmailBuscaInput, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(57, 57, 57)
+                                .addComponent(EmailBuscaInput, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(SexoBox, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(74, 74, 74))
-                            .addGroup(CadastrosLayout.createSequentialGroup()
-                                .addGap(40, 40, 40)
-                                .addComponent(BtnCadEsp)
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addComponent(jSeparator1))
+                                .addGap(11, 11, 11))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CadastrosLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(BtnCadVet)
+                                .addGap(100, 100, 100)
+                                .addComponent(BtnCadEsp))))
+                    .addComponent(jSeparator1)
+                    .addComponent(jSeparator2))
                 .addContainerGap())
+            .addGroup(CadastrosLayout.createSequentialGroup()
+                .addGap(365, 365, 365)
+                .addComponent(BtnTodos)
+                .addGap(18, 18, 18)
+                .addComponent(BtnNovo)
+                .addGap(18, 18, 18)
+                .addComponent(DeleteBtn)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         CadastrosLayout.setVerticalGroup(
             CadastrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -409,12 +425,10 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(BtnCadAni)
                     .addComponent(BtnCadVet)
                     .addComponent(BtnCadEsp))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(CadastrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnTodos)
-                    .addComponent(BtnNovo)
                     .addComponent(BuscaTxt)
                     .addComponent(BuscaInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CelularTxt)
@@ -422,8 +436,15 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(EmailTxt)
                     .addComponent(EmailBuscaInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SexoBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
+                .addGroup(CadastrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BtnNovo)
+                    .addComponent(BtnTodos)
+                    .addComponent(DeleteBtn))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -559,7 +580,7 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(HorarioTxt)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(HorarioBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 232, Short.MAX_VALUE)))
+                        .addGap(0, 245, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         ConsultasPanel2Layout.setVerticalGroup(
@@ -628,6 +649,10 @@ public class Principal extends javax.swing.JFrame {
         Controller.jRadioButtonClientesSelecionado(MainTable);
         Controller.updateHeader();
         
+        AnimalInput.setText("");
+        
+        DeleteBtn.setVisible(true);
+        
         BuscaInput.setText("");
         CelularBuscaInput.setText("");
         EmailBuscaInput.setText("");
@@ -653,6 +678,8 @@ public class Principal extends javax.swing.JFrame {
         CelularBuscaInput.setText("");
         EmailBuscaInput.setText("");
         SexoBox.setSelectedItem("Sexo");
+        
+        DeleteBtn.setVisible(true);
         
         Controller.updateHeader();
         if(!Controller.jRadioButtonAnimalSelecionado(MainTable)){
@@ -703,7 +730,7 @@ public class Principal extends javax.swing.JFrame {
         EmailBuscaInput.setText("");
         SexoBox.setSelectedItem("Sexo");
         
-        
+        DeleteBtn.setVisible(false);
         
         SexoBox.setVisible(false);
         
@@ -721,6 +748,8 @@ public class Principal extends javax.swing.JFrame {
         CelularBuscaInput.setText("");
         EmailBuscaInput.setText("");
         SexoBox.setSelectedItem("Sexo");
+        
+        DeleteBtn.setVisible(true);
         
         Controller.updateHeader();
         SexoBox.setVisible(false);
@@ -887,6 +916,40 @@ public class Principal extends javax.swing.JFrame {
         Controller.filtroAplicadoEmCadastro(MainTable, BuscaInput, CelularBuscaInput, EmailBuscaInput, SexoBox);
     }//GEN-LAST:event_SexoBoxItemStateChanged
 
+    private void DeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteBtnActionPerformed
+        if(!Controller.apagaBtn(MainTable)){
+            JOptionPane.showMessageDialog(this, "Selecione uma linha da coluna para poder deletar");
+        }
+        else{
+            Controller.painelConsultasSelected(ConsultasTable);
+            if(Controller.getClienteSelecionado() != null){
+                NameInput.setText(Controller.getClienteSelecionado().getNome());
+            }
+            else{
+                NameInput.setText("");
+            }
+           
+            if(Controller.getAnimalSelecionado() != null){
+                AnimalInput.setText(Controller.getAnimalSelecionado().getNome());
+            }
+            else{
+                AnimalInput.setText("");
+            }
+           
+            if(Controller.getVeterinarioSelecionado() != null){
+                VeterinarioInput.setText(Controller.getVeterinarioSelecionado().getNome());
+            }
+            else{
+                VeterinarioInput.setText("");
+            }
+        }
+
+    }//GEN-LAST:event_DeleteBtnActionPerformed
+
+    private void SexoBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SexoBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SexoBoxActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -943,6 +1006,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTabbedPane ClinicaPanel;
     private javax.swing.JPanel ConsultasPanel2;
     private javax.swing.JTable ConsultasTable;
+    private javax.swing.JButton DeleteBtn;
     private javax.swing.JComboBox<String> DiaBox;
     private javax.swing.JTextField EmailBuscaInput;
     private javax.swing.JLabel EmailTxt;
@@ -964,6 +1028,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

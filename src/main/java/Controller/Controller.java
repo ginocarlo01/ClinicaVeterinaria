@@ -57,6 +57,7 @@ public class Controller {
     private static JTextField veterinarioSelecionadoTextField = null;
     
     public static void jRadioButtonClientesSelecionado(JTable table){
+        animalSelecionado = null;
         setTableModel(table, new ClienteTableModel(ClienteDAO.getInstance().retrieveAll()));
     }
     
@@ -502,7 +503,6 @@ public class Controller {
             }
             
             if(!addAnd){
-                where = "";
                 where += " id_cliente = " + getClienteSelecionado().getId();
             }
             else{
@@ -661,11 +661,32 @@ public class Controller {
     public static void apagaCliente(Cliente cliente){
         List<Animal> animais = AnimalDAO.getInstance().retrieveByIdCliente(getClienteSelecionado().getId());
         for(Animal animal : animais){
-            AnimalDAO.getInstance().delete(animal);
+            apagaAnimal(animal);         
         }
         
         ClienteDAO.getInstance().delete(cliente);
     }
+    
+    public static void apagaAnimal(Animal animal){
+        List<Consulta> consultasDoAnimal = ConsultaDAO.getInstance().retrieveByIdAnimal(animal.getId());
+            
+        for(Consulta consulta : consultasDoAnimal){
+            ConsultaDAO.getInstance().delete(consulta);
+        }
+
+        AnimalDAO.getInstance().delete(animal);
+    }
+    
+    public static void apagaVet(Veterinario vet){
+        List<Consulta> consultasDoAnimal = ConsultaDAO.getInstance().retrieveByIdVet(vet.getId());
+        System.out.println(vet.getId());
+        for(Consulta consulta : consultasDoAnimal){
+            ConsultaDAO.getInstance().delete(consulta);
+        }
+
+        VeterinarioDAO.getInstance().delete(vet);
+    }
+    
     
     public static boolean apagaBtn(JTable table){
         if(table.getSelectedRow() >= 0){
@@ -674,13 +695,14 @@ public class Controller {
             if(table.getModel() instanceof ClienteTableModel){
                 apagaCliente(getClienteSelecionado());
                 clienteSelecionado = null;
-            }
-            else if (table.getModel() instanceof AnimalTableModel){
-                AnimalDAO.getInstance().delete(animalSelecionado);
                 animalSelecionado = null;
             }
-            else if (table.getModel() instanceof Veterinario){
-                VeterinarioDAO.getInstance().delete(veterinarioSelecionado);
+            else if (table.getModel() instanceof AnimalTableModel){
+                apagaAnimal(getAnimalSelecionado());
+                animalSelecionado = null;
+            }
+            else if (table.getModel() instanceof VeterinarioTableModel){
+                apagaVet(getVeterinarioSelecionado());
                 veterinarioSelecionado = null;
             }
             return true;

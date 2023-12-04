@@ -15,6 +15,7 @@ View\Main.class
 View\Past\ConsultarAnimal$4.class
 View\Principal$14.class
 View\Principal$24.class
+View\Principal$34.class
 View\Principal$7.class
 View\Past\Inicio$17.class
 View\Past\RealizarConsulta$5.class
@@ -175,6 +176,7 @@ View\Principal$12.class
 View\Past\AdicionarVeterinario$1.class
 View\Past\AtualizarEspecie$3.class
 View\Past\Inicio$2.class
+View\Principal$35.class
 View\Past\AdicionarCliente$6.class
 Model\Animal.class
 View\Past\AdicionarAnimal$4.class

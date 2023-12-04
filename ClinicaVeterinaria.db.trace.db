@@ -3282,3 +3282,1490 @@ SELECT * FROM animal id_cliente = 16 [42000-206]
 2023-12-04 11:12:16 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 16"; SQL statement:
 SELECT * FROM animal id_cliente = 16 [42000-206]
+2023-12-04 19:22:42 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "ANONASC" not found; SQL statement:
+UPDATE especie SET nome=?, anoNasc=?, sexo=?, id_especie=?, id_tratamento=?, id_cliente =? WHERE id=? [42122-206]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:521)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:496)
+	at org.h2.message.DbException.get(DbException.java:227)
+	at org.h2.message.DbException.get(DbException.java:203)
+	at org.h2.table.Table.getColumn(Table.java:740)
+	at org.h2.command.Parser.readTableColumn(Parser.java:1472)
+	at org.h2.command.Parser.readUpdateSetClause(Parser.java:1539)
+	at org.h2.command.Parser.parseUpdate(Parser.java:1508)
+	at org.h2.command.Parser.parsePrepared(Parser.java:1235)
+	at org.h2.command.Parser.parse(Parser.java:1068)
+	at org.h2.command.Parser.parse(Parser.java:1037)
+	at org.h2.command.Parser.prepareCommand(Parser.java:965)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:624)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:562)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1111)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:92)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:283)
+	at Model.EspecieDAO.update(EspecieDAO.java:98)
+	at View.EspecieTableModel.setValueAt(EspecieTableModel.java:59)
+	at java.desktop/javax.swing.JTable.setValueAt(JTable.java:2787)
+	at java.desktop/javax.swing.JTable.editingStopped(JTable.java:4785)
+	at java.desktop/javax.swing.AbstractCellEditor.fireEditingStopped(AbstractCellEditor.java:152)
+	at java.desktop/javax.swing.DefaultCellEditor$EditorDelegate.stopCellEditing(DefaultCellEditor.java:375)
+	at java.desktop/javax.swing.DefaultCellEditor.stopCellEditing(DefaultCellEditor.java:234)
+	at java.desktop/javax.swing.JTable$GenericEditor.stopCellEditing(JTable.java:5558)
+	at java.desktop/javax.swing.DefaultCellEditor$EditorDelegate.actionPerformed(DefaultCellEditor.java:392)
+	at java.desktop/javax.swing.JTextField.fireActionPerformed(JTextField.java:525)
+	at java.desktop/javax.swing.JTextField.postActionEvent(JTextField.java:740)
+	at java.desktop/javax.swing.JTextField$NotifyAction.actionPerformed(JTextField.java:856)
+	at java.desktop/javax.swing.SwingUtilities.notifyAction(SwingUtilities.java:1810)
+	at java.desktop/javax.swing.JComponent.processKeyBinding(JComponent.java:2956)
+	at java.desktop/javax.swing.JComponent.processKeyBindings(JComponent.java:3004)
+	at java.desktop/javax.swing.JComponent.processKeyEvent(JComponent.java:2918)
+	at java.desktop/java.awt.Component.processEvent(Component.java:6397)
+	at java.desktop/java.awt.Container.processEvent(Container.java:2266)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:4995)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2324)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4827)
+	at java.desktop/java.awt.KeyboardFocusManager.redispatchEvent(KeyboardFocusManager.java:1952)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.dispatchKeyEvent(DefaultKeyboardFocusManager.java:883)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.preDispatchKeyEvent(DefaultKeyboardFocusManager.java:1146)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.typeAheadAssertions(DefaultKeyboardFocusManager.java:1020)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.dispatchEvent(DefaultKeyboardFocusManager.java:848)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:4876)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2324)
+	at java.desktop/java.awt.Window.dispatchEventImpl(Window.java:2780)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4827)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:775)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:98)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:747)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:745)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:744)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+2023-12-04 19:22:44 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "ANONASC" not found; SQL statement:
+UPDATE especie SET nome=?, anoNasc=?, sexo=?, id_especie=?, id_tratamento=?, id_cliente =? WHERE id=? [42122-206]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:521)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:496)
+	at org.h2.message.DbException.get(DbException.java:227)
+	at org.h2.message.DbException.get(DbException.java:203)
+	at org.h2.table.Table.getColumn(Table.java:740)
+	at org.h2.command.Parser.readTableColumn(Parser.java:1472)
+	at org.h2.command.Parser.readUpdateSetClause(Parser.java:1539)
+	at org.h2.command.Parser.parseUpdate(Parser.java:1508)
+	at org.h2.command.Parser.parsePrepared(Parser.java:1235)
+	at org.h2.command.Parser.parse(Parser.java:1068)
+	at org.h2.command.Parser.parse(Parser.java:1037)
+	at org.h2.command.Parser.prepareCommand(Parser.java:965)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:624)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:562)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1111)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:92)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:283)
+	at Model.EspecieDAO.update(EspecieDAO.java:98)
+	at View.EspecieTableModel.setValueAt(EspecieTableModel.java:59)
+	at java.desktop/javax.swing.JTable.setValueAt(JTable.java:2787)
+	at java.desktop/javax.swing.JTable.editingStopped(JTable.java:4785)
+	at java.desktop/javax.swing.AbstractCellEditor.fireEditingStopped(AbstractCellEditor.java:152)
+	at java.desktop/javax.swing.DefaultCellEditor$EditorDelegate.stopCellEditing(DefaultCellEditor.java:375)
+	at java.desktop/javax.swing.DefaultCellEditor.stopCellEditing(DefaultCellEditor.java:234)
+	at java.desktop/javax.swing.JTable$GenericEditor.stopCellEditing(JTable.java:5558)
+	at java.desktop/javax.swing.plaf.basic.BasicTableUI$Handler.mousePressed(BasicTableUI.java:1040)
+	at java.desktop/java.awt.AWTEventMulticaster.mousePressed(AWTEventMulticaster.java:288)
+	at java.desktop/java.awt.AWTEventMulticaster.mousePressed(AWTEventMulticaster.java:287)
+	at java.desktop/java.awt.Component.processMouseEvent(Component.java:6617)
+	at java.desktop/javax.swing.JComponent.processMouseEvent(JComponent.java:3398)
+	at java.desktop/java.awt.Component.processEvent(Component.java:6385)
+	at java.desktop/java.awt.Container.processEvent(Container.java:2266)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:4995)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2324)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4827)
+	at java.desktop/java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4948)
+	at java.desktop/java.awt.LightweightDispatcher.processMouseEvent(Container.java:4572)
+	at java.desktop/java.awt.LightweightDispatcher.dispatchEvent(Container.java:4516)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2310)
+	at java.desktop/java.awt.Window.dispatchEventImpl(Window.java:2780)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4827)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:775)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:98)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:747)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:745)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:744)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+2023-12-04 19:22:44 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "ANONASC" not found; SQL statement:
+UPDATE especie SET nome=?, anoNasc=?, sexo=?, id_especie=?, id_tratamento=?, id_cliente =? WHERE id=? [42122-206]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:521)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:496)
+	at org.h2.message.DbException.get(DbException.java:227)
+	at org.h2.message.DbException.get(DbException.java:203)
+	at org.h2.table.Table.getColumn(Table.java:740)
+	at org.h2.command.Parser.readTableColumn(Parser.java:1472)
+	at org.h2.command.Parser.readUpdateSetClause(Parser.java:1539)
+	at org.h2.command.Parser.parseUpdate(Parser.java:1508)
+	at org.h2.command.Parser.parsePrepared(Parser.java:1235)
+	at org.h2.command.Parser.parse(Parser.java:1068)
+	at org.h2.command.Parser.parse(Parser.java:1037)
+	at org.h2.command.Parser.prepareCommand(Parser.java:965)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:624)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:562)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1111)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:92)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:283)
+	at Model.EspecieDAO.update(EspecieDAO.java:98)
+	at View.EspecieTableModel.setValueAt(EspecieTableModel.java:59)
+	at java.desktop/javax.swing.JTable.setValueAt(JTable.java:2787)
+	at java.desktop/javax.swing.JTable.editingStopped(JTable.java:4785)
+	at java.desktop/javax.swing.AbstractCellEditor.fireEditingStopped(AbstractCellEditor.java:152)
+	at java.desktop/javax.swing.DefaultCellEditor$EditorDelegate.stopCellEditing(DefaultCellEditor.java:375)
+	at java.desktop/javax.swing.DefaultCellEditor.stopCellEditing(DefaultCellEditor.java:234)
+	at java.desktop/javax.swing.JTable$GenericEditor.stopCellEditing(JTable.java:5558)
+	at java.desktop/javax.swing.plaf.basic.BasicTableUI$Handler.mousePressed(BasicTableUI.java:1040)
+	at java.desktop/java.awt.AWTEventMulticaster.mousePressed(AWTEventMulticaster.java:288)
+	at java.desktop/java.awt.AWTEventMulticaster.mousePressed(AWTEventMulticaster.java:287)
+	at java.desktop/java.awt.Component.processMouseEvent(Component.java:6617)
+	at java.desktop/javax.swing.JComponent.processMouseEvent(JComponent.java:3398)
+	at java.desktop/java.awt.Component.processEvent(Component.java:6385)
+	at java.desktop/java.awt.Container.processEvent(Container.java:2266)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:4995)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2324)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4827)
+	at java.desktop/java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4948)
+	at java.desktop/java.awt.LightweightDispatcher.processMouseEvent(Container.java:4572)
+	at java.desktop/java.awt.LightweightDispatcher.dispatchEvent(Container.java:4516)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2310)
+	at java.desktop/java.awt.Window.dispatchEventImpl(Window.java:2780)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4827)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:775)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:98)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:747)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:745)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:744)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+2023-12-04 19:22:46 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "ANONASC" not found; SQL statement:
+UPDATE especie SET nome=?, anoNasc=?, sexo=?, id_especie=?, id_tratamento=?, id_cliente =? WHERE id=? [42122-206]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:521)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:496)
+	at org.h2.message.DbException.get(DbException.java:227)
+	at org.h2.message.DbException.get(DbException.java:203)
+	at org.h2.table.Table.getColumn(Table.java:740)
+	at org.h2.command.Parser.readTableColumn(Parser.java:1472)
+	at org.h2.command.Parser.readUpdateSetClause(Parser.java:1539)
+	at org.h2.command.Parser.parseUpdate(Parser.java:1508)
+	at org.h2.command.Parser.parsePrepared(Parser.java:1235)
+	at org.h2.command.Parser.parse(Parser.java:1068)
+	at org.h2.command.Parser.parse(Parser.java:1037)
+	at org.h2.command.Parser.prepareCommand(Parser.java:965)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:624)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:562)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1111)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:92)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:283)
+	at Model.EspecieDAO.update(EspecieDAO.java:98)
+	at View.EspecieTableModel.setValueAt(EspecieTableModel.java:59)
+	at java.desktop/javax.swing.JTable.setValueAt(JTable.java:2787)
+	at java.desktop/javax.swing.JTable.editingStopped(JTable.java:4785)
+	at java.desktop/javax.swing.AbstractCellEditor.fireEditingStopped(AbstractCellEditor.java:152)
+	at java.desktop/javax.swing.DefaultCellEditor$EditorDelegate.stopCellEditing(DefaultCellEditor.java:375)
+	at java.desktop/javax.swing.DefaultCellEditor.stopCellEditing(DefaultCellEditor.java:234)
+	at java.desktop/javax.swing.JTable$GenericEditor.stopCellEditing(JTable.java:5558)
+	at java.desktop/javax.swing.DefaultCellEditor$EditorDelegate.actionPerformed(DefaultCellEditor.java:392)
+	at java.desktop/javax.swing.JTextField.fireActionPerformed(JTextField.java:525)
+	at java.desktop/javax.swing.JTextField.postActionEvent(JTextField.java:740)
+	at java.desktop/javax.swing.JTextField$NotifyAction.actionPerformed(JTextField.java:856)
+	at java.desktop/javax.swing.SwingUtilities.notifyAction(SwingUtilities.java:1810)
+	at java.desktop/javax.swing.JComponent.processKeyBinding(JComponent.java:2956)
+	at java.desktop/javax.swing.JComponent.processKeyBindings(JComponent.java:3004)
+	at java.desktop/javax.swing.JComponent.processKeyEvent(JComponent.java:2918)
+	at java.desktop/java.awt.Component.processEvent(Component.java:6397)
+	at java.desktop/java.awt.Container.processEvent(Container.java:2266)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:4995)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2324)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4827)
+	at java.desktop/java.awt.KeyboardFocusManager.redispatchEvent(KeyboardFocusManager.java:1952)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.dispatchKeyEvent(DefaultKeyboardFocusManager.java:883)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.preDispatchKeyEvent(DefaultKeyboardFocusManager.java:1146)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.typeAheadAssertions(DefaultKeyboardFocusManager.java:1020)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.dispatchEvent(DefaultKeyboardFocusManager.java:848)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:4876)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2324)
+	at java.desktop/java.awt.Window.dispatchEventImpl(Window.java:2780)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4827)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:775)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:98)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:747)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:745)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:744)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+2023-12-04 19:22:49 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "ANONASC" not found; SQL statement:
+UPDATE especie SET nome=?, anoNasc=?, sexo=?, id_especie=?, id_tratamento=?, id_cliente =? WHERE id=? [42122-206]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:521)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:496)
+	at org.h2.message.DbException.get(DbException.java:227)
+	at org.h2.message.DbException.get(DbException.java:203)
+	at org.h2.table.Table.getColumn(Table.java:740)
+	at org.h2.command.Parser.readTableColumn(Parser.java:1472)
+	at org.h2.command.Parser.readUpdateSetClause(Parser.java:1539)
+	at org.h2.command.Parser.parseUpdate(Parser.java:1508)
+	at org.h2.command.Parser.parsePrepared(Parser.java:1235)
+	at org.h2.command.Parser.parse(Parser.java:1068)
+	at org.h2.command.Parser.parse(Parser.java:1037)
+	at org.h2.command.Parser.prepareCommand(Parser.java:965)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:624)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:562)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1111)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:92)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:283)
+	at Model.EspecieDAO.update(EspecieDAO.java:98)
+	at View.EspecieTableModel.setValueAt(EspecieTableModel.java:59)
+	at java.desktop/javax.swing.JTable.setValueAt(JTable.java:2787)
+	at java.desktop/javax.swing.JTable.editingStopped(JTable.java:4785)
+	at java.desktop/javax.swing.AbstractCellEditor.fireEditingStopped(AbstractCellEditor.java:152)
+	at java.desktop/javax.swing.DefaultCellEditor$EditorDelegate.stopCellEditing(DefaultCellEditor.java:375)
+	at java.desktop/javax.swing.DefaultCellEditor.stopCellEditing(DefaultCellEditor.java:234)
+	at java.desktop/javax.swing.JTable$GenericEditor.stopCellEditing(JTable.java:5558)
+	at java.desktop/javax.swing.DefaultCellEditor$EditorDelegate.actionPerformed(DefaultCellEditor.java:392)
+	at java.desktop/javax.swing.JTextField.fireActionPerformed(JTextField.java:525)
+	at java.desktop/javax.swing.JTextField.postActionEvent(JTextField.java:740)
+	at java.desktop/javax.swing.JTextField$NotifyAction.actionPerformed(JTextField.java:856)
+	at java.desktop/javax.swing.SwingUtilities.notifyAction(SwingUtilities.java:1810)
+	at java.desktop/javax.swing.JComponent.processKeyBinding(JComponent.java:2956)
+	at java.desktop/javax.swing.JComponent.processKeyBindings(JComponent.java:3004)
+	at java.desktop/javax.swing.JComponent.processKeyEvent(JComponent.java:2918)
+	at java.desktop/java.awt.Component.processEvent(Component.java:6397)
+	at java.desktop/java.awt.Container.processEvent(Container.java:2266)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:4995)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2324)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4827)
+	at java.desktop/java.awt.KeyboardFocusManager.redispatchEvent(KeyboardFocusManager.java:1952)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.dispatchKeyEvent(DefaultKeyboardFocusManager.java:883)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.preDispatchKeyEvent(DefaultKeyboardFocusManager.java:1146)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.typeAheadAssertions(DefaultKeyboardFocusManager.java:1020)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.dispatchEvent(DefaultKeyboardFocusManager.java:848)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:4876)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2324)
+	at java.desktop/java.awt.Window.dispatchEventImpl(Window.java:2780)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4827)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:775)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:98)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:747)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:745)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:744)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+2023-12-04 19:22:51 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "ANONASC" not found; SQL statement:
+UPDATE especie SET nome=?, anoNasc=?, sexo=?, id_especie=?, id_tratamento=?, id_cliente =? WHERE id=? [42122-206]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:521)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:496)
+	at org.h2.message.DbException.get(DbException.java:227)
+	at org.h2.message.DbException.get(DbException.java:203)
+	at org.h2.table.Table.getColumn(Table.java:740)
+	at org.h2.command.Parser.readTableColumn(Parser.java:1472)
+	at org.h2.command.Parser.readUpdateSetClause(Parser.java:1539)
+	at org.h2.command.Parser.parseUpdate(Parser.java:1508)
+	at org.h2.command.Parser.parsePrepared(Parser.java:1235)
+	at org.h2.command.Parser.parse(Parser.java:1068)
+	at org.h2.command.Parser.parse(Parser.java:1037)
+	at org.h2.command.Parser.prepareCommand(Parser.java:965)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:624)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:562)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1111)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:92)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:283)
+	at Model.EspecieDAO.update(EspecieDAO.java:98)
+	at View.EspecieTableModel.setValueAt(EspecieTableModel.java:59)
+	at java.desktop/javax.swing.JTable.setValueAt(JTable.java:2787)
+	at java.desktop/javax.swing.JTable.editingStopped(JTable.java:4785)
+	at java.desktop/javax.swing.AbstractCellEditor.fireEditingStopped(AbstractCellEditor.java:152)
+	at java.desktop/javax.swing.DefaultCellEditor$EditorDelegate.stopCellEditing(DefaultCellEditor.java:375)
+	at java.desktop/javax.swing.DefaultCellEditor.stopCellEditing(DefaultCellEditor.java:234)
+	at java.desktop/javax.swing.JTable$GenericEditor.stopCellEditing(JTable.java:5558)
+	at java.desktop/javax.swing.DefaultCellEditor$EditorDelegate.actionPerformed(DefaultCellEditor.java:392)
+	at java.desktop/javax.swing.JTextField.fireActionPerformed(JTextField.java:525)
+	at java.desktop/javax.swing.JTextField.postActionEvent(JTextField.java:740)
+	at java.desktop/javax.swing.JTextField$NotifyAction.actionPerformed(JTextField.java:856)
+	at java.desktop/javax.swing.SwingUtilities.notifyAction(SwingUtilities.java:1810)
+	at java.desktop/javax.swing.JComponent.processKeyBinding(JComponent.java:2956)
+	at java.desktop/javax.swing.JComponent.processKeyBindings(JComponent.java:3004)
+	at java.desktop/javax.swing.JComponent.processKeyEvent(JComponent.java:2918)
+	at java.desktop/java.awt.Component.processEvent(Component.java:6397)
+	at java.desktop/java.awt.Container.processEvent(Container.java:2266)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:4995)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2324)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4827)
+	at java.desktop/java.awt.KeyboardFocusManager.redispatchEvent(KeyboardFocusManager.java:1952)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.dispatchKeyEvent(DefaultKeyboardFocusManager.java:883)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.preDispatchKeyEvent(DefaultKeyboardFocusManager.java:1146)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.typeAheadAssertions(DefaultKeyboardFocusManager.java:1020)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.dispatchEvent(DefaultKeyboardFocusManager.java:848)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:4876)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2324)
+	at java.desktop/java.awt.Window.dispatchEventImpl(Window.java:2780)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4827)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:775)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:98)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:747)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:745)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:744)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+2023-12-04 19:22:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "ANONASC" not found; SQL statement:
+UPDATE especie SET nome=?, anoNasc=?, sexo=?, id_especie=?, id_tratamento=?, id_cliente =? WHERE id=? [42122-206]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:521)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:496)
+	at org.h2.message.DbException.get(DbException.java:227)
+	at org.h2.message.DbException.get(DbException.java:203)
+	at org.h2.table.Table.getColumn(Table.java:740)
+	at org.h2.command.Parser.readTableColumn(Parser.java:1472)
+	at org.h2.command.Parser.readUpdateSetClause(Parser.java:1539)
+	at org.h2.command.Parser.parseUpdate(Parser.java:1508)
+	at org.h2.command.Parser.parsePrepared(Parser.java:1235)
+	at org.h2.command.Parser.parse(Parser.java:1068)
+	at org.h2.command.Parser.parse(Parser.java:1037)
+	at org.h2.command.Parser.prepareCommand(Parser.java:965)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:624)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:562)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1111)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:92)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:283)
+	at Model.EspecieDAO.update(EspecieDAO.java:98)
+	at View.EspecieTableModel.setValueAt(EspecieTableModel.java:59)
+	at java.desktop/javax.swing.JTable.setValueAt(JTable.java:2787)
+	at java.desktop/javax.swing.JTable.editingStopped(JTable.java:4785)
+	at java.desktop/javax.swing.AbstractCellEditor.fireEditingStopped(AbstractCellEditor.java:152)
+	at java.desktop/javax.swing.DefaultCellEditor$EditorDelegate.stopCellEditing(DefaultCellEditor.java:375)
+	at java.desktop/javax.swing.DefaultCellEditor.stopCellEditing(DefaultCellEditor.java:234)
+	at java.desktop/javax.swing.JTable$GenericEditor.stopCellEditing(JTable.java:5558)
+	at java.desktop/javax.swing.DefaultCellEditor$EditorDelegate.actionPerformed(DefaultCellEditor.java:392)
+	at java.desktop/javax.swing.JTextField.fireActionPerformed(JTextField.java:525)
+	at java.desktop/javax.swing.JTextField.postActionEvent(JTextField.java:740)
+	at java.desktop/javax.swing.JTextField$NotifyAction.actionPerformed(JTextField.java:856)
+	at java.desktop/javax.swing.SwingUtilities.notifyAction(SwingUtilities.java:1810)
+	at java.desktop/javax.swing.JComponent.processKeyBinding(JComponent.java:2956)
+	at java.desktop/javax.swing.JComponent.processKeyBindings(JComponent.java:3004)
+	at java.desktop/javax.swing.JComponent.processKeyEvent(JComponent.java:2918)
+	at java.desktop/java.awt.Component.processEvent(Component.java:6397)
+	at java.desktop/java.awt.Container.processEvent(Container.java:2266)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:4995)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2324)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4827)
+	at java.desktop/java.awt.KeyboardFocusManager.redispatchEvent(KeyboardFocusManager.java:1952)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.dispatchKeyEvent(DefaultKeyboardFocusManager.java:883)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.preDispatchKeyEvent(DefaultKeyboardFocusManager.java:1146)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.typeAheadAssertions(DefaultKeyboardFocusManager.java:1020)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.dispatchEvent(DefaultKeyboardFocusManager.java:848)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:4876)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2324)
+	at java.desktop/java.awt.Window.dispatchEventImpl(Window.java:2780)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4827)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:775)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:98)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:747)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:745)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:744)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+2023-12-04 19:22:58 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "ANONASC" not found; SQL statement:
+UPDATE especie SET nome=?, anoNasc=?, sexo=?, id_especie=?, id_tratamento=?, id_cliente =? WHERE id=? [42122-206]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:521)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:496)
+	at org.h2.message.DbException.get(DbException.java:227)
+	at org.h2.message.DbException.get(DbException.java:203)
+	at org.h2.table.Table.getColumn(Table.java:740)
+	at org.h2.command.Parser.readTableColumn(Parser.java:1472)
+	at org.h2.command.Parser.readUpdateSetClause(Parser.java:1539)
+	at org.h2.command.Parser.parseUpdate(Parser.java:1508)
+	at org.h2.command.Parser.parsePrepared(Parser.java:1235)
+	at org.h2.command.Parser.parse(Parser.java:1068)
+	at org.h2.command.Parser.parse(Parser.java:1037)
+	at org.h2.command.Parser.prepareCommand(Parser.java:965)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:624)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:562)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1111)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:92)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:283)
+	at Model.EspecieDAO.update(EspecieDAO.java:98)
+	at View.EspecieTableModel.setValueAt(EspecieTableModel.java:59)
+	at java.desktop/javax.swing.JTable.setValueAt(JTable.java:2787)
+	at java.desktop/javax.swing.JTable.editingStopped(JTable.java:4785)
+	at java.desktop/javax.swing.AbstractCellEditor.fireEditingStopped(AbstractCellEditor.java:152)
+	at java.desktop/javax.swing.DefaultCellEditor$EditorDelegate.stopCellEditing(DefaultCellEditor.java:375)
+	at java.desktop/javax.swing.DefaultCellEditor.stopCellEditing(DefaultCellEditor.java:234)
+	at java.desktop/javax.swing.JTable$GenericEditor.stopCellEditing(JTable.java:5558)
+	at java.desktop/javax.swing.DefaultCellEditor$EditorDelegate.actionPerformed(DefaultCellEditor.java:392)
+	at java.desktop/javax.swing.JTextField.fireActionPerformed(JTextField.java:525)
+	at java.desktop/javax.swing.JTextField.postActionEvent(JTextField.java:740)
+	at java.desktop/javax.swing.JTextField$NotifyAction.actionPerformed(JTextField.java:856)
+	at java.desktop/javax.swing.SwingUtilities.notifyAction(SwingUtilities.java:1810)
+	at java.desktop/javax.swing.JComponent.processKeyBinding(JComponent.java:2956)
+	at java.desktop/javax.swing.JComponent.processKeyBindings(JComponent.java:3004)
+	at java.desktop/javax.swing.JComponent.processKeyEvent(JComponent.java:2918)
+	at java.desktop/java.awt.Component.processEvent(Component.java:6397)
+	at java.desktop/java.awt.Container.processEvent(Container.java:2266)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:4995)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2324)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4827)
+	at java.desktop/java.awt.KeyboardFocusManager.redispatchEvent(KeyboardFocusManager.java:1952)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.dispatchKeyEvent(DefaultKeyboardFocusManager.java:883)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.preDispatchKeyEvent(DefaultKeyboardFocusManager.java:1146)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.typeAheadAssertions(DefaultKeyboardFocusManager.java:1020)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.dispatchEvent(DefaultKeyboardFocusManager.java:848)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:4876)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2324)
+	at java.desktop/java.awt.Window.dispatchEventImpl(Window.java:2780)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4827)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:775)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:98)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:747)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:745)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:744)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+2023-12-04 19:23:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "ANONASC" not found; SQL statement:
+UPDATE especie SET nome=?, anoNasc=?, sexo=?, id_especie=?, id_tratamento=?, id_cliente =? WHERE id=? [42122-206]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:521)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:496)
+	at org.h2.message.DbException.get(DbException.java:227)
+	at org.h2.message.DbException.get(DbException.java:203)
+	at org.h2.table.Table.getColumn(Table.java:740)
+	at org.h2.command.Parser.readTableColumn(Parser.java:1472)
+	at org.h2.command.Parser.readUpdateSetClause(Parser.java:1539)
+	at org.h2.command.Parser.parseUpdate(Parser.java:1508)
+	at org.h2.command.Parser.parsePrepared(Parser.java:1235)
+	at org.h2.command.Parser.parse(Parser.java:1068)
+	at org.h2.command.Parser.parse(Parser.java:1037)
+	at org.h2.command.Parser.prepareCommand(Parser.java:965)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:624)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:562)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1111)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:92)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:283)
+	at Model.EspecieDAO.update(EspecieDAO.java:98)
+	at View.EspecieTableModel.setValueAt(EspecieTableModel.java:59)
+	at java.desktop/javax.swing.JTable.setValueAt(JTable.java:2787)
+	at java.desktop/javax.swing.JTable.editingStopped(JTable.java:4785)
+	at java.desktop/javax.swing.AbstractCellEditor.fireEditingStopped(AbstractCellEditor.java:152)
+	at java.desktop/javax.swing.DefaultCellEditor$EditorDelegate.stopCellEditing(DefaultCellEditor.java:375)
+	at java.desktop/javax.swing.DefaultCellEditor.stopCellEditing(DefaultCellEditor.java:234)
+	at java.desktop/javax.swing.JTable$GenericEditor.stopCellEditing(JTable.java:5558)
+	at java.desktop/javax.swing.DefaultCellEditor$EditorDelegate.actionPerformed(DefaultCellEditor.java:392)
+	at java.desktop/javax.swing.JTextField.fireActionPerformed(JTextField.java:525)
+	at java.desktop/javax.swing.JTextField.postActionEvent(JTextField.java:740)
+	at java.desktop/javax.swing.JTextField$NotifyAction.actionPerformed(JTextField.java:856)
+	at java.desktop/javax.swing.SwingUtilities.notifyAction(SwingUtilities.java:1810)
+	at java.desktop/javax.swing.JComponent.processKeyBinding(JComponent.java:2956)
+	at java.desktop/javax.swing.JComponent.processKeyBindings(JComponent.java:3004)
+	at java.desktop/javax.swing.JComponent.processKeyEvent(JComponent.java:2918)
+	at java.desktop/java.awt.Component.processEvent(Component.java:6397)
+	at java.desktop/java.awt.Container.processEvent(Container.java:2266)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:4995)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2324)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4827)
+	at java.desktop/java.awt.KeyboardFocusManager.redispatchEvent(KeyboardFocusManager.java:1952)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.dispatchKeyEvent(DefaultKeyboardFocusManager.java:883)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.preDispatchKeyEvent(DefaultKeyboardFocusManager.java:1146)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.typeAheadAssertions(DefaultKeyboardFocusManager.java:1020)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.dispatchEvent(DefaultKeyboardFocusManager.java:848)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:4876)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2324)
+	at java.desktop/java.awt.Window.dispatchEventImpl(Window.java:2780)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4827)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:775)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:98)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:747)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:745)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:744)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+2023-12-04 19:23:04 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "ANONASC" not found; SQL statement:
+UPDATE especie SET nome=?, anoNasc=?, sexo=?, id_especie=?, id_tratamento=?, id_cliente =? WHERE id=? [42122-206]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:521)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:496)
+	at org.h2.message.DbException.get(DbException.java:227)
+	at org.h2.message.DbException.get(DbException.java:203)
+	at org.h2.table.Table.getColumn(Table.java:740)
+	at org.h2.command.Parser.readTableColumn(Parser.java:1472)
+	at org.h2.command.Parser.readUpdateSetClause(Parser.java:1539)
+	at org.h2.command.Parser.parseUpdate(Parser.java:1508)
+	at org.h2.command.Parser.parsePrepared(Parser.java:1235)
+	at org.h2.command.Parser.parse(Parser.java:1068)
+	at org.h2.command.Parser.parse(Parser.java:1037)
+	at org.h2.command.Parser.prepareCommand(Parser.java:965)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:624)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:562)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1111)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:92)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:283)
+	at Model.EspecieDAO.update(EspecieDAO.java:98)
+	at View.EspecieTableModel.setValueAt(EspecieTableModel.java:59)
+	at java.desktop/javax.swing.JTable.setValueAt(JTable.java:2787)
+	at java.desktop/javax.swing.JTable.editingStopped(JTable.java:4785)
+	at java.desktop/javax.swing.AbstractCellEditor.fireEditingStopped(AbstractCellEditor.java:152)
+	at java.desktop/javax.swing.DefaultCellEditor$EditorDelegate.stopCellEditing(DefaultCellEditor.java:375)
+	at java.desktop/javax.swing.DefaultCellEditor.stopCellEditing(DefaultCellEditor.java:234)
+	at java.desktop/javax.swing.JTable$GenericEditor.stopCellEditing(JTable.java:5558)
+	at java.desktop/javax.swing.DefaultCellEditor$EditorDelegate.actionPerformed(DefaultCellEditor.java:392)
+	at java.desktop/javax.swing.JTextField.fireActionPerformed(JTextField.java:525)
+	at java.desktop/javax.swing.JTextField.postActionEvent(JTextField.java:740)
+	at java.desktop/javax.swing.JTextField$NotifyAction.actionPerformed(JTextField.java:856)
+	at java.desktop/javax.swing.SwingUtilities.notifyAction(SwingUtilities.java:1810)
+	at java.desktop/javax.swing.JComponent.processKeyBinding(JComponent.java:2956)
+	at java.desktop/javax.swing.JComponent.processKeyBindings(JComponent.java:3004)
+	at java.desktop/javax.swing.JComponent.processKeyEvent(JComponent.java:2918)
+	at java.desktop/java.awt.Component.processEvent(Component.java:6397)
+	at java.desktop/java.awt.Container.processEvent(Container.java:2266)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:4995)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2324)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4827)
+	at java.desktop/java.awt.KeyboardFocusManager.redispatchEvent(KeyboardFocusManager.java:1952)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.dispatchKeyEvent(DefaultKeyboardFocusManager.java:883)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.preDispatchKeyEvent(DefaultKeyboardFocusManager.java:1146)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.typeAheadAssertions(DefaultKeyboardFocusManager.java:1020)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.dispatchEvent(DefaultKeyboardFocusManager.java:848)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:4876)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2324)
+	at java.desktop/java.awt.Window.dispatchEventImpl(Window.java:2780)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4827)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:775)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:98)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:747)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:745)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:744)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+2023-12-04 19:23:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "ANONASC" not found; SQL statement:
+UPDATE especie SET nome=?, anoNasc=?, sexo=?, id_especie=?, id_tratamento=?, id_cliente =? WHERE id=? [42122-206]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:521)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:496)
+	at org.h2.message.DbException.get(DbException.java:227)
+	at org.h2.message.DbException.get(DbException.java:203)
+	at org.h2.table.Table.getColumn(Table.java:740)
+	at org.h2.command.Parser.readTableColumn(Parser.java:1472)
+	at org.h2.command.Parser.readUpdateSetClause(Parser.java:1539)
+	at org.h2.command.Parser.parseUpdate(Parser.java:1508)
+	at org.h2.command.Parser.parsePrepared(Parser.java:1235)
+	at org.h2.command.Parser.parse(Parser.java:1068)
+	at org.h2.command.Parser.parse(Parser.java:1037)
+	at org.h2.command.Parser.prepareCommand(Parser.java:965)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:624)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:562)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1111)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:92)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:283)
+	at Model.EspecieDAO.update(EspecieDAO.java:98)
+	at View.EspecieTableModel.setValueAt(EspecieTableModel.java:59)
+	at java.desktop/javax.swing.JTable.setValueAt(JTable.java:2787)
+	at java.desktop/javax.swing.JTable.editingStopped(JTable.java:4785)
+	at java.desktop/javax.swing.AbstractCellEditor.fireEditingStopped(AbstractCellEditor.java:152)
+	at java.desktop/javax.swing.DefaultCellEditor$EditorDelegate.stopCellEditing(DefaultCellEditor.java:375)
+	at java.desktop/javax.swing.DefaultCellEditor.stopCellEditing(DefaultCellEditor.java:234)
+	at java.desktop/javax.swing.JTable$GenericEditor.stopCellEditing(JTable.java:5558)
+	at java.desktop/javax.swing.DefaultCellEditor$EditorDelegate.actionPerformed(DefaultCellEditor.java:392)
+	at java.desktop/javax.swing.JTextField.fireActionPerformed(JTextField.java:525)
+	at java.desktop/javax.swing.JTextField.postActionEvent(JTextField.java:740)
+	at java.desktop/javax.swing.JTextField$NotifyAction.actionPerformed(JTextField.java:856)
+	at java.desktop/javax.swing.SwingUtilities.notifyAction(SwingUtilities.java:1810)
+	at java.desktop/javax.swing.JComponent.processKeyBinding(JComponent.java:2956)
+	at java.desktop/javax.swing.JComponent.processKeyBindings(JComponent.java:3004)
+	at java.desktop/javax.swing.JComponent.processKeyEvent(JComponent.java:2918)
+	at java.desktop/java.awt.Component.processEvent(Component.java:6397)
+	at java.desktop/java.awt.Container.processEvent(Container.java:2266)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:4995)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2324)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4827)
+	at java.desktop/java.awt.KeyboardFocusManager.redispatchEvent(KeyboardFocusManager.java:1952)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.dispatchKeyEvent(DefaultKeyboardFocusManager.java:883)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.preDispatchKeyEvent(DefaultKeyboardFocusManager.java:1146)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.typeAheadAssertions(DefaultKeyboardFocusManager.java:1020)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.dispatchEvent(DefaultKeyboardFocusManager.java:848)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:4876)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2324)
+	at java.desktop/java.awt.Window.dispatchEventImpl(Window.java:2780)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4827)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:775)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:98)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:747)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:745)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:744)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+2023-12-04 19:23:09 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "ANONASC" not found; SQL statement:
+UPDATE especie SET nome=?, anoNasc=?, sexo=?, id_especie=?, id_tratamento=?, id_cliente =? WHERE id=? [42122-206]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:521)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:496)
+	at org.h2.message.DbException.get(DbException.java:227)
+	at org.h2.message.DbException.get(DbException.java:203)
+	at org.h2.table.Table.getColumn(Table.java:740)
+	at org.h2.command.Parser.readTableColumn(Parser.java:1472)
+	at org.h2.command.Parser.readUpdateSetClause(Parser.java:1539)
+	at org.h2.command.Parser.parseUpdate(Parser.java:1508)
+	at org.h2.command.Parser.parsePrepared(Parser.java:1235)
+	at org.h2.command.Parser.parse(Parser.java:1068)
+	at org.h2.command.Parser.parse(Parser.java:1037)
+	at org.h2.command.Parser.prepareCommand(Parser.java:965)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:624)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:562)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1111)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:92)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:283)
+	at Model.EspecieDAO.update(EspecieDAO.java:98)
+	at View.EspecieTableModel.setValueAt(EspecieTableModel.java:59)
+	at java.desktop/javax.swing.JTable.setValueAt(JTable.java:2787)
+	at java.desktop/javax.swing.JTable.editingStopped(JTable.java:4785)
+	at java.desktop/javax.swing.AbstractCellEditor.fireEditingStopped(AbstractCellEditor.java:152)
+	at java.desktop/javax.swing.DefaultCellEditor$EditorDelegate.stopCellEditing(DefaultCellEditor.java:375)
+	at java.desktop/javax.swing.DefaultCellEditor.stopCellEditing(DefaultCellEditor.java:234)
+	at java.desktop/javax.swing.JTable$GenericEditor.stopCellEditing(JTable.java:5558)
+	at java.desktop/javax.swing.plaf.basic.BasicTableUI$Handler.mousePressed(BasicTableUI.java:1040)
+	at java.desktop/java.awt.AWTEventMulticaster.mousePressed(AWTEventMulticaster.java:288)
+	at java.desktop/java.awt.AWTEventMulticaster.mousePressed(AWTEventMulticaster.java:287)
+	at java.desktop/java.awt.Component.processMouseEvent(Component.java:6617)
+	at java.desktop/javax.swing.JComponent.processMouseEvent(JComponent.java:3398)
+	at java.desktop/java.awt.Component.processEvent(Component.java:6385)
+	at java.desktop/java.awt.Container.processEvent(Container.java:2266)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:4995)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2324)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4827)
+	at java.desktop/java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4948)
+	at java.desktop/java.awt.LightweightDispatcher.processMouseEvent(Container.java:4572)
+	at java.desktop/java.awt.LightweightDispatcher.dispatchEvent(Container.java:4516)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2310)
+	at java.desktop/java.awt.Window.dispatchEventImpl(Window.java:2780)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4827)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:775)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:98)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:747)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:745)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:744)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+2023-12-04 19:23:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "ANONASC" not found; SQL statement:
+UPDATE especie SET nome=?, anoNasc=?, sexo=?, id_especie=?, id_tratamento=?, id_cliente =? WHERE id=? [42122-206]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:521)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:496)
+	at org.h2.message.DbException.get(DbException.java:227)
+	at org.h2.message.DbException.get(DbException.java:203)
+	at org.h2.table.Table.getColumn(Table.java:740)
+	at org.h2.command.Parser.readTableColumn(Parser.java:1472)
+	at org.h2.command.Parser.readUpdateSetClause(Parser.java:1539)
+	at org.h2.command.Parser.parseUpdate(Parser.java:1508)
+	at org.h2.command.Parser.parsePrepared(Parser.java:1235)
+	at org.h2.command.Parser.parse(Parser.java:1068)
+	at org.h2.command.Parser.parse(Parser.java:1037)
+	at org.h2.command.Parser.prepareCommand(Parser.java:965)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:624)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:562)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1111)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:92)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:283)
+	at Model.EspecieDAO.update(EspecieDAO.java:98)
+	at View.EspecieTableModel.setValueAt(EspecieTableModel.java:59)
+	at java.desktop/javax.swing.JTable.setValueAt(JTable.java:2787)
+	at java.desktop/javax.swing.JTable.editingStopped(JTable.java:4785)
+	at java.desktop/javax.swing.AbstractCellEditor.fireEditingStopped(AbstractCellEditor.java:152)
+	at java.desktop/javax.swing.DefaultCellEditor$EditorDelegate.stopCellEditing(DefaultCellEditor.java:375)
+	at java.desktop/javax.swing.DefaultCellEditor.stopCellEditing(DefaultCellEditor.java:234)
+	at java.desktop/javax.swing.JTable$GenericEditor.stopCellEditing(JTable.java:5558)
+	at java.desktop/javax.swing.DefaultCellEditor$EditorDelegate.actionPerformed(DefaultCellEditor.java:392)
+	at java.desktop/javax.swing.JTextField.fireActionPerformed(JTextField.java:525)
+	at java.desktop/javax.swing.JTextField.postActionEvent(JTextField.java:740)
+	at java.desktop/javax.swing.JTextField$NotifyAction.actionPerformed(JTextField.java:856)
+	at java.desktop/javax.swing.SwingUtilities.notifyAction(SwingUtilities.java:1810)
+	at java.desktop/javax.swing.JComponent.processKeyBinding(JComponent.java:2956)
+	at java.desktop/javax.swing.JComponent.processKeyBindings(JComponent.java:3004)
+	at java.desktop/javax.swing.JComponent.processKeyEvent(JComponent.java:2918)
+	at java.desktop/java.awt.Component.processEvent(Component.java:6397)
+	at java.desktop/java.awt.Container.processEvent(Container.java:2266)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:4995)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2324)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4827)
+	at java.desktop/java.awt.KeyboardFocusManager.redispatchEvent(KeyboardFocusManager.java:1952)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.dispatchKeyEvent(DefaultKeyboardFocusManager.java:883)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.preDispatchKeyEvent(DefaultKeyboardFocusManager.java:1146)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.typeAheadAssertions(DefaultKeyboardFocusManager.java:1020)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.dispatchEvent(DefaultKeyboardFocusManager.java:848)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:4876)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2324)
+	at java.desktop/java.awt.Window.dispatchEventImpl(Window.java:2780)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4827)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:775)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:98)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:747)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:745)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:744)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+2023-12-04 19:23:14 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "ANONASC" not found; SQL statement:
+UPDATE especie SET nome=?, anoNasc=?, sexo=?, id_especie=?, id_tratamento=?, id_cliente =? WHERE id=? [42122-206]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:521)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:496)
+	at org.h2.message.DbException.get(DbException.java:227)
+	at org.h2.message.DbException.get(DbException.java:203)
+	at org.h2.table.Table.getColumn(Table.java:740)
+	at org.h2.command.Parser.readTableColumn(Parser.java:1472)
+	at org.h2.command.Parser.readUpdateSetClause(Parser.java:1539)
+	at org.h2.command.Parser.parseUpdate(Parser.java:1508)
+	at org.h2.command.Parser.parsePrepared(Parser.java:1235)
+	at org.h2.command.Parser.parse(Parser.java:1068)
+	at org.h2.command.Parser.parse(Parser.java:1037)
+	at org.h2.command.Parser.prepareCommand(Parser.java:965)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:624)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:562)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1111)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:92)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:283)
+	at Model.EspecieDAO.update(EspecieDAO.java:98)
+	at View.EspecieTableModel.setValueAt(EspecieTableModel.java:59)
+	at java.desktop/javax.swing.JTable.setValueAt(JTable.java:2787)
+	at java.desktop/javax.swing.JTable.editingStopped(JTable.java:4785)
+	at java.desktop/javax.swing.AbstractCellEditor.fireEditingStopped(AbstractCellEditor.java:152)
+	at java.desktop/javax.swing.DefaultCellEditor$EditorDelegate.stopCellEditing(DefaultCellEditor.java:375)
+	at java.desktop/javax.swing.DefaultCellEditor.stopCellEditing(DefaultCellEditor.java:234)
+	at java.desktop/javax.swing.JTable$GenericEditor.stopCellEditing(JTable.java:5558)
+	at java.desktop/javax.swing.DefaultCellEditor$EditorDelegate.actionPerformed(DefaultCellEditor.java:392)
+	at java.desktop/javax.swing.JTextField.fireActionPerformed(JTextField.java:525)
+	at java.desktop/javax.swing.JTextField.postActionEvent(JTextField.java:740)
+	at java.desktop/javax.swing.JTextField$NotifyAction.actionPerformed(JTextField.java:856)
+	at java.desktop/javax.swing.SwingUtilities.notifyAction(SwingUtilities.java:1810)
+	at java.desktop/javax.swing.JComponent.processKeyBinding(JComponent.java:2956)
+	at java.desktop/javax.swing.JComponent.processKeyBindings(JComponent.java:3004)
+	at java.desktop/javax.swing.JComponent.processKeyEvent(JComponent.java:2918)
+	at java.desktop/java.awt.Component.processEvent(Component.java:6397)
+	at java.desktop/java.awt.Container.processEvent(Container.java:2266)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:4995)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2324)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4827)
+	at java.desktop/java.awt.KeyboardFocusManager.redispatchEvent(KeyboardFocusManager.java:1952)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.dispatchKeyEvent(DefaultKeyboardFocusManager.java:883)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.preDispatchKeyEvent(DefaultKeyboardFocusManager.java:1146)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.typeAheadAssertions(DefaultKeyboardFocusManager.java:1020)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.dispatchEvent(DefaultKeyboardFocusManager.java:848)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:4876)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2324)
+	at java.desktop/java.awt.Window.dispatchEventImpl(Window.java:2780)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4827)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:775)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:98)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:747)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:745)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:744)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+2023-12-04 19:23:28 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "ANONASC" not found; SQL statement:
+UPDATE especie SET nome=?, anoNasc=?, sexo=?, id_especie=?, id_tratamento=?, id_cliente =? WHERE id=? [42122-206]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:521)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:496)
+	at org.h2.message.DbException.get(DbException.java:227)
+	at org.h2.message.DbException.get(DbException.java:203)
+	at org.h2.table.Table.getColumn(Table.java:740)
+	at org.h2.command.Parser.readTableColumn(Parser.java:1472)
+	at org.h2.command.Parser.readUpdateSetClause(Parser.java:1539)
+	at org.h2.command.Parser.parseUpdate(Parser.java:1508)
+	at org.h2.command.Parser.parsePrepared(Parser.java:1235)
+	at org.h2.command.Parser.parse(Parser.java:1068)
+	at org.h2.command.Parser.parse(Parser.java:1037)
+	at org.h2.command.Parser.prepareCommand(Parser.java:965)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:624)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:562)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1111)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:92)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:283)
+	at Model.EspecieDAO.update(EspecieDAO.java:98)
+	at View.EspecieTableModel.setValueAt(EspecieTableModel.java:59)
+	at java.desktop/javax.swing.JTable.setValueAt(JTable.java:2787)
+	at java.desktop/javax.swing.JTable.editingStopped(JTable.java:4785)
+	at java.desktop/javax.swing.AbstractCellEditor.fireEditingStopped(AbstractCellEditor.java:152)
+	at java.desktop/javax.swing.DefaultCellEditor$EditorDelegate.stopCellEditing(DefaultCellEditor.java:375)
+	at java.desktop/javax.swing.DefaultCellEditor.stopCellEditing(DefaultCellEditor.java:234)
+	at java.desktop/javax.swing.JTable$GenericEditor.stopCellEditing(JTable.java:5558)
+	at java.desktop/javax.swing.DefaultCellEditor$EditorDelegate.actionPerformed(DefaultCellEditor.java:392)
+	at java.desktop/javax.swing.JTextField.fireActionPerformed(JTextField.java:525)
+	at java.desktop/javax.swing.JTextField.postActionEvent(JTextField.java:740)
+	at java.desktop/javax.swing.JTextField$NotifyAction.actionPerformed(JTextField.java:856)
+	at java.desktop/javax.swing.SwingUtilities.notifyAction(SwingUtilities.java:1810)
+	at java.desktop/javax.swing.JComponent.processKeyBinding(JComponent.java:2956)
+	at java.desktop/javax.swing.JComponent.processKeyBindings(JComponent.java:3004)
+	at java.desktop/javax.swing.JComponent.processKeyEvent(JComponent.java:2918)
+	at java.desktop/java.awt.Component.processEvent(Component.java:6397)
+	at java.desktop/java.awt.Container.processEvent(Container.java:2266)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:4995)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2324)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4827)
+	at java.desktop/java.awt.KeyboardFocusManager.redispatchEvent(KeyboardFocusManager.java:1952)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.dispatchKeyEvent(DefaultKeyboardFocusManager.java:883)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.preDispatchKeyEvent(DefaultKeyboardFocusManager.java:1146)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.typeAheadAssertions(DefaultKeyboardFocusManager.java:1020)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.dispatchEvent(DefaultKeyboardFocusManager.java:848)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:4876)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2324)
+	at java.desktop/java.awt.Window.dispatchEventImpl(Window.java:2780)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4827)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:775)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:98)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:747)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:745)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:744)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+2023-12-04 19:23:46 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "ANONASC" not found; SQL statement:
+UPDATE especie SET nome=?, anoNasc=?, sexo=?, id_especie=?, id_tratamento=?, id_cliente =? WHERE id=? [42122-206]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:521)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:496)
+	at org.h2.message.DbException.get(DbException.java:227)
+	at org.h2.message.DbException.get(DbException.java:203)
+	at org.h2.table.Table.getColumn(Table.java:740)
+	at org.h2.command.Parser.readTableColumn(Parser.java:1472)
+	at org.h2.command.Parser.readUpdateSetClause(Parser.java:1539)
+	at org.h2.command.Parser.parseUpdate(Parser.java:1508)
+	at org.h2.command.Parser.parsePrepared(Parser.java:1235)
+	at org.h2.command.Parser.parse(Parser.java:1068)
+	at org.h2.command.Parser.parse(Parser.java:1037)
+	at org.h2.command.Parser.prepareCommand(Parser.java:965)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:624)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:562)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1111)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:92)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:283)
+	at Model.EspecieDAO.update(EspecieDAO.java:98)
+	at View.EspecieTableModel.setValueAt(EspecieTableModel.java:59)
+	at java.desktop/javax.swing.JTable.setValueAt(JTable.java:2787)
+	at java.desktop/javax.swing.JTable.editingStopped(JTable.java:4785)
+	at java.desktop/javax.swing.AbstractCellEditor.fireEditingStopped(AbstractCellEditor.java:152)
+	at java.desktop/javax.swing.DefaultCellEditor$EditorDelegate.stopCellEditing(DefaultCellEditor.java:375)
+	at java.desktop/javax.swing.DefaultCellEditor.stopCellEditing(DefaultCellEditor.java:234)
+	at java.desktop/javax.swing.JTable$GenericEditor.stopCellEditing(JTable.java:5558)
+	at java.desktop/javax.swing.plaf.basic.BasicTableUI$Handler.mousePressed(BasicTableUI.java:1040)
+	at java.desktop/java.awt.AWTEventMulticaster.mousePressed(AWTEventMulticaster.java:288)
+	at java.desktop/java.awt.AWTEventMulticaster.mousePressed(AWTEventMulticaster.java:287)
+	at java.desktop/java.awt.Component.processMouseEvent(Component.java:6617)
+	at java.desktop/javax.swing.JComponent.processMouseEvent(JComponent.java:3398)
+	at java.desktop/java.awt.Component.processEvent(Component.java:6385)
+	at java.desktop/java.awt.Container.processEvent(Container.java:2266)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:4995)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2324)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4827)
+	at java.desktop/java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4948)
+	at java.desktop/java.awt.LightweightDispatcher.processMouseEvent(Container.java:4572)
+	at java.desktop/java.awt.LightweightDispatcher.dispatchEvent(Container.java:4516)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2310)
+	at java.desktop/java.awt.Window.dispatchEventImpl(Window.java:2780)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4827)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:775)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:98)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:747)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:745)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:744)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+2023-12-04 19:23:51 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "ANONASC" not found; SQL statement:
+UPDATE especie SET nome=?, anoNasc=?, sexo=?, id_especie=?, id_tratamento=?, id_cliente =? WHERE id=? [42122-206]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:521)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:496)
+	at org.h2.message.DbException.get(DbException.java:227)
+	at org.h2.message.DbException.get(DbException.java:203)
+	at org.h2.table.Table.getColumn(Table.java:740)
+	at org.h2.command.Parser.readTableColumn(Parser.java:1472)
+	at org.h2.command.Parser.readUpdateSetClause(Parser.java:1539)
+	at org.h2.command.Parser.parseUpdate(Parser.java:1508)
+	at org.h2.command.Parser.parsePrepared(Parser.java:1235)
+	at org.h2.command.Parser.parse(Parser.java:1068)
+	at org.h2.command.Parser.parse(Parser.java:1037)
+	at org.h2.command.Parser.prepareCommand(Parser.java:965)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:624)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:562)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1111)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:92)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:283)
+	at Model.EspecieDAO.update(EspecieDAO.java:98)
+	at View.EspecieTableModel.setValueAt(EspecieTableModel.java:59)
+	at java.desktop/javax.swing.JTable.setValueAt(JTable.java:2787)
+	at java.desktop/javax.swing.JTable.editingStopped(JTable.java:4785)
+	at java.desktop/javax.swing.AbstractCellEditor.fireEditingStopped(AbstractCellEditor.java:152)
+	at java.desktop/javax.swing.DefaultCellEditor$EditorDelegate.stopCellEditing(DefaultCellEditor.java:375)
+	at java.desktop/javax.swing.DefaultCellEditor.stopCellEditing(DefaultCellEditor.java:234)
+	at java.desktop/javax.swing.JTable$GenericEditor.stopCellEditing(JTable.java:5558)
+	at java.desktop/javax.swing.DefaultCellEditor$EditorDelegate.actionPerformed(DefaultCellEditor.java:392)
+	at java.desktop/javax.swing.JTextField.fireActionPerformed(JTextField.java:525)
+	at java.desktop/javax.swing.JTextField.postActionEvent(JTextField.java:740)
+	at java.desktop/javax.swing.JTextField$NotifyAction.actionPerformed(JTextField.java:856)
+	at java.desktop/javax.swing.SwingUtilities.notifyAction(SwingUtilities.java:1810)
+	at java.desktop/javax.swing.JComponent.processKeyBinding(JComponent.java:2956)
+	at java.desktop/javax.swing.JComponent.processKeyBindings(JComponent.java:3004)
+	at java.desktop/javax.swing.JComponent.processKeyEvent(JComponent.java:2918)
+	at java.desktop/java.awt.Component.processEvent(Component.java:6397)
+	at java.desktop/java.awt.Container.processEvent(Container.java:2266)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:4995)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2324)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4827)
+	at java.desktop/java.awt.KeyboardFocusManager.redispatchEvent(KeyboardFocusManager.java:1952)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.dispatchKeyEvent(DefaultKeyboardFocusManager.java:883)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.preDispatchKeyEvent(DefaultKeyboardFocusManager.java:1146)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.typeAheadAssertions(DefaultKeyboardFocusManager.java:1020)
+	at java.desktop/java.awt.DefaultKeyboardFocusManager.dispatchEvent(DefaultKeyboardFocusManager.java:848)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:4876)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2324)
+	at java.desktop/java.awt.Window.dispatchEventImpl(Window.java:2780)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4827)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:775)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:98)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:747)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:745)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:744)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+2023-12-04 19:26:51 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:26:51 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:26:52 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:26:52 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:26:52 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:26:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:26:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:26:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:26:54 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:26:54 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:26:54 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:26:54 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:26:59 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:26:59 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:26:59 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:26:59 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:26:59 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:27:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:27:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:27:06 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:27:06 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:27:06 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:27:06 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:27:07 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:27:07 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:27:07 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:27:07 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:27:07 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:27:07 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:27:07 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:27:20 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:27:20 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:27:20 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:27:20 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:27:20 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:27:20 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:27:20 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:27:21 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:27:21 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:27:21 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:27:21 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:27:21 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:27:21 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:27:21 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:27:22 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:27:22 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:27:22 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:27:22 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:27:22 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:27:23 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:27:23 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:27:23 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:27:23 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:27:23 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:27:23 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:27:23 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:27:23 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:27:24 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:27:24 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:27:24 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:27:24 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:58:49 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:58:49 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:58:49 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:58:50 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:58:50 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:58:50 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:58:50 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:58:50 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:58:50 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:58:50 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:58:50 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:58:50 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:58:51 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:58:51 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:58:51 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:58:51 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:58:51 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:58:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:58:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:58:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:58:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:59:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:59:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:59:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:59:02 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:59:03 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:59:03 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:59:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:59:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:59:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:59:06 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:59:06 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:59:06 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:59:06 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:59:07 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:59:17 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:59:21 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:59:21 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:59:21 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:59:22 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:59:22 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:59:22 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:59:22 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:59:22 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 19:59:23 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 20:00:48 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 20:00:48 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 20:00:48 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 20:00:48 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 20:00:49 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 20:00:49 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 20:00:49 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 20:00:49 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 20:00:49 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 20:00:49 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 20:00:49 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 20:00:49 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 25"; SQL statement:
+SELECT * FROM animal id_cliente = 25 [42000-206]
+2023-12-04 20:01:21 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 24"; SQL statement:
+SELECT * FROM animal id_cliente = 24 [42000-206]
+2023-12-04 20:07:36 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 24"; SQL statement:
+SELECT * FROM animal id_cliente = 24 [42000-206]
+2023-12-04 20:07:36 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 24"; SQL statement:
+SELECT * FROM animal id_cliente = 24 [42000-206]
+2023-12-04 20:07:36 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 24"; SQL statement:
+SELECT * FROM animal id_cliente = 24 [42000-206]
+2023-12-04 20:07:36 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 24"; SQL statement:
+SELECT * FROM animal id_cliente = 24 [42000-206]
+2023-12-04 20:07:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 24"; SQL statement:
+SELECT * FROM animal id_cliente = 24 [42000-206]
