@@ -86,8 +86,19 @@ public class VeterinarioDAO extends DAO {
     public List retrieveBySimilarName(String nome) {
         return this.retrieve("SELECT * FROM vet WHERE nome LIKE '%" + nome + "%'");
     }    
+    
+    public List retrieveBySimilarCelular(String celular) {
+        return this.retrieve("SELECT * FROM vet WHERE telefone LIKE '%" + celular + "%'");
+    }   
+    
+    public List retrieveBySimilarEmail(String email) {
+        return this.retrieve("SELECT * FROM vet WHERE email LIKE '%" + email + "%'");
+    }  
+    
+    public List retrieveByIdCustomFilter(String filter){
+        return this.retrieve("SELECT * FROM vet" + filter);
+    }
         
-    // Updade
     public void update(Veterinario vet) {
         try {
             PreparedStatement stmt;

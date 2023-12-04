@@ -86,12 +86,22 @@ public class ClienteDAO extends DAO {
         return (clientes.isEmpty()?null:clientes.get(0));
     }
 
-    // RetrieveBySimilarName
      public List retrieveBySimilarName(String nome) {
         return this.retrieve("SELECT * FROM cliente WHERE nome LIKE '%" + nome + "%'");
     }    
+     
+    public List retrieveBySimilarCelular(String celular) {
+        return this.retrieve("SELECT * FROM cliente WHERE telefone LIKE '%" + celular + "%'");
+    }  
+    
+    public List retrieveBySimilarEmail(String email) {
+        return this.retrieve("SELECT * FROM cliente WHERE email LIKE '%" + email + "%'");
+    } 
+    
+    public List retrieveByIdCustomFilter(String filter){
+        return this.retrieve("SELECT * FROM cliente" + filter);
+    }
         
-    // Updade
     public void update(Cliente cliente) {
         try {
             PreparedStatement stmt;

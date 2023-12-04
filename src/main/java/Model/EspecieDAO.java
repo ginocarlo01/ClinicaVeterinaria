@@ -89,7 +89,9 @@ public class EspecieDAO extends DAO {
         return (especies.isEmpty()?null:especies.get(0));
     }    
         
-    // Updade
+     public List retrieveByIdCustomFilter(String filter){
+        return this.retrieve("SELECT * FROM especie" + filter);
+    }
     public void update(Especie especie) {
         try {
             PreparedStatement stmt;

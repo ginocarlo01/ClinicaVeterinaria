@@ -60,6 +60,47 @@ public class Controller {
         setTableModel(table, new ClienteTableModel(ClienteDAO.getInstance().retrieveAll()));
     }
     
+    public static void updateTabelaClientes(JTable table, List data){
+        setTableModel(table, new ClienteTableModel(data));
+    }
+    
+    public static void updateTabelaVeterinario(JTable table, List data){
+        setTableModel(table, new VeterinarioTableModel(data));
+    }
+    
+    public static void updateTabelaEspecie(JTable table, List data){
+        setTableModel(table, new EspecieTableModel(data));
+    }
+    
+    public static void updateTabelaAnimais(JTable table, List data) {
+        setTableModel(table, new AnimalTableModel(data));
+        
+
+        JComboBox<String> especiesBox = new JComboBox<>();
+        List<Especie> especies = EspecieDAO.getInstance().retrieveAll();
+        for (Especie especie : especies) {
+            especiesBox.addItem(especie.getNome()); // Substitua 'getNome()' pelo método que retorna o nome do animal
+            table.getColumnModel().getColumn(3).setCellEditor(new DefaultCellEditor(especiesBox));
+        }
+
+        JComboBox<Integer> yearComboBox = new JComboBox<>();
+        int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+        for (int i = currentYear; i >= currentYear - 50; i--) {
+            yearComboBox.addItem(i);
+        }
+
+        TableColumn yearColumn = table.getColumnModel().getColumn(1);
+        yearColumn.setCellEditor(new DefaultCellEditor(yearComboBox));
+
+        JComboBox<String> sexBox = new JComboBox<>();
+        sexBox.addItem("Macho");
+        sexBox.addItem("Fêmea");
+        TableColumn sexColumn = table.getColumnModel().getColumn(2);
+        sexColumn.setCellEditor(new DefaultCellEditor(sexBox));
+        
+    
+    }
+    
     public static boolean jRadioButtonAnimalSelecionado(JTable table) {
     if (getClienteSelecionado() != null) {
         setTableModel(table, new AnimalTableModel(AnimalDAO.getInstance().retrieveByIdCliente(getClienteSelecionado().getId())));
@@ -81,8 +122,8 @@ public class Controller {
         yearColumn.setCellEditor(new DefaultCellEditor(yearComboBox));
 
         JComboBox<String> sexBox = new JComboBox<>();
-        sexBox.addItem("Masculino");
-        sexBox.addItem("Feminino");
+        sexBox.addItem("Macho");
+        sexBox.addItem("Fêmea");
         TableColumn sexColumn = table.getColumnModel().getColumn(2);
         sexColumn.setCellEditor(new DefaultCellEditor(sexBox));
         
@@ -200,6 +241,19 @@ public class Controller {
         return veterinarioSelecionado;
     }
     
+    public static void updateHeader(){
+        if(clienteSelecionado != null){
+            clienteSelecionadoTextField.setText(clienteSelecionado.getNome());
+        }
+        if(animalSelecionado != null){
+            animalSelecionadoTextField.setText(animalSelecionado.getNome());
+        }
+        if(veterinarioSelecionado != null){
+            veterinarioSelecionadoTextField.setText(veterinarioSelecionado.getNome());
+        }
+        
+    }
+    
     public static void setSelected(Object selected){
         if(selected instanceof Cliente){
             clienteSelecionado = (Cliente)selected;
@@ -307,6 +361,26 @@ public class Controller {
     }
     }
     
+    public static void updateDataBySimilarCelular(JTable table, String celular) {
+    if (table.getModel() instanceof ClienteTableModel) {
+        ((GenericTableModel) table.getModel()).addListOfItems(ClienteDAO.getInstance().retrieveBySimilarCelular(celular));
+    } else if (table.getModel() instanceof VeterinarioTableModel) {
+        ((GenericTableModel) table.getModel()).addListOfItems(VeterinarioDAO.getInstance().retrieveBySimilarCelular(celular));
+    } 
+    }
+    
+    public static void updateEspecieComboBox(JComboBox comboBox){
+        comboBox.removeAllItems();
+        
+        List<Especie> especies = EspecieDAO.getInstance().retrieveAll();
+        
+        comboBox.addItem("Espécie");
+        
+        for(Especie especie : especies){
+            comboBox.addItem(especie.getNome());
+        }
+    }
+    
    
     public static boolean FiltroAnimalSelecionado(){
         if(getAnimalSelecionado() != null){
@@ -325,6 +399,141 @@ public class Controller {
             return false;
         }
     }
+     
+     public static boolean filtroAplicadoEmCadastro(JTable table, JTextField nomeFilter, JTextField celularFilter, JTextField emailFilter, JComboBox sexoBox){
+         System.out.println("FiltroSeraAplicado");
+         if (table.getModel() instanceof ClienteTableModel) {
+            String where = " where ";
+
+            boolean addAnd = false;
+
+            if (!"".equals(nomeFilter.getText())) {
+                if (addAnd) {
+                    where += " and ";
+                } 
+                where += "nome LIKE '%" + nomeFilter.getText() + "%'";
+                
+                addAnd = true;
+                
+            }
+            
+            if (!"".equals(celularFilter.getText())) {
+                if (addAnd) {
+                    where += " and ";
+                } 
+                where += "telefone LIKE '%" + celularFilter.getText() + "%'";
+                addAnd = true;
+                
+            }
+            
+            if (!"".equals(emailFilter.getText())) {
+                if (addAnd) {
+                    where += " and ";
+                } 
+                where += "email LIKE '%" + emailFilter.getText() + "%'";
+                addAnd = true;
+                
+            }
+             
+            if(!addAnd){
+                where = "";
+            }
+            updateTabelaClientes(table,ClienteDAO.getInstance().retrieveByIdCustomFilter(where));
+         }
+         else if (table.getModel() instanceof VeterinarioTableModel){
+             String where = " where ";
+
+            boolean addAnd = false;
+
+            if (!"".equals(nomeFilter.getText())) {
+                if (addAnd) {
+                    where += " and ";
+                } 
+                where += "nome LIKE '%" + nomeFilter.getText() + "%'";
+                addAnd = true;
+                
+            }
+            
+            if (!"".equals(celularFilter.getText())) {
+                if (addAnd) {
+                    where += " and ";
+                } 
+                where += "telefone LIKE '%" + celularFilter.getText() + "%'";
+                addAnd = true;
+                
+            }
+            
+            if (!"".equals(emailFilter.getText())) {
+                if (addAnd) {
+                    where += " and ";
+                } 
+                where += "email LIKE '%" + emailFilter.getText() + "%'";
+                addAnd = true;
+                
+            }
+             
+            if(!addAnd){
+                where = "";
+            }
+            
+            updateTabelaVeterinario(table,VeterinarioDAO.getInstance().retrieveByIdCustomFilter(where));
+         }
+         else if (table.getModel() instanceof AnimalTableModel){
+            String where = " where ";
+
+            boolean addAnd = false;
+            
+            if (!"".equals(nomeFilter.getText())) {
+                if (addAnd) {
+                    where += " and ";
+                } 
+                where += "nome LIKE '%" + nomeFilter.getText() + "%'";
+                addAnd = true;
+                
+            }
+            
+            if (!"Sexo".equals(sexoBox.getSelectedItem())) {
+                if (addAnd) {
+                    where += " and ";
+                } 
+                where += "sexo LIKE '%" + sexoBox.getSelectedItem() + "%'";
+                addAnd = true;
+                
+            }
+            
+            if(!addAnd){
+                where = "";
+                where += " id_cliente = " + getClienteSelecionado().getId();
+            }
+            else{
+                where += " and id_cliente = " + getClienteSelecionado().getId();
+            }
+            updateTabelaAnimais(table,AnimalDAO.getInstance().retrieveByIdCustomFilter(where));
+         }
+         else if (table.getModel() instanceof EspecieTableModel){
+            String where = " where ";
+
+            boolean addAnd = false;
+            
+            if (!"".equals(nomeFilter.getText())) {
+                if (addAnd) {
+                    where += " and ";
+                } 
+                where += "nome LIKE '%" + nomeFilter.getText() + "%'";
+                addAnd = true;
+                
+            }
+            
+          
+            
+            if(!addAnd){
+                where = "";
+            }
+            
+            updateTabelaEspecie(table,EspecieDAO.getInstance().retrieveByIdCustomFilter(where));
+         }
+        return true;
+     }
      
      public static boolean filtroAplicado(JTable table, JToggleButton vetFilter, JToggleButton animalFilter, JComboBox diaBox, JComboBox mesBox, JComboBox anoBox){
          if (table.getModel() instanceof ConsultaTableModel) {
@@ -398,7 +607,7 @@ public class Controller {
     public static Animal adicionaAnimalAoClienteSelecionado(){
         int currentYear = Calendar.getInstance().get(Calendar.YEAR);
         
-        return AnimalDAO.getInstance().create("", currentYear, "", 0, 0, clienteSelecionado.getId());
+        return AnimalDAO.getInstance().create("", currentYear, "Fêmea", 0, 0, clienteSelecionado.getId());
     }
     
     public static Especie adicionaEspecie(){

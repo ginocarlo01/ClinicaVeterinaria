@@ -68,17 +68,14 @@ public class AnimalDAO extends DAO {
         return animais;
     }
     
-    // RetrieveAll
     public List retrieveAll() {
         return this.retrieve("SELECT * FROM animal");
     }
     
-    // RetrieveLast
     public List retrieveLast(){
         return this.retrieve("SELECT * FROM animal WHERE id = " + lastId("animal","id"));
     }
 
-    // RetrieveById
     public Animal retrieveById(int id) {
         List<Animal> animais = this.retrieve("SELECT * FROM animal WHERE id = " + id);
         return (animais.isEmpty()?null:animais.get(0));
@@ -88,12 +85,14 @@ public class AnimalDAO extends DAO {
         return this.retrieve("SELECT * FROM animal WHERE id_cliente = " + id);
     }
 
-    // RetrieveBySimilarName
     public List retrieveBySimilarName(int idCliente, String nome) {
         return this.retrieve("SELECT * FROM animal WHERE id_cliente = "+idCliente+ " and nome LIKE '%" + nome + "%'");
     }    
+    
+    public List retrieveByIdCustomFilter(String filter){
+        return this.retrieve("SELECT * FROM animal" + filter);
+    }
         
-    // Updade
     public void update(Animal animal) {
         try {
             PreparedStatement stmt;

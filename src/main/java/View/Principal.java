@@ -65,19 +65,25 @@ public class Principal extends javax.swing.JFrame {
             int row = table.rowAtPoint(e.getPoint());
             int col = table.columnAtPoint(e.getPoint());
 
-            // Verifica se o botão do mouse foi pressionado e se não é um pressionamento duplo
+            
             if (e.getButton() == MouseEvent.BUTTON1 && e.getClickCount() == 1) {
                 
                 System.out.println("Mouse pressionado na célula: " + row + ", " + col);
                 Controller.updateAvailableTimes(ConsultasTable, HorarioBox);
-                // Aqui, você pode adicionar a lógica para iniciar a edição da célula, se necessário
-                // table.editCellAt(row, col);
+                
             }
         }
+        
+        
     });
         
-       
-
+        SexoBox.setVisible(false);
+        
+        
+        SexoBox.addItem("Sexo");
+        SexoBox.addItem("Macho");
+        SexoBox.addItem("Fêmea");
+        
 
     }
     
@@ -118,6 +124,12 @@ public class Principal extends javax.swing.JFrame {
         BuscaInput = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         MainTable = new javax.swing.JTable();
+        CelularTxt = new javax.swing.JLabel();
+        CelularBuscaInput = new javax.swing.JTextField();
+        EmailTxt = new javax.swing.JLabel();
+        EmailBuscaInput = new javax.swing.JTextField();
+        SexoBox = new javax.swing.JComboBox<>();
+        jSeparator1 = new javax.swing.JSeparator();
         ConsultasPanel2 = new javax.swing.JPanel();
         NewConsultaBtn = new javax.swing.JButton();
         ApagaConsultaBtn = new javax.swing.JButton();
@@ -275,7 +287,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        BuscaTxt.setText("Busca");
+        BuscaTxt.setText("Nome:");
 
         BuscaInput.setText("jTextField2");
         BuscaInput.addActionListener(new java.awt.event.ActionListener() {
@@ -307,33 +319,86 @@ public class Principal extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(MainTable);
 
+        CelularTxt.setText("Celular:");
+
+        CelularBuscaInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CelularBuscaInputActionPerformed(evt);
+            }
+        });
+        CelularBuscaInput.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CelularBuscaInputKeyTyped(evt);
+            }
+        });
+
+        EmailTxt.setText("E-mail:");
+
+        EmailBuscaInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EmailBuscaInputActionPerformed(evt);
+            }
+        });
+        EmailBuscaInput.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                EmailBuscaInputKeyTyped(evt);
+            }
+        });
+
+        SexoBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { }));
+        SexoBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                SexoBoxItemStateChanged(evt);
+            }
+        });
+
         javax.swing.GroupLayout CadastrosLayout = new javax.swing.GroupLayout(Cadastros);
         Cadastros.setLayout(CadastrosLayout);
         CadastrosLayout.setHorizontalGroup(
             CadastrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CadastrosLayout.createSequentialGroup()
-                .addGroup(CadastrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(CadastrosLayout.createSequentialGroup()
-                        .addComponent(BtnCadCli)
-                        .addGap(18, 18, 18)
-                        .addComponent(BtnCadAni)
-                        .addGap(18, 18, 18)
-                        .addComponent(BtnCadVet)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(BtnCadEsp))
-                    .addGroup(CadastrosLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(BtnTodos)
-                        .addGap(12, 12, 12)
-                        .addComponent(BtnNovo)
-                        .addGap(134, 134, 134)
-                        .addComponent(BuscaTxt)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(BuscaInput, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 406, Short.MAX_VALUE))
-            .addGroup(CadastrosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2)
+                .addGroup(CadastrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(CadastrosLayout.createSequentialGroup()
+                        .addGroup(CadastrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(CadastrosLayout.createSequentialGroup()
+                                .addComponent(BtnTodos)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(BtnNovo))
+                            .addComponent(BtnCadCli))
+                        .addGroup(CadastrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(CadastrosLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(BuscaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(BuscaInput, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(CadastrosLayout.createSequentialGroup()
+                                .addGap(29, 29, 29)
+                                .addComponent(BtnCadAni)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(CadastrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(CadastrosLayout.createSequentialGroup()
+                                .addComponent(CelularTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(CelularBuscaInput, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CadastrosLayout.createSequentialGroup()
+                                .addComponent(BtnCadVet)
+                                .addGap(16, 16, 16)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(CadastrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(CadastrosLayout.createSequentialGroup()
+                                .addComponent(EmailTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(EmailBuscaInput, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(57, 57, 57)
+                                .addComponent(SexoBox, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(74, 74, 74))
+                            .addGroup(CadastrosLayout.createSequentialGroup()
+                                .addGap(40, 40, 40)
+                                .addComponent(BtnCadEsp)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addComponent(jSeparator1))
                 .addContainerGap())
         );
         CadastrosLayout.setVerticalGroup(
@@ -342,16 +407,23 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(CadastrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtnCadCli)
                     .addComponent(BtnCadAni)
-                    .addComponent(BtnCadEsp)
-                    .addComponent(BtnCadVet))
+                    .addComponent(BtnCadVet)
+                    .addComponent(BtnCadEsp))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(CadastrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtnTodos)
                     .addComponent(BtnNovo)
                     .addComponent(BuscaTxt)
-                    .addComponent(BuscaInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BuscaInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CelularTxt)
+                    .addComponent(CelularBuscaInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(EmailTxt)
+                    .addComponent(EmailBuscaInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SexoBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -487,7 +559,7 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(HorarioTxt)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(HorarioBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 84, Short.MAX_VALUE)))
+                        .addGap(0, 232, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         ConsultasPanel2Layout.setVerticalGroup(
@@ -507,7 +579,7 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(HorarioBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         ClinicaPanel.addTab("Consultas", ConsultasPanel2);
@@ -554,40 +626,69 @@ public class Principal extends javax.swing.JFrame {
 
     private void BtnCadCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCadCliActionPerformed
         Controller.jRadioButtonClientesSelecionado(MainTable);
+        Controller.updateHeader();
         
         BuscaInput.setText("");
-        //Controller.setTableModel(MainTable, new ClientTableModel(ClienteDAO.getInstance().retrieveAll()));
+        CelularBuscaInput.setText("");
+        EmailBuscaInput.setText("");
+        SexoBox.setSelectedItem("Sexo");
+        
+        SexoBox.setVisible(false);
+        
+        CelularTxt.setVisible(true);
+        CelularBuscaInput.setVisible(true);
+        
+        EmailTxt.setVisible(true);
+        EmailBuscaInput.setVisible(true);
     }//GEN-LAST:event_BtnCadCliActionPerformed
 
     private void BtnTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTodosActionPerformed
         Controller.getAllData(MainTable);
         BuscaInput.setText("");
-        /*if(MainTable.getModel() instanceof ClienteTableModel){
-           Controller.jRadioButtonClientesSelecionado(MainTable);
-           //ou
-            //((GenericTableModel)MainTable.getModel()).addListOfItems(Controller.getAllClients());
-            
-            BuscaInput.setText("");
-        }*/
+        
     }//GEN-LAST:event_BtnTodosActionPerformed
 
     private void BtnCadAniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCadAniActionPerformed
         BuscaInput.setText("");
+        CelularBuscaInput.setText("");
+        EmailBuscaInput.setText("");
+        SexoBox.setSelectedItem("Sexo");
+        
+        Controller.updateHeader();
         if(!Controller.jRadioButtonAnimalSelecionado(MainTable)){
             JOptionPane.showMessageDialog(this, "Selecione um cliente!");
             BtnCadCli.setSelected(true);
-            Controller.jRadioButtonClientesSelecionado(MainTable);
+            
             Controller.setTextFields(NameInput, AnimalInput, VeterinarioInput);
-        }
-        /*
-        if(Controller.getClienteSelecionado() != null){
-            Controller.setTableModel(MainTable, new AnimalTableModel(AnimalDAO.getInstance().retrieveAll()));
+            
+            BuscaInput.setText("");
+            CelularBuscaInput.setText("");
+            EmailBuscaInput.setText("");
+            SexoBox.setSelectedItem("Sexo");
+
+            SexoBox.setVisible(false);
+
+            CelularTxt.setVisible(true);
+            CelularBuscaInput.setVisible(true);
+
+            EmailTxt.setVisible(true);
+            EmailBuscaInput.setVisible(true);
+            
+            Controller.jRadioButtonClientesSelecionado(MainTable);
         }
         else{
-            Controller.setTableModel(MainTable, new AnimalTableModel(new ArrayList()));
-            JOptionPane.showMessageDialog(this, "Selecione um cliente.");
+            CelularTxt.setVisible(false);
+            CelularBuscaInput.setVisible(false);
+
+            EmailTxt.setVisible(false);
+            EmailBuscaInput.setVisible(false);
+
+            SexoBox.setVisible(true);
+        }
         
-        */
+        
+        
+        
     }//GEN-LAST:event_BtnCadAniActionPerformed
 
     private void MainTableMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MainTableMousePressed
@@ -595,13 +696,41 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_MainTableMousePressed
 
     private void BtnCadEspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCadEspActionPerformed
-        BuscaInput.setText("");
         Controller.jRadioButtonEspecieSelecionado(MainTable);
+        
+        BuscaInput.setText("");
+        CelularBuscaInput.setText("");
+        EmailBuscaInput.setText("");
+        SexoBox.setSelectedItem("Sexo");
+        
+        
+        
+        SexoBox.setVisible(false);
+        
+        CelularTxt.setVisible(false);
+        CelularBuscaInput.setVisible(false);
+        
+        EmailTxt.setVisible(false);
+        EmailBuscaInput.setVisible(false);
+        
     }//GEN-LAST:event_BtnCadEspActionPerformed
 
     private void BtnCadVetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCadVetActionPerformed
-        BuscaInput.setText("");
         Controller.jRadioButtonVeterinarioSelecionado(MainTable);
+        BuscaInput.setText("");
+        CelularBuscaInput.setText("");
+        EmailBuscaInput.setText("");
+        SexoBox.setSelectedItem("Sexo");
+        
+        Controller.updateHeader();
+        SexoBox.setVisible(false);
+        
+        CelularTxt.setVisible(true);
+        CelularBuscaInput.setVisible(true);
+        
+        EmailTxt.setVisible(true);
+        EmailBuscaInput.setVisible(true);
+        
     }//GEN-LAST:event_BtnCadVetActionPerformed
 
     private void BuscaInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscaInputActionPerformed
@@ -609,11 +738,9 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_BuscaInputActionPerformed
 
     private void BuscaInputKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BuscaInputKeyTyped
-        
-        Controller.updateDataBySimilarName(MainTable, BuscaInput.getText());
-        /*if(MainTable.getModel() instanceof ClienteTableModel){
-            ((GenericTableModel)MainTable.getModel()).addListOfItems(Controller.getClientsBySimilarName(BuscaInput.getText()));
-        }*/
+        Controller.filtroAplicadoEmCadastro(MainTable, BuscaInput, CelularBuscaInput, EmailBuscaInput, SexoBox);
+        //Controller.updateDataBySimilarName(MainTable, BuscaInput.getText());
+       
     }//GEN-LAST:event_BuscaInputKeyTyped
 
     private void BtnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNovoActionPerformed
@@ -740,6 +867,26 @@ public class Principal extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_HorarioBoxItemStateChanged
 
+    private void CelularBuscaInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CelularBuscaInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CelularBuscaInputActionPerformed
+
+    private void CelularBuscaInputKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CelularBuscaInputKeyTyped
+        Controller.filtroAplicadoEmCadastro(MainTable, BuscaInput, CelularBuscaInput, EmailBuscaInput, SexoBox);
+    }//GEN-LAST:event_CelularBuscaInputKeyTyped
+
+    private void EmailBuscaInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailBuscaInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EmailBuscaInputActionPerformed
+
+    private void EmailBuscaInputKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EmailBuscaInputKeyTyped
+        Controller.filtroAplicadoEmCadastro(MainTable, BuscaInput, CelularBuscaInput, EmailBuscaInput, SexoBox);
+    }//GEN-LAST:event_EmailBuscaInputKeyTyped
+
+    private void SexoBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SexoBoxItemStateChanged
+        Controller.filtroAplicadoEmCadastro(MainTable, BuscaInput, CelularBuscaInput, EmailBuscaInput, SexoBox);
+    }//GEN-LAST:event_SexoBoxItemStateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -791,10 +938,14 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel BuscaTxt;
     private javax.swing.ButtonGroup ButtonGroup;
     private javax.swing.JPanel Cadastros;
+    private javax.swing.JTextField CelularBuscaInput;
+    private javax.swing.JLabel CelularTxt;
     private javax.swing.JTabbedPane ClinicaPanel;
     private javax.swing.JPanel ConsultasPanel2;
     private javax.swing.JTable ConsultasTable;
     private javax.swing.JComboBox<String> DiaBox;
+    private javax.swing.JTextField EmailBuscaInput;
+    private javax.swing.JLabel EmailTxt;
     private javax.swing.JPanel Header;
     private javax.swing.JComboBox<String> HorarioBox;
     private javax.swing.JLabel HorarioTxt;
@@ -804,6 +955,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField NameInput;
     private javax.swing.JButton NewConsultaBtn;
     private javax.swing.JLabel NomeTxt;
+    private javax.swing.JComboBox<String> SexoBox;
     private javax.swing.JButton TirarFiltros;
     private javax.swing.JToggleButton VetFilter;
     private javax.swing.JTextField VeterinarioInput;
@@ -811,6 +963,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
