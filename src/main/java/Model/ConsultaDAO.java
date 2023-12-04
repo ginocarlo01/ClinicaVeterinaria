@@ -91,9 +91,22 @@ public class ConsultaDAO extends DAO {
     }
     
    
-    public List retrieveByIdCliente(int id_cliente) {
-        return this.retrieve("SELECT * FROM consulta WHERE id_cliente = " + id_cliente);
-    }    
+    public List<String> retrieveHorarioByIdVetAndDate(int id_vet, Date data) {
+    java.sql.Date sqlData = new java.sql.Date(data.getTime());
+    List<String> horarios = new ArrayList<>();
+    
+    ResultSet rs = getResultSet("SELECT horario FROM consulta WHERE id_vet = " + id_vet + " AND data = '" + sqlData + "'");
+    
+    try {
+        while (rs.next()) {
+            horarios.add(rs.getString("horario"));
+        }
+    } catch (SQLException e) {
+        System.err.println("Exception: " + e.getMessage());
+    }
+    
+    return horarios;
+}
     
     public List retrieveByIdCustomFilter(String filter){
         return this.retrieve("SELECT * FROM consulta" + filter);

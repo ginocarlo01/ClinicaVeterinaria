@@ -151,7 +151,7 @@ public class ConsultaTableModel extends GenericTableModel {
 
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
-        if((columnIndex < 4) || (columnIndex > 6)){
+        if((columnIndex < 3) || (columnIndex > 6)){
             return true;
         }
         else{

@@ -77,6 +77,7 @@ public class VeterinarioDAO extends DAO {
 
     // RetrieveById
     public Veterinario retrieveById(int id) {
+        
         List<Veterinario> vets = this.retrieve("SELECT * FROM vet WHERE id = " + id);
         return (vets.isEmpty()?null:vets.get(0));
     }

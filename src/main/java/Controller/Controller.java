@@ -4,6 +4,8 @@
  */
 package Controller;
 import org.jdatepicker.JDatePicker;
+import java.awt.Component;
+import javax.swing.table.DefaultTableCellRenderer;
 import Model.ExameDAO;
 import Model.Exame;
 import Model.EspecieDAO;
@@ -22,14 +24,23 @@ import View.VeterinarioTableModel;
 import View.GenericTableModel;
 import View.ClienteTableModel;
 import View.AnimalTableModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JToggleButton;
+import javax.swing.event.CellEditorListener;
+import javax.swing.event.ChangeEvent;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+
 import javax.swing.table.TableColumn;
 
 /**
@@ -40,6 +51,7 @@ public class Controller {
     private static Cliente clienteSelecionado = null;
     private static Animal animalSelecionado = null;
     private static Veterinario veterinarioSelecionado = null;
+    private static Consulta consultaSelecionado = null;
     private static JTextField clienteSelecionadoTextField = null;
     private static JTextField animalSelecionadoTextField = null;
     private static JTextField veterinarioSelecionadoTextField = null;
@@ -48,22 +60,39 @@ public class Controller {
         setTableModel(table, new ClienteTableModel(ClienteDAO.getInstance().retrieveAll()));
     }
     
-    public static boolean jRadioButtonAnimalSelecionado(JTable table){
-        if(getClienteSelecionado() != null){
-            setTableModel(table, new AnimalTableModel(AnimalDAO.getInstance().retrieveByIdCliente(getClienteSelecionado().getId())));
-            JComboBox<String> especiesBox = new JComboBox<>();
-            List<Especie> especies = EspecieDAO.getInstance().retrieveAll();
-            for (Especie especie : especies) {
-                especiesBox.addItem(especie.getNome()); // Substitua 'getNome()' pelo método que retorna o nome do animal
-                table.getColumnModel().getColumn(3).setCellEditor(new DefaultCellEditor(especiesBox));
-            }
-            return true;
+    public static boolean jRadioButtonAnimalSelecionado(JTable table) {
+    if (getClienteSelecionado() != null) {
+        setTableModel(table, new AnimalTableModel(AnimalDAO.getInstance().retrieveByIdCliente(getClienteSelecionado().getId())));
+
+        JComboBox<String> especiesBox = new JComboBox<>();
+        List<Especie> especies = EspecieDAO.getInstance().retrieveAll();
+        for (Especie especie : especies) {
+            especiesBox.addItem(especie.getNome()); // Substitua 'getNome()' pelo método que retorna o nome do animal
+            table.getColumnModel().getColumn(3).setCellEditor(new DefaultCellEditor(especiesBox));
         }
-        else{
-            setTableModel(table, new AnimalTableModel(new ArrayList()));
-            return false;
+
+        JComboBox<Integer> yearComboBox = new JComboBox<>();
+        int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+        for (int i = currentYear; i >= currentYear - 50; i--) {
+            yearComboBox.addItem(i);
         }
+
+        TableColumn yearColumn = table.getColumnModel().getColumn(1);
+        yearColumn.setCellEditor(new DefaultCellEditor(yearComboBox));
+
+        JComboBox<String> sexBox = new JComboBox<>();
+        sexBox.addItem("Masculino");
+        sexBox.addItem("Feminino");
+        TableColumn sexColumn = table.getColumnModel().getColumn(2);
+        sexColumn.setCellEditor(new DefaultCellEditor(sexBox));
+        
+        return true;
+    } else {
+        setTableModel(table, new AnimalTableModel(new ArrayList()));
+        return false;
     }
+}
+
     
     public static void jRadioButtonEspecieSelecionado(JTable table){
         setTableModel(table, new EspecieTableModel(EspecieDAO.getInstance().retrieveAll()));
@@ -185,6 +214,76 @@ public class Controller {
             veterinarioSelecionado = (Veterinario)selected;
             veterinarioSelecionadoTextField.setText(veterinarioSelecionado.getNome());
         }
+        
+        else if (selected instanceof Consulta){
+            consultaSelecionado = (Consulta)selected;
+        }
+    }
+    public static void updateHorarioConsulta(String newTime){
+        consultaSelecionado.setHorario(newTime);
+        ConsultaDAO.getInstance().update(consultaSelecionado);
+    }
+    public static void updateAvailableTimes(JTable table, JComboBox timeBox) {
+    // Obtenha os horários disponíveis
+    List<String> horariosDisponiveis = getTimeSlots();
+
+    // Adicione um ItemListener temporário para a JComboBox
+    ItemListener temporaryListener = new ItemListener() {
+        @Override
+        public void itemStateChanged(ItemEvent e) {
+            // Não faça nada aqui
+        }
+    };
+
+    timeBox.addItemListener(temporaryListener);
+
+    // Remova temporariamente todos os ItemListeners
+    ItemListener[] listeners = timeBox.getItemListeners();
+    for (ItemListener listener : listeners) {
+        timeBox.removeItemListener(listener);
+    }
+
+    // Limpe e adicione os itens
+    timeBox.removeAllItems();
+    for (String horario : horariosDisponiveis) {
+        System.out.println(horario);
+        timeBox.addItem(horario);
+    }
+
+    // Adicione novamente todos os ItemListeners
+    for (ItemListener listener : listeners) {
+        timeBox.addItemListener(listener);
+    }
+
+    // Remova o ItemListener temporário
+    timeBox.removeItemListener(temporaryListener);
+
+    // Desmarque a seleção
+    timeBox.setSelectedIndex(-1);
+}
+
+
+
+    
+    public static List getTimeSlots(){
+        Veterinario vetSelected = VeterinarioDAO.getInstance().retrieveById(consultaSelecionado.getIdVeterinario());
+        Date dataSelected = consultaSelecionado.getData();
+        //System.out.println("Veterinario Selecionado: " + vetSelected.getNome());
+        // Lista padrão de horários
+        String[] horariosPadroes = {"8:00", "9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00"};
+
+        // Criar uma lista de horários disponíveis
+        List<String> horariosDisponiveis = new ArrayList<>(Arrays.asList(horariosPadroes));
+
+        // Lista de horários ocupados
+        List<String> horariosOcupados = ConsultaDAO.getInstance().retrieveHorarioByIdVetAndDate(vetSelected.getId(), dataSelected);
+        
+        // Remover horários ocupados da lista de horários disponíveis
+        horariosDisponiveis.removeAll(horariosOcupados);
+
+        return horariosDisponiveis;
+        
+        
     }
     
     public static List<Object> getClientsBySimilarName(String nome){
@@ -208,16 +307,7 @@ public class Controller {
     }
     }
     
-    public static boolean FiltroClienteSelecionado(JTable table){
-        if(getVeterinarioSelecionado() != null){
-            ((GenericTableModel) table.getModel()).addListOfItems(ConsultaDAO.getInstance().retrieveByIdCliente(getClienteSelecionado().getId()));
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
-    
+   
     public static boolean FiltroAnimalSelecionado(){
         if(getAnimalSelecionado() != null){
             return true;
@@ -302,11 +392,13 @@ public class Controller {
     }
     
     public static Consulta adicionaConsulta(){
-        return ConsultaDAO.getInstance().create(Calendar.getInstance().getTime(), "8:00", "", animalSelecionado.getId(), veterinarioSelecionado.getId(), 0, 0);
+        return ConsultaDAO.getInstance().create(Calendar.getInstance().getTime(), "-:--", "", animalSelecionado.getId(), veterinarioSelecionado.getId(), 0, 0);
     }
     
     public static Animal adicionaAnimalAoClienteSelecionado(){
-        return AnimalDAO.getInstance().create("", 0, "", 0, 0, clienteSelecionado.getId());
+        int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+        
+        return AnimalDAO.getInstance().create("", currentYear, "", 0, 0, clienteSelecionado.getId());
     }
     
     public static Especie adicionaEspecie(){

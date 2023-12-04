@@ -77,6 +77,7 @@ View\Past\AdicionarAnimal$6.class
 View\Past\DeletarConsulta$1.class
 Model\EspecieDAO.class
 View\Past\EditarAnimal.class
+View\Principal$27.class
 View\Past\Inicio$15.class
 View\Past\AdicionarAnimal$1.class
 View\Past\ConsultarAnimal$1.class
@@ -95,6 +96,7 @@ View\Principal$15.class
 View\Past\DeletarVeterinario$2.class
 View\Past\RealizarConsulta.class
 View\Past\AdicionarExame$2.class
+View\ActionEvent.class
 View\Past\AdicionarCliente$3.class
 View\Past\Inicio$5.class
 Model\AnimalDAO.class
@@ -143,6 +145,7 @@ View\Principal$13.class
 View\Principal$8.class
 View\Past\AdicionarVeterinario.class
 View\Past\DeletarCliente$2.class
+View\Principal$28.class
 View\Past\EditarAnimal$4.class
 Model\Tratamento.class
 View\Past\MarcarConsulta$5.class
@@ -175,6 +178,7 @@ View\Past\DeletarExame$1.class
 View\Principal$6.class
 View\Past\Inicio$18.class
 View\Past\Inicio$11.class
+Controller\Controller$1.class
 View\Past\MarcarConsulta.class
 View\Principal$18.class
 View\Principal$23.class

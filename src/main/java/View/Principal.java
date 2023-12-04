@@ -4,10 +4,16 @@
  */
 package View;
 import Controller.Controller;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
+import javax.swing.JTable;
 /**
  *
  * @author gino
@@ -51,6 +57,28 @@ public class Principal extends javax.swing.JFrame {
         int currentYear = Calendar.getInstance().get(Calendar.YEAR);
         AnoBox.addItem(String.valueOf(currentYear));
         AnoBox.addItem(String.valueOf(currentYear + 1));
+        
+        ConsultasTable.addMouseListener(new MouseAdapter() {
+        @Override
+        public void mousePressed(MouseEvent e) {
+            JTable table = (JTable) e.getSource();
+            int row = table.rowAtPoint(e.getPoint());
+            int col = table.columnAtPoint(e.getPoint());
+
+            // Verifica se o botão do mouse foi pressionado e se não é um pressionamento duplo
+            if (e.getButton() == MouseEvent.BUTTON1 && e.getClickCount() == 1) {
+                
+                System.out.println("Mouse pressionado na célula: " + row + ", " + col);
+                Controller.updateAvailableTimes(ConsultasTable, HorarioBox);
+                // Aqui, você pode adicionar a lógica para iniciar a edição da célula, se necessário
+                // table.editCellAt(row, col);
+            }
+        }
+    });
+        
+       
+
+
     }
     
     public Principal() {
@@ -101,6 +129,8 @@ public class Principal extends javax.swing.JFrame {
         VetFilter = new javax.swing.JToggleButton();
         AnimalFilter = new javax.swing.JToggleButton();
         TirarFiltros = new javax.swing.JButton();
+        HorarioTxt = new javax.swing.JLabel();
+        HorarioBox = new javax.swing.JComboBox<>();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -300,7 +330,7 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(BuscaTxt)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(BuscaInput, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 314, Short.MAX_VALUE))
+                .addGap(0, 406, Short.MAX_VALUE))
             .addGroup(CadastrosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane2)
@@ -413,10 +443,19 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        TirarFiltros.setText("Tirar Filtros");
+        TirarFiltros.setText("Todos");
         TirarFiltros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TirarFiltrosActionPerformed(evt);
+            }
+        });
+
+        HorarioTxt.setText("Novo Horario:");
+
+        HorarioBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {  }));
+        HorarioBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                HorarioBoxItemStateChanged(evt);
             }
         });
 
@@ -429,22 +468,26 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(ConsultasPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3)
                     .addGroup(ConsultasPanel2Layout.createSequentialGroup()
-                        .addComponent(NewConsultaBtn)
+                        .addComponent(TirarFiltros)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(NewConsultaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ApagaConsultaBtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(VetFilter)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(AnimalFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(AnimalFilter)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(DiaBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(MesBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(AnoBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(TirarFiltros, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 10, Short.MAX_VALUE)))
+                        .addComponent(HorarioTxt)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(HorarioBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 84, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         ConsultasPanel2Layout.setVerticalGroup(
@@ -459,7 +502,9 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(AnoBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(VetFilter)
                     .addComponent(AnimalFilter)
-                    .addComponent(TirarFiltros))
+                    .addComponent(TirarFiltros)
+                    .addComponent(HorarioTxt)
+                    .addComponent(HorarioBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(14, Short.MAX_VALUE))
@@ -629,6 +674,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void ConsultasTableMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConsultasTableMousePressed
         Controller.setSelected(((GenericTableModel)ConsultasTable.getModel()).getItem(ConsultasTable.getSelectedRow()));
+        
     }//GEN-LAST:event_ConsultasTableMousePressed
 
     private void DiaBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DiaBoxItemStateChanged
@@ -683,6 +729,16 @@ public class Principal extends javax.swing.JFrame {
         AnoBox.setSelectedItem("Ano");
         Controller.filtroAplicado(ConsultasTable, VetFilter, AnimalFilter, DiaBox, MesBox, AnoBox);
     }//GEN-LAST:event_TirarFiltrosActionPerformed
+
+    private void HorarioBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_HorarioBoxItemStateChanged
+        if (evt.getStateChange() == ItemEvent.SELECTED && HorarioBox.getSelectedIndex() != -1) {
+        System.out.println("ComboBox Pressionado");
+        String selectedItem = (String) HorarioBox.getSelectedItem();
+        System.out.println("Item Selecionado: " + selectedItem);
+        Controller.updateHorarioConsulta(selectedItem);
+        Controller.filtroAplicado(ConsultasTable, VetFilter, AnimalFilter, DiaBox, MesBox, AnoBox);
+    }
+    }//GEN-LAST:event_HorarioBoxItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -740,6 +796,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTable ConsultasTable;
     private javax.swing.JComboBox<String> DiaBox;
     private javax.swing.JPanel Header;
+    private javax.swing.JComboBox<String> HorarioBox;
+    private javax.swing.JLabel HorarioTxt;
     private javax.swing.JPanel MainPanel;
     private javax.swing.JTable MainTable;
     private javax.swing.JComboBox<String> MesBox;
