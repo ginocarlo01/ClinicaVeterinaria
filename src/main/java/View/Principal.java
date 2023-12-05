@@ -42,21 +42,11 @@ public class Principal extends javax.swing.JFrame {
         Controller.setTextFields(NameInput, AnimalInput, VeterinarioInput);
         
         Controller.painelConsultasSelected(ConsultasTable);
+       
         
-        MesBox.addItem("Mês");
-        AnoBox.addItem("Ano");
-        DiaBox.addItem("Dia");
-        
-        for (int i = 1; i <= 12; i++) {
-            MesBox.addItem(String.valueOf(i));
-        }
-        
-        for (int i = 1; i <= 31; i++) {
-            DiaBox.addItem(String.valueOf(i));
-        }
         int currentYear = Calendar.getInstance().get(Calendar.YEAR);
-        AnoBox.addItem(String.valueOf(currentYear));
-        AnoBox.addItem(String.valueOf(currentYear + 1));
+        AnoConsultaInput.setText(String.valueOf(currentYear));
+        
         
         ConsultasTable.addMouseListener(new MouseAdapter() {
         @Override
@@ -137,14 +127,18 @@ public class Principal extends javax.swing.JFrame {
         ApagaConsultaBtn = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         ConsultasTable = new javax.swing.JTable();
-        DiaBox = new javax.swing.JComboBox<>();
-        MesBox = new javax.swing.JComboBox<>();
-        AnoBox = new javax.swing.JComboBox<>();
         VetFilter = new javax.swing.JToggleButton();
         AnimalFilter = new javax.swing.JToggleButton();
         TirarFiltros = new javax.swing.JButton();
         HorarioTxt = new javax.swing.JLabel();
         HorarioBox = new javax.swing.JComboBox<>();
+        DiaConsultaInput = new javax.swing.JTextField();
+        DiaTxt = new javax.swing.JLabel();
+        MesTxt = new javax.swing.JLabel();
+        MesConsultaInput = new javax.swing.JTextField();
+        AnoTxt = new javax.swing.JLabel();
+        AnoConsultaInput = new javax.swing.JTextField();
+        HojeBtn = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -193,18 +187,15 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(HeaderLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(HeaderLayout.createSequentialGroup()
-                        .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(NomeTxt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(AnimalText, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(48, 48, 48)
-                        .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(AnimalInput)
-                            .addComponent(NameInput)))
-                    .addGroup(HeaderLayout.createSequentialGroup()
-                        .addComponent(VeterinarioText, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(48, 48, 48)
-                        .addComponent(VeterinarioInput)))
+                    .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(NomeTxt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(AnimalText, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(VeterinarioText, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37)
+                .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(VeterinarioInput)
+                    .addComponent(AnimalInput)
+                    .addComponent(NameInput))
                 .addContainerGap())
         );
         HeaderLayout.setVerticalGroup(
@@ -291,6 +282,7 @@ public class Principal extends javax.swing.JFrame {
 
         BuscaTxt.setText("Nome:");
 
+        BuscaInput.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         BuscaInput.setText("jTextField2");
         BuscaInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -314,6 +306,7 @@ public class Principal extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        MainTable.setMaximumSize(new java.awt.Dimension(50, 64));
         MainTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 MainTableMousePressed(evt);
@@ -323,6 +316,9 @@ public class Principal extends javax.swing.JFrame {
 
         CelularTxt.setText("Celular:");
 
+        CelularBuscaInput.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        CelularBuscaInput.setMaximumSize(new java.awt.Dimension(170, 2147483647));
+        CelularBuscaInput.setVerifyInputWhenFocusTarget(false);
         CelularBuscaInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CelularBuscaInputActionPerformed(evt);
@@ -374,39 +370,32 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(CadastrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jSeparator1)
+                    .addComponent(jSeparator2)
                     .addGroup(CadastrosLayout.createSequentialGroup()
                         .addGroup(CadastrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(BtnCadCli)
                             .addGroup(CadastrosLayout.createSequentialGroup()
-                                .addComponent(BuscaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(BuscaInput, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(CadastrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(CadastrosLayout.createSequentialGroup()
-                                .addGap(5, 5, 5)
-                                .addComponent(CelularTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(CelularBuscaInput, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CadastrosLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(BtnCadCli)
+                                .addGap(18, 18, 18)
                                 .addComponent(BtnCadAni)
-                                .addGap(93, 93, 93)))
-                        .addGroup(CadastrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGap(18, 18, 18)
+                                .addComponent(BtnCadVet)
+                                .addGap(18, 18, 18)
+                                .addComponent(BtnCadEsp))
                             .addGroup(CadastrosLayout.createSequentialGroup()
-                                .addComponent(EmailTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(EmailBuscaInput, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(BuscaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(BuscaInput, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(SexoBox, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(11, 11, 11))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CadastrosLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(BtnCadVet)
-                                .addGap(100, 100, 100)
-                                .addComponent(BtnCadEsp))))
-                    .addComponent(jSeparator1)
-                    .addComponent(jSeparator2))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(CelularTxt)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(CelularBuscaInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(EmailTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(EmailBuscaInput, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
             .addGroup(CadastrosLayout.createSequentialGroup()
                 .addGap(365, 365, 365)
@@ -415,7 +404,7 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(BtnNovo)
                 .addGap(18, 18, 18)
                 .addComponent(DeleteBtn)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(352, Short.MAX_VALUE))
         );
         CadastrosLayout.setVerticalGroup(
             CadastrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -496,27 +485,6 @@ public class Principal extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(ConsultasTable);
 
-        DiaBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { }));
-        DiaBox.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                DiaBoxItemStateChanged(evt);
-            }
-        });
-
-        MesBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {  }));
-        MesBox.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                MesBoxItemStateChanged(evt);
-            }
-        });
-
-        AnoBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {  }));
-        AnoBox.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                AnoBoxItemStateChanged(evt);
-            }
-        });
-
         VetFilter.setText("Filtrar Veterinario");
         VetFilter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -552,6 +520,47 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        DiaConsultaInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DiaConsultaInputActionPerformed(evt);
+            }
+        });
+        DiaConsultaInput.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                DiaConsultaInputKeyTyped(evt);
+            }
+        });
+
+        DiaTxt.setText("Dia: ");
+
+        MesTxt.setText("Mês: ");
+
+        MesConsultaInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MesConsultaInputActionPerformed(evt);
+            }
+        });
+        MesConsultaInput.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                MesConsultaInputKeyTyped(evt);
+            }
+        });
+
+        AnoTxt.setText("Ano:");
+
+        AnoConsultaInput.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                AnoConsultaInputKeyTyped(evt);
+            }
+        });
+
+        HojeBtn.setText("Hoje");
+        HojeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HojeBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout ConsultasPanel2Layout = new javax.swing.GroupLayout(ConsultasPanel2);
         ConsultasPanel2.setLayout(ConsultasPanel2Layout);
         ConsultasPanel2Layout.setHorizontalGroup(
@@ -562,42 +571,56 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(jScrollPane3)
                     .addGroup(ConsultasPanel2Layout.createSequentialGroup()
                         .addComponent(TirarFiltros)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(NewConsultaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(ApagaConsultaBtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(VetFilter)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(AnimalFilter)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(HojeBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(DiaTxt)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(DiaBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(DiaConsultaInput, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(MesTxt)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(MesBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(MesConsultaInput, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(AnoTxt)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(AnoBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(AnoConsultaInput, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(HorarioTxt)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(HorarioBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 245, Short.MAX_VALUE)))
+                        .addComponent(HorarioBox, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         ConsultasPanel2Layout.setVerticalGroup(
             ConsultasPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ConsultasPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(ConsultasPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(NewConsultaBtn)
-                    .addComponent(ApagaConsultaBtn)
-                    .addComponent(DiaBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(MesBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AnoBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(VetFilter)
-                    .addComponent(AnimalFilter)
-                    .addComponent(TirarFiltros)
-                    .addComponent(HorarioTxt)
-                    .addComponent(HorarioBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(ConsultasPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ConsultasPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(TirarFiltros)
+                        .addComponent(NewConsultaBtn)
+                        .addComponent(ApagaConsultaBtn)
+                        .addComponent(VetFilter))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ConsultasPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(AnoConsultaInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(HorarioTxt)
+                        .addComponent(HorarioBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(AnoTxt)
+                        .addComponent(MesConsultaInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(MesTxt)
+                        .addComponent(DiaConsultaInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(DiaTxt)
+                        .addComponent(AnimalFilter)
+                        .addComponent(HojeBtn)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(15, Short.MAX_VALUE))
@@ -613,8 +636,7 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ClinicaPanel, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap())
+                    .addComponent(ClinicaPanel, javax.swing.GroupLayout.Alignment.TRAILING)))
         );
         MainPanelLayout.setVerticalGroup(
             MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -644,138 +666,6 @@ public class Principal extends javax.swing.JFrame {
     private void NameInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NameInputActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_NameInputActionPerformed
-
-    private void BtnCadCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCadCliActionPerformed
-        Controller.jRadioButtonClientesSelecionado(MainTable);
-        Controller.updateHeader();
-        
-        AnimalInput.setText("");
-        
-        DeleteBtn.setVisible(true);
-        
-        BuscaInput.setText("");
-        CelularBuscaInput.setText("");
-        EmailBuscaInput.setText("");
-        SexoBox.setSelectedItem("Sexo");
-        
-        SexoBox.setVisible(false);
-        
-        CelularTxt.setVisible(true);
-        CelularBuscaInput.setVisible(true);
-        
-        EmailTxt.setVisible(true);
-        EmailBuscaInput.setVisible(true);
-    }//GEN-LAST:event_BtnCadCliActionPerformed
-
-    private void BtnTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTodosActionPerformed
-        Controller.getAllData(MainTable);
-        BuscaInput.setText("");
-        
-    }//GEN-LAST:event_BtnTodosActionPerformed
-
-    private void BtnCadAniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCadAniActionPerformed
-        BuscaInput.setText("");
-        CelularBuscaInput.setText("");
-        EmailBuscaInput.setText("");
-        SexoBox.setSelectedItem("Sexo");
-        
-        DeleteBtn.setVisible(true);
-        
-        Controller.updateHeader();
-        if(!Controller.jRadioButtonAnimalSelecionado(MainTable)){
-            JOptionPane.showMessageDialog(this, "Selecione um cliente!");
-            BtnCadCli.setSelected(true);
-            
-            Controller.setTextFields(NameInput, AnimalInput, VeterinarioInput);
-            
-            BuscaInput.setText("");
-            CelularBuscaInput.setText("");
-            EmailBuscaInput.setText("");
-            SexoBox.setSelectedItem("Sexo");
-
-            SexoBox.setVisible(false);
-
-            CelularTxt.setVisible(true);
-            CelularBuscaInput.setVisible(true);
-
-            EmailTxt.setVisible(true);
-            EmailBuscaInput.setVisible(true);
-            
-            Controller.jRadioButtonClientesSelecionado(MainTable);
-        }
-        else{
-            CelularTxt.setVisible(false);
-            CelularBuscaInput.setVisible(false);
-
-            EmailTxt.setVisible(false);
-            EmailBuscaInput.setVisible(false);
-
-            SexoBox.setVisible(true);
-        }
-        
-        
-        
-        
-    }//GEN-LAST:event_BtnCadAniActionPerformed
-
-    private void MainTableMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MainTableMousePressed
-        Controller.setSelected(((GenericTableModel)MainTable.getModel()).getItem(MainTable.getSelectedRow()));
-    }//GEN-LAST:event_MainTableMousePressed
-
-    private void BtnCadEspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCadEspActionPerformed
-        Controller.jRadioButtonEspecieSelecionado(MainTable);
-        
-        BuscaInput.setText("");
-        CelularBuscaInput.setText("");
-        EmailBuscaInput.setText("");
-        SexoBox.setSelectedItem("Sexo");
-        
-        DeleteBtn.setVisible(false);
-        
-        SexoBox.setVisible(false);
-        
-        CelularTxt.setVisible(false);
-        CelularBuscaInput.setVisible(false);
-        
-        EmailTxt.setVisible(false);
-        EmailBuscaInput.setVisible(false);
-        
-    }//GEN-LAST:event_BtnCadEspActionPerformed
-
-    private void BtnCadVetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCadVetActionPerformed
-        Controller.jRadioButtonVeterinarioSelecionado(MainTable);
-        BuscaInput.setText("");
-        CelularBuscaInput.setText("");
-        EmailBuscaInput.setText("");
-        SexoBox.setSelectedItem("Sexo");
-        
-        DeleteBtn.setVisible(true);
-        
-        Controller.updateHeader();
-        SexoBox.setVisible(false);
-        
-        CelularTxt.setVisible(true);
-        CelularBuscaInput.setVisible(true);
-        
-        EmailTxt.setVisible(true);
-        EmailBuscaInput.setVisible(true);
-        
-    }//GEN-LAST:event_BtnCadVetActionPerformed
-
-    private void BuscaInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscaInputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BuscaInputActionPerformed
-
-    private void BuscaInputKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BuscaInputKeyTyped
-        Controller.filtroAplicadoEmCadastro(MainTable, BuscaInput, CelularBuscaInput, EmailBuscaInput, SexoBox);
-        //Controller.updateDataBySimilarName(MainTable, BuscaInput.getText());
-       
-    }//GEN-LAST:event_BuscaInputKeyTyped
-
-    private void BtnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNovoActionPerformed
-        Controller.createNewData(MainTable);
-        
-    }//GEN-LAST:event_BtnNovoActionPerformed
 
     private void ClinicaPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClinicaPanelMousePressed
         
@@ -833,11 +723,6 @@ public class Principal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_ConsultasTableMousePressed
 
-    private void DiaBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DiaBoxItemStateChanged
-        Controller.filtroAplicado(ConsultasTable, VetFilter, AnimalFilter, DiaBox, MesBox, AnoBox);
-        
-    }//GEN-LAST:event_DiaBoxItemStateChanged
-
     private void VetFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VetFilterActionPerformed
         if(!Controller.FiltroVetSelecionado()){
             JOptionPane.showMessageDialog(this, "Selecione um veterinario");
@@ -845,7 +730,7 @@ public class Principal extends javax.swing.JFrame {
         }
         else{
             
-            Controller.filtroAplicado(ConsultasTable, VetFilter, AnimalFilter, DiaBox, MesBox, AnoBox);
+            Controller.filtroAplicado(ConsultasTable, VetFilter, AnimalFilter, DiaConsultaInput, MesConsultaInput, AnoConsultaInput);
         }
    
     }//GEN-LAST:event_VetFilterActionPerformed
@@ -861,29 +746,22 @@ public class Principal extends javax.swing.JFrame {
             AnimalFilter.setSelected(false);
             }
             else{
-                Controller.filtroAplicado(ConsultasTable, VetFilter, AnimalFilter, DiaBox, MesBox, AnoBox);
+                Controller.filtroAplicado(ConsultasTable, VetFilter, AnimalFilter, DiaConsultaInput, MesConsultaInput, AnoConsultaInput);
             }
         }
         else{
-            Controller.filtroAplicado(ConsultasTable, VetFilter, AnimalFilter, DiaBox, MesBox, AnoBox);
+            Controller.filtroAplicado(ConsultasTable, VetFilter, AnimalFilter, DiaConsultaInput, MesConsultaInput, AnoConsultaInput);
         }
     }//GEN-LAST:event_AnimalFilterItemStateChanged
-
-    private void MesBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MesBoxItemStateChanged
-        Controller.filtroAplicado(ConsultasTable, VetFilter, AnimalFilter, DiaBox, MesBox, AnoBox);
-    }//GEN-LAST:event_MesBoxItemStateChanged
-
-    private void AnoBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_AnoBoxItemStateChanged
-        Controller.filtroAplicado(ConsultasTable, VetFilter, AnimalFilter, DiaBox, MesBox, AnoBox);
-    }//GEN-LAST:event_AnoBoxItemStateChanged
 
     private void TirarFiltrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TirarFiltrosActionPerformed
         VetFilter.setSelected(false);
         AnimalFilter.setSelected(false);
-        DiaBox.setSelectedItem("Dia");
-        MesBox.setSelectedItem("Mês");
-        AnoBox.setSelectedItem("Ano");
-        Controller.filtroAplicado(ConsultasTable, VetFilter, AnimalFilter, DiaBox, MesBox, AnoBox);
+        
+        DiaConsultaInput.setText("");
+        MesConsultaInput.setText("");
+        AnoConsultaInput.setText("");
+        Controller.filtroAplicado(ConsultasTable, VetFilter, AnimalFilter, DiaConsultaInput, MesConsultaInput, AnoConsultaInput);
     }//GEN-LAST:event_TirarFiltrosActionPerformed
 
     private void HorarioBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_HorarioBoxItemStateChanged
@@ -892,29 +770,42 @@ public class Principal extends javax.swing.JFrame {
         String selectedItem = (String) HorarioBox.getSelectedItem();
         System.out.println("Item Selecionado: " + selectedItem);
         Controller.updateHorarioConsulta(selectedItem);
-        Controller.filtroAplicado(ConsultasTable, VetFilter, AnimalFilter, DiaBox, MesBox, AnoBox);
+        Controller.filtroAplicado(ConsultasTable, VetFilter, AnimalFilter, DiaConsultaInput, MesConsultaInput, AnoConsultaInput);
     }
     }//GEN-LAST:event_HorarioBoxItemStateChanged
 
-    private void CelularBuscaInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CelularBuscaInputActionPerformed
+    private void DiaConsultaInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DiaConsultaInputActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CelularBuscaInputActionPerformed
+    }//GEN-LAST:event_DiaConsultaInputActionPerformed
 
-    private void CelularBuscaInputKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CelularBuscaInputKeyTyped
-        Controller.filtroAplicadoEmCadastro(MainTable, BuscaInput, CelularBuscaInput, EmailBuscaInput, SexoBox);
-    }//GEN-LAST:event_CelularBuscaInputKeyTyped
-
-    private void EmailBuscaInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailBuscaInputActionPerformed
+    private void MesConsultaInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MesConsultaInputActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_EmailBuscaInputActionPerformed
+    }//GEN-LAST:event_MesConsultaInputActionPerformed
 
-    private void EmailBuscaInputKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EmailBuscaInputKeyTyped
-        Controller.filtroAplicadoEmCadastro(MainTable, BuscaInput, CelularBuscaInput, EmailBuscaInput, SexoBox);
-    }//GEN-LAST:event_EmailBuscaInputKeyTyped
+    private void DiaConsultaInputKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiaConsultaInputKeyTyped
+            Controller.filtroAplicado(ConsultasTable, VetFilter, AnimalFilter, DiaConsultaInput, MesConsultaInput, AnoConsultaInput);
+    
+    }//GEN-LAST:event_DiaConsultaInputKeyTyped
 
-    private void SexoBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SexoBoxItemStateChanged
-        Controller.filtroAplicadoEmCadastro(MainTable, BuscaInput, CelularBuscaInput, EmailBuscaInput, SexoBox);
-    }//GEN-LAST:event_SexoBoxItemStateChanged
+    private void MesConsultaInputKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MesConsultaInputKeyTyped
+            Controller.filtroAplicado(ConsultasTable, VetFilter, AnimalFilter, DiaConsultaInput, MesConsultaInput, AnoConsultaInput);
+    
+    }//GEN-LAST:event_MesConsultaInputKeyTyped
+
+    private void AnoConsultaInputKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AnoConsultaInputKeyTyped
+            Controller.filtroAplicado(ConsultasTable, VetFilter, AnimalFilter, DiaConsultaInput, MesConsultaInput, AnoConsultaInput);
+    
+    }//GEN-LAST:event_AnoConsultaInputKeyTyped
+
+    private void HojeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HojeBtnActionPerformed
+        int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+        int currentMonth = Calendar.getInstance().get(Calendar.MONTH);
+        int currentDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+        
+        DiaConsultaInput.setText(String.valueOf(currentDay));
+        MesConsultaInput.setText(String.valueOf(currentMonth+1));
+        AnoConsultaInput.setText(String.valueOf(currentYear));
+    }//GEN-LAST:event_HojeBtnActionPerformed
 
     private void DeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteBtnActionPerformed
         if(!Controller.apagaBtn(MainTable)){
@@ -928,14 +819,14 @@ public class Principal extends javax.swing.JFrame {
             else{
                 NameInput.setText("");
             }
-           
+
             if(Controller.getAnimalSelecionado() != null){
                 AnimalInput.setText(Controller.getAnimalSelecionado().getNome());
             }
             else{
                 AnimalInput.setText("");
             }
-           
+
             if(Controller.getVeterinarioSelecionado() != null){
                 VeterinarioInput.setText(Controller.getVeterinarioSelecionado().getNome());
             }
@@ -943,12 +834,160 @@ public class Principal extends javax.swing.JFrame {
                 VeterinarioInput.setText("");
             }
         }
-
     }//GEN-LAST:event_DeleteBtnActionPerformed
 
     private void SexoBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SexoBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SexoBoxActionPerformed
+
+    private void SexoBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SexoBoxItemStateChanged
+        Controller.filtroAplicadoEmCadastro(MainTable, BuscaInput, CelularBuscaInput, EmailBuscaInput, SexoBox);
+    }//GEN-LAST:event_SexoBoxItemStateChanged
+
+    private void EmailBuscaInputKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EmailBuscaInputKeyTyped
+        Controller.filtroAplicadoEmCadastro(MainTable, BuscaInput, CelularBuscaInput, EmailBuscaInput, SexoBox);
+    }//GEN-LAST:event_EmailBuscaInputKeyTyped
+
+    private void EmailBuscaInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailBuscaInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EmailBuscaInputActionPerformed
+
+    private void CelularBuscaInputKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CelularBuscaInputKeyTyped
+        Controller.filtroAplicadoEmCadastro(MainTable, BuscaInput, CelularBuscaInput, EmailBuscaInput, SexoBox);
+    }//GEN-LAST:event_CelularBuscaInputKeyTyped
+
+    private void CelularBuscaInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CelularBuscaInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CelularBuscaInputActionPerformed
+
+    private void MainTableMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MainTableMousePressed
+        Controller.setSelected(((GenericTableModel)MainTable.getModel()).getItem(MainTable.getSelectedRow()));
+    }//GEN-LAST:event_MainTableMousePressed
+
+    private void BuscaInputKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BuscaInputKeyTyped
+        Controller.filtroAplicadoEmCadastro(MainTable, BuscaInput, CelularBuscaInput, EmailBuscaInput, SexoBox);
+        //Controller.updateDataBySimilarName(MainTable, BuscaInput.getText());
+
+    }//GEN-LAST:event_BuscaInputKeyTyped
+
+    private void BuscaInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscaInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BuscaInputActionPerformed
+
+    private void BtnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNovoActionPerformed
+        Controller.createNewData(MainTable);
+
+    }//GEN-LAST:event_BtnNovoActionPerformed
+
+    private void BtnTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTodosActionPerformed
+        Controller.getAllData(MainTable);
+        BuscaInput.setText("");
+
+    }//GEN-LAST:event_BtnTodosActionPerformed
+
+    private void BtnCadVetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCadVetActionPerformed
+        Controller.jRadioButtonVeterinarioSelecionado(MainTable);
+        BuscaInput.setText("");
+        CelularBuscaInput.setText("");
+        EmailBuscaInput.setText("");
+        SexoBox.setSelectedItem("Sexo");
+
+        DeleteBtn.setVisible(true);
+
+        Controller.updateHeader();
+        SexoBox.setVisible(false);
+
+        CelularTxt.setVisible(true);
+        CelularBuscaInput.setVisible(true);
+
+        EmailTxt.setVisible(true);
+        EmailBuscaInput.setVisible(true);
+
+    }//GEN-LAST:event_BtnCadVetActionPerformed
+
+    private void BtnCadEspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCadEspActionPerformed
+        Controller.jRadioButtonEspecieSelecionado(MainTable);
+
+        BuscaInput.setText("");
+        CelularBuscaInput.setText("");
+        EmailBuscaInput.setText("");
+        SexoBox.setSelectedItem("Sexo");
+
+        DeleteBtn.setVisible(false);
+
+        SexoBox.setVisible(false);
+
+        CelularTxt.setVisible(false);
+        CelularBuscaInput.setVisible(false);
+
+        EmailTxt.setVisible(false);
+        EmailBuscaInput.setVisible(false);
+
+    }//GEN-LAST:event_BtnCadEspActionPerformed
+
+    private void BtnCadAniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCadAniActionPerformed
+        BuscaInput.setText("");
+        CelularBuscaInput.setText("");
+        EmailBuscaInput.setText("");
+        SexoBox.setSelectedItem("Sexo");
+
+        DeleteBtn.setVisible(true);
+
+        Controller.updateHeader();
+        if(!Controller.jRadioButtonAnimalSelecionado(MainTable)){
+            JOptionPane.showMessageDialog(this, "Selecione um cliente!");
+            BtnCadCli.setSelected(true);
+
+            Controller.setTextFields(NameInput, AnimalInput, VeterinarioInput);
+
+            BuscaInput.setText("");
+            CelularBuscaInput.setText("");
+            EmailBuscaInput.setText("");
+            SexoBox.setSelectedItem("Sexo");
+
+            SexoBox.setVisible(false);
+
+            CelularTxt.setVisible(true);
+            CelularBuscaInput.setVisible(true);
+
+            EmailTxt.setVisible(true);
+            EmailBuscaInput.setVisible(true);
+
+            Controller.jRadioButtonClientesSelecionado(MainTable);
+        }
+        else{
+            CelularTxt.setVisible(false);
+            CelularBuscaInput.setVisible(false);
+
+            EmailTxt.setVisible(false);
+            EmailBuscaInput.setVisible(false);
+
+            SexoBox.setVisible(true);
+        }
+
+    }//GEN-LAST:event_BtnCadAniActionPerformed
+
+    private void BtnCadCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCadCliActionPerformed
+        Controller.jRadioButtonClientesSelecionado(MainTable);
+        Controller.updateHeader();
+
+        AnimalInput.setText("");
+
+        DeleteBtn.setVisible(true);
+
+        BuscaInput.setText("");
+        CelularBuscaInput.setText("");
+        EmailBuscaInput.setText("");
+        SexoBox.setSelectedItem("Sexo");
+
+        SexoBox.setVisible(false);
+
+        CelularTxt.setVisible(true);
+        CelularBuscaInput.setVisible(true);
+
+        EmailTxt.setVisible(true);
+        EmailBuscaInput.setVisible(true);
+    }//GEN-LAST:event_BtnCadCliActionPerformed
 
     /**
      * @param args the command line arguments
@@ -989,7 +1028,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JToggleButton AnimalFilter;
     private javax.swing.JTextField AnimalInput;
     private javax.swing.JLabel AnimalText;
-    private javax.swing.JComboBox<String> AnoBox;
+    private javax.swing.JTextField AnoConsultaInput;
+    private javax.swing.JLabel AnoTxt;
     private javax.swing.JButton ApagaConsultaBtn;
     private javax.swing.JRadioButton BtnCadAni;
     private javax.swing.JRadioButton BtnCadCli;
@@ -1007,15 +1047,18 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel ConsultasPanel2;
     private javax.swing.JTable ConsultasTable;
     private javax.swing.JButton DeleteBtn;
-    private javax.swing.JComboBox<String> DiaBox;
+    private javax.swing.JTextField DiaConsultaInput;
+    private javax.swing.JLabel DiaTxt;
     private javax.swing.JTextField EmailBuscaInput;
     private javax.swing.JLabel EmailTxt;
     private javax.swing.JPanel Header;
+    private javax.swing.JButton HojeBtn;
     private javax.swing.JComboBox<String> HorarioBox;
     private javax.swing.JLabel HorarioTxt;
     private javax.swing.JPanel MainPanel;
     private javax.swing.JTable MainTable;
-    private javax.swing.JComboBox<String> MesBox;
+    private javax.swing.JTextField MesConsultaInput;
+    private javax.swing.JLabel MesTxt;
     private javax.swing.JTextField NameInput;
     private javax.swing.JButton NewConsultaBtn;
     private javax.swing.JLabel NomeTxt;

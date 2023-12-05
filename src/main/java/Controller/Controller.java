@@ -535,7 +535,7 @@ public class Controller {
         return true;
      }
      
-     public static boolean filtroAplicado(JTable table, JToggleButton vetFilter, JToggleButton animalFilter, JComboBox diaBox, JComboBox mesBox, JComboBox anoBox){
+     public static boolean filtroAplicado(JTable table, JToggleButton vetFilter, JToggleButton animalFilter, JTextField diaBox, JTextField mesBox, JTextField anoBox){
          if (table.getModel() instanceof ConsultaTableModel) {
             String where = " where ";
 
@@ -559,29 +559,29 @@ public class Controller {
                 
             }
             
-            if (!"Dia".equals(diaBox.getSelectedItem())) {
+            if (!"".equals(diaBox.getText())) {
                 if (addAnd) {
                     where += " and ";
                 } 
-                where += " day(data) = " + diaBox.getSelectedItem();
+                where += " day(data) = " + diaBox.getText();
                 addAnd = true;
                 
             }
 
-            if (!"Mês".equals(mesBox.getSelectedItem())) {
+            if (!"".equals(mesBox.getText())) {
                 if (addAnd) {
                     where += " and ";
                 } 
-                where += " month(data) = " + mesBox.getSelectedItem();
+                where += " month(data) = " + mesBox.getText();
                 addAnd = true;
                 
             }
 
-            if (!"Ano".equals(anoBox.getSelectedItem())) {
+            if (!"".equals(anoBox.getText())) {
                 if (addAnd) {
                     where += " and ";
                 } 
-                where += " year(data) = " + anoBox.getSelectedItem();
+                where += " year(data) = " + anoBox.getText();
                 addAnd = true;
                 
             }

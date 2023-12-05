@@ -4769,3 +4769,6 @@ SELECT * FROM animal id_cliente = 24 [42000-206]
 2023-12-04 20:07:37 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM ANIMAL ID_CLIENTE =[*] 24"; SQL statement:
 SELECT * FROM animal id_cliente = 24 [42000-206]
+2023-12-05 18:37:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM CONSULTA WHERE  DAY(DATA) =  AND[*]  MONTH(DATA) =  AND  YEAR(DATA) = 2023"; expected "ALL, ANY, SOME"; SQL statement:
+SELECT * FROM consulta where  day(data) =  and  month(data) =  and  year(data) = 2023 [42001-206]
