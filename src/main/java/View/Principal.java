@@ -122,6 +122,7 @@ public class Principal extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         DeleteBtn = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
+        InativarBtn = new javax.swing.JButton();
         ConsultasPanel2 = new javax.swing.JPanel();
         NewConsultaBtn = new javax.swing.JButton();
         ApagaConsultaBtn = new javax.swing.JButton();
@@ -355,10 +356,17 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        DeleteBtn.setText("Deletar");
+        DeleteBtn.setText("Ativar");
         DeleteBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DeleteBtnActionPerformed(evt);
+            }
+        });
+
+        InativarBtn.setText("Inativar");
+        InativarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InativarBtnActionPerformed(evt);
             }
         });
 
@@ -391,20 +399,22 @@ public class Principal extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(CelularTxt)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(CelularBuscaInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(CelularBuscaInput, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(EmailTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(EmailBuscaInput, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
             .addGroup(CadastrosLayout.createSequentialGroup()
-                .addGap(365, 365, 365)
+                .addGap(300, 300, 300)
                 .addComponent(BtnTodos)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BtnNovo)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(DeleteBtn)
-                .addContainerGap(352, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(InativarBtn)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         CadastrosLayout.setVerticalGroup(
             CadastrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -431,7 +441,8 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(CadastrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtnNovo)
                     .addComponent(BtnTodos)
-                    .addComponent(DeleteBtn))
+                    .addComponent(DeleteBtn)
+                    .addComponent(InativarBtn))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -808,7 +819,8 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_HojeBtnActionPerformed
 
     private void DeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteBtnActionPerformed
-        if(!Controller.apagaBtn(MainTable)){
+        
+        /*if(!Controller.apagaBtn(MainTable)){
             JOptionPane.showMessageDialog(this, "Selecione uma linha da coluna para poder deletar");
         }
         else{
@@ -833,6 +845,10 @@ public class Principal extends javax.swing.JFrame {
             else{
                 VeterinarioInput.setText("");
             }
+        }*/
+        
+        if(!Controller.ativaDado(MainTable)){
+            JOptionPane.showMessageDialog(this, "Este indivíduo já está ativado!");
         }
     }//GEN-LAST:event_DeleteBtnActionPerformed
 
@@ -989,6 +1005,17 @@ public class Principal extends javax.swing.JFrame {
         EmailBuscaInput.setVisible(true);
     }//GEN-LAST:event_BtnCadCliActionPerformed
 
+    private void InativarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InativarBtnActionPerformed
+        int resposta = Controller.inativaDado(MainTable);
+        
+        if(resposta == 1){
+            JOptionPane.showMessageDialog(this, "Cliente já está inativo");
+        }
+        else if(resposta == 2){
+            JOptionPane.showMessageDialog(this, "Cliente possui animais com consulta em aberto");
+        }
+    }//GEN-LAST:event_InativarBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1055,6 +1082,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton HojeBtn;
     private javax.swing.JComboBox<String> HorarioBox;
     private javax.swing.JLabel HorarioTxt;
+    private javax.swing.JButton InativarBtn;
     private javax.swing.JPanel MainPanel;
     private javax.swing.JTable MainTable;
     private javax.swing.JTextField MesConsultaInput;

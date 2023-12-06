@@ -26,16 +26,17 @@ public class AnimalDAO extends DAO {
     }
 
 // CRUD    
-    public Animal create(String nome, int anoNasc, String sexo, int id_especie, int id_tratamento, int id_cliente) {
+    public Animal create(String nome, int anoNasc, String sexo, int id_especie, int id_tratamento, int id_cliente, Boolean ativo) {
         try {
             PreparedStatement stmt;
-            stmt = DAO.getConnection().prepareStatement("INSERT INTO animal (nome, anoNasc, sexo, id_especie, id_tratamento, id_cliente) VALUES (?,?,?,?,?,?)");
+            stmt = DAO.getConnection().prepareStatement("INSERT INTO animal (nome, anoNasc, sexo, id_especie, id_tratamento, id_cliente, ativo) VALUES (?,?,?,?,?,?,?)");
             stmt.setString(1, nome);
             stmt.setInt(2, anoNasc);
             stmt.setString(3, sexo);
             stmt.setInt(4, id_especie);
             stmt.setInt(5, id_tratamento);
             stmt.setInt(6, id_cliente);
+            stmt.setBoolean(7, ativo);
             executeUpdate(stmt);
         } catch (SQLException ex) {
             Logger.getLogger(AnimalDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -47,7 +48,7 @@ public class AnimalDAO extends DAO {
     private Animal buildObject(ResultSet rs) {
         Animal animal = null;
         try {
-            animal = new Animal(rs.getInt("id"), rs.getString("nome"), rs.getInt("anoNasc"), rs.getString("sexo"), rs.getInt("id_especie"), rs.getInt("id_cliente"), rs.getInt("id_tratamento"));
+            animal = new Animal(rs.getInt("id"), rs.getString("nome"), rs.getInt("anoNasc"), rs.getString("sexo"), rs.getInt("id_especie"), rs.getInt("id_cliente"), rs.getInt("id_tratamento"), rs.getBoolean("ativo"));
         } catch (SQLException e) {
             System.err.println("Exception: " + e.getMessage());
         }
@@ -96,14 +97,15 @@ public class AnimalDAO extends DAO {
     public void update(Animal animal) {
         try {
             PreparedStatement stmt;
-            stmt = DAO.getConnection().prepareStatement("UPDATE animal SET nome=?, anoNasc=?, sexo=?, id_especie=?, id_tratamento=?, id_cliente =? WHERE id=?");
+            stmt = DAO.getConnection().prepareStatement("UPDATE animal SET nome=?, anoNasc=?, sexo=?, id_especie=?, id_tratamento=?, id_cliente =?, ativo=? WHERE id=?");
             stmt.setString(1, animal.getNome());
             stmt.setInt(2, animal.getAnoNasc());
             stmt.setString(3, animal.getSexo());
             stmt.setInt(4, animal.getIdEspecie());
             stmt.setInt(5, animal.getIdTratamento());
             stmt.setInt(6, animal.getIdCliente());
-            stmt.setInt(7, animal.getId());
+            stmt.setBoolean(7, animal.getAtivo());
+            stmt.setInt(8, animal.getId());
             executeUpdate(stmt);
         } catch (SQLException e) {
             System.err.println("Exception: " + e.getMessage());

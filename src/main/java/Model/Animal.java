@@ -12,8 +12,9 @@ public class Animal {
     private int id_especie;
     private int id_tratamento;
     private int id_cliente;
+    private Boolean ativo;
 
-    public Animal(int id, String nome, int anoNasc, String sexo, int id_especie, int id_cliente, int id_tratamento) {
+    public Animal(int id, String nome, int anoNasc, String sexo, int id_especie, int id_cliente, int id_tratamento, Boolean ativo) {
         this.id = id;
         this.nome = nome;
         this.anoNasc = anoNasc;
@@ -21,6 +22,7 @@ public class Animal {
         this.id_especie = id_especie;
         this.id_cliente = id_cliente;
         this.id_tratamento = id_tratamento;
+        this.ativo = ativo;
     }
 
     public int getId() {
@@ -29,6 +31,14 @@ public class Animal {
 
     public String getNome() {
         return nome;
+    }
+    
+    public Boolean getAtivo() {
+        return ativo;
+    }
+    
+    public void setAtivo(Boolean ativo) {
+        this.ativo = ativo;
     }
 
     public void setNome(String nome) {

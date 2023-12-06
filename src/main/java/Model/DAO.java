@@ -75,25 +75,28 @@ public abstract class DAO {
     protected final boolean createTable() {
         try {
             PreparedStatement stmt;
+        
             
             // Table client:
             stmt = DAO.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS cliente( \n"
-                    + "id INTEGER PRIMARY KEY AUTO_INCREMENT, \n"
-                    + "nome VARCHAR, \n"
-                    + "endereco VARCHAR, \n"
-                    + "cep VARCHAR, \n"
-                    + "email VARCHAR, \n"
-                    + "telefone VARCHAR); \n");
+                + "id INTEGER PRIMARY KEY AUTO_INCREMENT, \n"
+                + "nome VARCHAR, \n"
+                + "endereco VARCHAR, \n"
+                + "cep VARCHAR, \n"
+                + "email VARCHAR, \n"
+                + "telefone VARCHAR, \n"
+                + "ativo BOOLEAN); \n");
             executeUpdate(stmt);
             // Table animal:
             stmt = DAO.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS animal( \n"
-                    + "id INTEGER PRIMARY KEY AUTO_INCREMENT, \n"
-                    + "nome VARCHAR, \n"
-                    + "anoNasc INTEGER, \n"
-                    + "sexo VARCHAR, \n"
-                    + "id_especie INTEGER, \n"
-                    + "id_tratamento INTEGER, \n"
-                    + "id_cliente INTEGER); \n");
+                 + "id INTEGER PRIMARY KEY AUTO_INCREMENT, \n"
+                 + "nome VARCHAR, \n"
+                 + "anoNasc INTEGER, \n"
+                 + "sexo VARCHAR, \n"
+                 + "id_especie INTEGER, \n"
+                 + "id_tratamento INTEGER, \n"
+                 + "id_cliente INTEGER, \n"
+                 + "ativo BOOLEAN); \n");
             executeUpdate(stmt);
             // Table tratamento:
             stmt = DAO.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS tratamento( \n"
@@ -108,11 +111,12 @@ public abstract class DAO {
             executeUpdate(stmt);
             // Table vet:
             stmt = DAO.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS vet( \n"
-                    + "id INTEGER PRIMARY KEY AUTO_INCREMENT, \n"
-                    + "nome VARCHAR, \n"
-                    + "email VARCHAR, \n"
-                    + "telefone VARCHAR); \n");
-            executeUpdate(stmt);        
+                + "id INTEGER PRIMARY KEY AUTO_INCREMENT, \n"
+                + "nome VARCHAR, \n"
+                + "email VARCHAR, \n"
+                + "telefone VARCHAR, \n"
+                + "ativo BOOLEAN); \n");
+            executeUpdate(stmt);     
             // Table appointment:
             stmt = DAO.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS consulta( \n"
                     + "id INTEGER PRIMARY KEY AUTO_INCREMENT, \n"

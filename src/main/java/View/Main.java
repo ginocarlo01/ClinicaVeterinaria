@@ -46,7 +46,7 @@ public class Main {
         
         AnimalDAO animal = AnimalDAO.getInstance();
         
-        animal.create("Vitor", 2, "Masculino", 0, 0, 12);
+        //animal.create("Vitor", 2, "Masculino", 0, 0, 12, true);
 
         // Chame métodos da instância Singleton
         List<Animal> todosAnimais = animal.retrieveAll();

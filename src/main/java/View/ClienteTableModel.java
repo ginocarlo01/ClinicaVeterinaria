@@ -11,7 +11,7 @@ import Model.ClienteDAO;
 public class ClienteTableModel extends GenericTableModel {
 
     public ClienteTableModel(List vDados){
-        super(vDados, new String[]{"Nome","Endereço", "CEP", "email", "Celular"});
+        super(vDados, new String[]{"Nome","Endereço", "CEP", "email", "Celular", "Ativo"});
     }
     
     @Override
@@ -26,7 +26,9 @@ public class ClienteTableModel extends GenericTableModel {
             case 3:
                 return String.class;
             case 4:
-                return String.class;                
+                return String.class;  
+            case 5:
+                return Boolean.class;
             default:
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
         }
@@ -47,7 +49,9 @@ public class ClienteTableModel extends GenericTableModel {
             case 3:
                 return client.getEmail();
             case 4:
-                return client.getTelefone();                
+                return client.getTelefone();               
+            case 5:
+                return client.getAtivo();     
             default:
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
         }
@@ -74,6 +78,9 @@ public class ClienteTableModel extends GenericTableModel {
             case 4:
                 client.setTelefone((String)aValue);
                 break;
+            case 5:
+                client.setAtivo((Boolean)aValue);
+                break;
             default:
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
         }
@@ -83,7 +90,7 @@ public class ClienteTableModel extends GenericTableModel {
     
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
-        //if (columnIndex == 0) return false;
+        if (columnIndex == 5) return false;
         return true;
     }      
     

@@ -26,13 +26,14 @@ public class VeterinarioDAO extends DAO {
     }
 
 // CRUD    
-    public Veterinario create(String nome, String email, String telefone) {
+    public Veterinario create(String nome, String email, String telefone, Boolean ativo) {
         try {
             PreparedStatement stmt;
-            stmt = DAO.getConnection().prepareStatement("INSERT INTO vet (nome, email, telefone) VALUES (?,?,?)");
+            stmt = DAO.getConnection().prepareStatement("INSERT INTO vet (nome, email, telefone, ativo) VALUES (?,?,?,?)");
             stmt.setString(1, nome);
             stmt.setString(2, email);
             stmt.setString(3, telefone);
+            stmt.setBoolean(4, ativo);
             executeUpdate(stmt);
         } catch (SQLException ex) {
             Logger.getLogger(VeterinarioDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -44,7 +45,7 @@ public class VeterinarioDAO extends DAO {
     private Veterinario buildObject(ResultSet rs) {
         Veterinario vet = null;
         try {
-            vet = new Veterinario(rs.getInt("id"), rs.getString("nome"),rs.getString("email"), rs.getString("telefone"));
+            vet = new Veterinario(rs.getInt("id"), rs.getString("nome"),rs.getString("email"), rs.getString("telefone"), rs.getBoolean("ativo"));
         } catch (SQLException e) {
             System.err.println("Exception: " + e.getMessage());
         }
@@ -102,11 +103,12 @@ public class VeterinarioDAO extends DAO {
     public void update(Veterinario vet) {
         try {
             PreparedStatement stmt;
-            stmt = DAO.getConnection().prepareStatement("UPDATE vet SET nome=?, email=?, telefone=? WHERE id=?");
+            stmt = DAO.getConnection().prepareStatement("UPDATE vet SET nome=?, email=?, telefone=?, ativo=? WHERE id=?");
             stmt.setString(1, vet.getNome());
             stmt.setString(2, vet.getEmail());
             stmt.setString(3, vet.getTelefone());
-            stmt.setInt(4, vet.getId());
+            stmt.setBoolean(4, vet.getAtivo());
+            stmt.setInt(5, vet.getId());
             executeUpdate(stmt);
         } catch (SQLException e) {
             System.err.println("Exception: " + e.getMessage());

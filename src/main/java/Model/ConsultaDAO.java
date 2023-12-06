@@ -28,7 +28,7 @@ public class ConsultaDAO extends DAO {
     }
 
 // CRUD    
-    public Consulta create(Date data, String horario, String comentario, int id_animal, int id_vet, int id_tratamento, int terminado) {
+    public Consulta create(Date data, String horario, String comentario, int id_animal, int id_vet, int id_tratamento, boolean terminado) {
         try {
             PreparedStatement stmt;
             stmt = DAO.getConnection().prepareStatement("INSERT INTO consulta (data, horario, comentario, id_animal, id_vet, id_tratamento, terminado) VALUES (?,?,?,?,?,?,?)");
@@ -40,7 +40,7 @@ public class ConsultaDAO extends DAO {
             stmt.setInt(4, id_animal);
             stmt.setInt(5, id_vet);
             stmt.setInt(6, id_tratamento);
-            stmt.setInt(7, terminado);
+            stmt.setBoolean(7, terminado);
             
             executeUpdate(stmt);
         } catch (SQLException ex) {

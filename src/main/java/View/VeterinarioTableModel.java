@@ -11,7 +11,7 @@ import Model.VeterinarioDAO;
 public class VeterinarioTableModel extends GenericTableModel {
 
     public VeterinarioTableModel(List vDados) {
-        super(vDados, new String[]{"Nome", "E-mail", "Telefone"});
+        super(vDados, new String[]{"Nome", "E-mail", "Telefone", "Ativo"});
 
     }
 
@@ -25,6 +25,8 @@ public class VeterinarioTableModel extends GenericTableModel {
                 return String.class;
             case 2:
                 return String.class;
+            case 3:
+                return Boolean.class;
             default:
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
         }
@@ -41,7 +43,8 @@ public class VeterinarioTableModel extends GenericTableModel {
                 return veterinario.getEmail();
             case 2:
                 return veterinario.getTelefone();
-
+            case 3:
+                return veterinario.getAtivo();
             default:
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
 
@@ -62,6 +65,9 @@ public class VeterinarioTableModel extends GenericTableModel {
             case 2:
                 veterinario.setTelefone((String) aValue);
                 break;
+            case 3:
+                veterinario.setAtivo((Boolean) aValue);
+                break;
             
             default:
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
@@ -73,6 +79,7 @@ public class VeterinarioTableModel extends GenericTableModel {
 
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
+        if (columnIndex == 3) return false;
         return true;
     }
 }

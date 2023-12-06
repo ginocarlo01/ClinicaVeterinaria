@@ -596,18 +596,18 @@ public class Controller {
         return true;
      }
      
-    public static Cliente adicionaCliente(String nome, String end, String cep, String email, String telefone){
-        return ClienteDAO.getInstance().create(nome, end, cep, email, telefone);
+    public static Cliente adicionaCliente(String nome, String end, String cep, String email, String telefone, Boolean ativo){
+        return ClienteDAO.getInstance().create(nome, end, cep, email, telefone, ativo);
     }
     
     public static Consulta adicionaConsulta(){
-        return ConsultaDAO.getInstance().create(Calendar.getInstance().getTime(), "-:--", "", animalSelecionado.getId(), veterinarioSelecionado.getId(), 0, 0);
+        return ConsultaDAO.getInstance().create(Calendar.getInstance().getTime(), "-:--", "", animalSelecionado.getId(), veterinarioSelecionado.getId(), 0, Boolean.FALSE);
     }
     
     public static Animal adicionaAnimalAoClienteSelecionado(){
         int currentYear = Calendar.getInstance().get(Calendar.YEAR);
         
-        return AnimalDAO.getInstance().create("", currentYear, "Fêmea", 0, 0, clienteSelecionado.getId());
+        return AnimalDAO.getInstance().create("", currentYear, "Fêmea", 0, 0, clienteSelecionado.getId(), true);
     }
     
     public static Especie adicionaEspecie(){
@@ -615,7 +615,7 @@ public class Controller {
     }
     
     public static Veterinario adicionaVeterinario(){
-        return VeterinarioDAO.getInstance().create("", "", "");
+        return VeterinarioDAO.getInstance().create("", "", "", true);
     }
    
     public static void getAllData(JTable table){
@@ -635,7 +635,7 @@ public class Controller {
     
     public static boolean createNewData(JTable table){
         if(table.getModel() instanceof ClienteTableModel){
-            ((GenericTableModel)table.getModel()).addItem(adicionaCliente("", "", "", "", ""));
+            ((GenericTableModel)table.getModel()).addItem(adicionaCliente("", "", "", "", "", true));
         }
         else if(table.getModel() instanceof AnimalTableModel){
             ((GenericTableModel)table.getModel()).addItem(adicionaAnimalAoClienteSelecionado());
@@ -725,5 +725,61 @@ public class Controller {
             return true;
         }
         return false;
+    }
+    
+    public static boolean ativaDado(JTable table){
+        if(table.getModel() instanceof ClienteTableModel){
+            
+            if(!clienteSelecionado.getAtivo()){
+                
+                clienteSelecionado.setAtivo(Boolean.TRUE);
+                
+                ClienteDAO.getInstance().update(clienteSelecionado);
+            
+                jRadioButtonClientesSelecionado(table);
+                
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    public static int inativaDado(JTable table){
+        if(table.getModel() instanceof ClienteTableModel){
+            
+            if(clienteSelecionado.getAtivo()){
+                
+                //pega todos os animais daquele cliente
+                
+                List<Animal> animais = AnimalDAO.getInstance().retrieveByIdCliente(clienteSelecionado.getId());
+                
+                for(Animal animal : animais){
+                    System.out.println(animal.getNome());
+                    String filter = " WHERE id_animal = " + animal.getId() + " and terminado = false";
+                    
+                    List<Consulta> consultas = ConsultaDAO.getInstance().retrieveByIdCustomFilter(filter);
+                    System.out.println(consultas.size());
+                    if(!consultas.isEmpty()){
+                        return 2; //tem consulta ativa
+                    }
+                }
+                
+                
+                clienteSelecionado.setAtivo(Boolean.FALSE);
+                
+                ClienteDAO.getInstance().update(clienteSelecionado);
+            
+                jRadioButtonClientesSelecionado(table);
+                
+                return 0; //sucesso
+            }
+            else{
+                return 1; //já está inativo
+            }
+        }
+        return 0;
     }
 }

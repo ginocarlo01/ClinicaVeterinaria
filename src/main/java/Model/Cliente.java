@@ -11,19 +11,21 @@ public class Cliente {
     private String cep;
     private String email;
     private String telefone;
+    private Boolean ativo;
     
     //private List<Animal> animais;
     
 // Bug001: A ordem dos parâmetros no construtor estava trocada, ao carregar os dados novamente do banco os campos ficavam
 //   invertidos na JTable
 
-    public Cliente(int id, String nome, String endereco, String cep, String email, String telefone) {
+    public Cliente(int id, String nome, String endereco, String cep, String email, String telefone, Boolean ativo) {
         this.id = id;
         this.nome = nome;
         this.endereco = endereco;
         this.cep = cep;
         this.email = email;
-        this.telefone = telefone;             
+        this.telefone = telefone;      
+        this.ativo = ativo;
     }
     
     public int getId(){
@@ -32,6 +34,10 @@ public class Cliente {
 
     public String getNome() {
         return nome;
+    }
+    
+    public Boolean getAtivo() {
+        return ativo;
     }
 
     public String getEndereco() {
@@ -58,6 +64,10 @@ public class Cliente {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+    
+    public void setAtivo(Boolean ativo) {
+        this.ativo = ativo;
     }
 
     public void setEndereco(String endereco) {

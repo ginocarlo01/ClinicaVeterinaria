@@ -13,7 +13,7 @@ import Model.EspecieDAO;
 public class AnimalTableModel extends GenericTableModel {
 
     public AnimalTableModel(List vDados) {
-        super(vDados, new String[]{"Nome", "Ano de nascimento", "Sexo", "Espécie"});
+        super(vDados, new String[]{"Nome", "Ano de nascimento", "Sexo", "Espécie", "Ativo"});
 
     }
 
@@ -29,6 +29,8 @@ public class AnimalTableModel extends GenericTableModel {
                 return String.class;
             case 3:
                 return String.class;
+            case 4:
+                return Boolean.class;
             default:
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
         }
@@ -52,7 +54,8 @@ public class AnimalTableModel extends GenericTableModel {
                     return species.getNome();
                 }
                 return "";
-
+            case 4:
+                return animal.getAtivo();
             default:
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
 
@@ -83,6 +86,9 @@ public class AnimalTableModel extends GenericTableModel {
                     animal.setIdEspecie(species.getId());
                 }
                 break;
+            case 4:
+                animal.setAtivo((Boolean) aValue);
+                break;
             default:
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
 
@@ -93,6 +99,7 @@ public class AnimalTableModel extends GenericTableModel {
 
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
+        if (columnIndex == 4) return false;
         return true;
     }
 }
