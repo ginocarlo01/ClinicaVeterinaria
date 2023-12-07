@@ -165,7 +165,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="VeterinarioText">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Veterinario"/>
+                <Property name="text" type="java.lang.String" value="Veterin&#xe1;rio"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="NameInput">
@@ -263,7 +263,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="BtnNovo" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="DeleteBtn" min="-2" max="-2" attributes="0"/>
+                          <Component id="AtivarBtn" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="InativarBtn" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
@@ -297,7 +297,7 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="BtnNovo" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="BtnTodos" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="DeleteBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="AtivarBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="InativarBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -334,7 +334,7 @@
                 </Component>
                 <Component class="javax.swing.JRadioButton" name="BtnCadVet">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Cadastro Veterinario"/>
+                    <Property name="text" type="java.lang.String" value="Cadastro Veterin&#xe1;rio"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnCadVetActionPerformed"/>
@@ -443,12 +443,12 @@
                 </Component>
                 <Component class="javax.swing.JSeparator" name="jSeparator1">
                 </Component>
-                <Component class="javax.swing.JButton" name="DeleteBtn">
+                <Component class="javax.swing.JButton" name="AtivarBtn">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Ativar"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DeleteBtnActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AtivarBtnActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JSeparator" name="jSeparator2">
@@ -620,7 +620,7 @@
                 </Container>
                 <Component class="javax.swing.JToggleButton" name="VetFilter">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Filtrar Veterinario"/>
+                    <Property name="text" type="java.lang.String" value="Filtrar Veterin&#xe1;rio"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="VetFilterActionPerformed"/>

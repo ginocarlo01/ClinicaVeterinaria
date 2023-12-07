@@ -40,6 +40,7 @@ import javax.swing.event.CellEditorListener;
 import javax.swing.event.ChangeEvent;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.util.Objects;
 
 import javax.swing.table.TableColumn;
 
@@ -102,8 +103,19 @@ public class Controller {
     
     }
     
-    public static boolean jRadioButtonAnimalSelecionado(JTable table) {
-    if (getClienteSelecionado() != null) {
+    public static int jRadioButtonAnimalSelecionado(JTable table) {
+    
+        if (getClienteSelecionado() == null) { 
+            setTableModel(table, new AnimalTableModel(new ArrayList()));
+            return 1;  //clienteVazio
+        } 
+        
+        if (Objects.equals(getClienteSelecionado().getAtivo(), Boolean.FALSE)) { 
+            setTableModel(table, new AnimalTableModel(new ArrayList()));
+            return 2; //não está ativo
+        } 
+        
+        
         setTableModel(table, new AnimalTableModel(AnimalDAO.getInstance().retrieveByIdCliente(getClienteSelecionado().getId())));
 
         JComboBox<String> especiesBox = new JComboBox<>();
@@ -127,14 +139,9 @@ public class Controller {
         sexBox.addItem("Fêmea");
         TableColumn sexColumn = table.getColumnModel().getColumn(2);
         sexColumn.setCellEditor(new DefaultCellEditor(sexBox));
-        
-        return true;
-    } else {
-        setTableModel(table, new AnimalTableModel(new ArrayList()));
-        return false;
-    }
-}
 
+        return 0;
+    }
     
     public static void jRadioButtonEspecieSelecionado(JTable table){
         setTableModel(table, new EspecieTableModel(EspecieDAO.getInstance().retrieveAll()));
@@ -153,8 +160,8 @@ public class Controller {
         yearComboBox.addItem(String.valueOf(currentYear));
         yearComboBox.addItem(String.valueOf(currentYear + 1));
 
-        // Adicionar JComboBox à coluna 0
-        TableColumn yearColumn = table.getColumnModel().getColumn(2);
+        
+        TableColumn yearColumn = table.getColumnModel().getColumn(2);   //YEAR
         yearColumn.setCellEditor(new DefaultCellEditor(yearComboBox));
 
         JComboBox<String> monthComboBox = new JComboBox<>();
@@ -162,8 +169,8 @@ public class Controller {
             monthComboBox.addItem(String.valueOf(i));
         }
 
-        // Adicionar JComboBox à coluna 1
-        TableColumn monthColumn = table.getColumnModel().getColumn(1);
+        
+        TableColumn monthColumn = table.getColumnModel().getColumn(1);  //MONTH
         monthColumn.setCellEditor(new DefaultCellEditor(monthComboBox));
 
         JComboBox<String> dayComboBox = new JComboBox<>();
@@ -171,15 +178,10 @@ public class Controller {
             dayComboBox.addItem(String.valueOf(i));
         }
 
-        // Adicionar JComboBox à coluna 2
-        TableColumn dayColumn = table.getColumnModel().getColumn(0);
-        dayColumn.setCellEditor(new DefaultCellEditor(dayComboBox));
+        
+        TableColumn dayColumn = table.getColumnModel().getColumn(0);    //DAY
+        dayColumn.setCellEditor(new DefaultCellEditor(dayComboBox));    
 
-        String[] timeSlots = {"8:00", "9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00"};
-        JComboBox<String> timeComboBox = new JComboBox<>(timeSlots);
-
-        // Set the cell editor for a coluna com índice 3
-        table.getColumnModel().getColumn(3).setCellEditor(new DefaultCellEditor(timeComboBox));
     }
 
     public static void updateTabelasConsulta(JTable table, List data) {
@@ -191,7 +193,6 @@ public class Controller {
         yearComboBox.addItem(String.valueOf(currentYear));
         yearComboBox.addItem(String.valueOf(currentYear + 1));
 
-        // Adicionar JComboBox à coluna 0
         TableColumn yearColumn = table.getColumnModel().getColumn(2);
         yearColumn.setCellEditor(new DefaultCellEditor(yearComboBox));
 
@@ -200,7 +201,6 @@ public class Controller {
             monthComboBox.addItem(String.valueOf(i));
         }
 
-        // Adicionar JComboBox à coluna 1
         TableColumn monthColumn = table.getColumnModel().getColumn(1);
         monthColumn.setCellEditor(new DefaultCellEditor(monthComboBox));
 
@@ -213,11 +213,6 @@ public class Controller {
         TableColumn dayColumn = table.getColumnModel().getColumn(0);
         dayColumn.setCellEditor(new DefaultCellEditor(dayComboBox));
 
-        String[] timeSlots = {"8:00", "9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00"};
-        JComboBox<String> timeComboBox = new JComboBox<>(timeSlots);
-
-        // Set the cell editor for a coluna com índice 3
-        table.getColumnModel().getColumn(3).setCellEditor(new DefaultCellEditor(timeComboBox));
     }
     
     public static void setTextFields(JTextField cliente, JTextField animal, JTextField veterinario){
@@ -646,16 +641,36 @@ public class Controller {
         else if(table.getModel() instanceof VeterinarioTableModel){
             ((GenericTableModel)table.getModel()).addItem(adicionaVeterinario());
         }
-        else if(table.getModel() instanceof ConsultaTableModel){
+        return true;
+    }
+    
+    public static int createNewConsulta(JTable table){
+        if(table.getModel() instanceof ConsultaTableModel){
             if((clienteSelecionado != null) && (animalSelecionado != null) && (veterinarioSelecionado != null)){
+                
+                if(Objects.equals(clienteSelecionado.getAtivo(), Boolean.FALSE)){
+                    return 2; //cliente inativo
+                }
+                
+                if(Objects.equals(animalSelecionado.getAtivo(), Boolean.FALSE)){
+                    return 3; //animal inativo
+                }
+                
+                if(Objects.equals(veterinarioSelecionado.getAtivo(), Boolean.FALSE)){
+                    return 4; //veterinario inativo
+                }
+                
                 Consulta newConsulta = adicionaConsulta();
                 ((GenericTableModel)table.getModel()).addItem(ConsultaDAO.getInstance().retrieveById(newConsulta.getId()));
+                
+                return 0;
             }
             else{
-                return false;
+                return 1; //possui algum dado vazio
             }
         }
-        return true;
+        
+        return 0;
     }
     
     public static void apagaCliente(Cliente cliente){
@@ -727,8 +742,10 @@ public class Controller {
         return false;
     }
     
-    public static boolean ativaDado(JTable table){
+    public static int ativaDado(JTable table){
         if(table.getModel() instanceof ClienteTableModel){
+            
+            if(clienteSelecionado == null) {return 1;} // não selecionado
             
             if(!clienteSelecionado.getAtivo()){
                 
@@ -738,17 +755,58 @@ public class Controller {
             
                 jRadioButtonClientesSelecionado(table);
                 
-                return true;
+                return 0; //sucesso
             }
             else{
-                return false;
+                return 2; //já está ativo
             }
         }
-        return true;
+        
+        if(table.getModel() instanceof AnimalTableModel){
+            
+            if(animalSelecionado == null) {return 1;} // não selecionado
+            
+            if(!animalSelecionado.getAtivo()){
+                
+                animalSelecionado.setAtivo(Boolean.TRUE);
+                
+                AnimalDAO.getInstance().update(animalSelecionado);
+            
+                jRadioButtonAnimalSelecionado(table);
+                
+                return 0; //sucesso
+            }
+            else{
+                return 2; //já está ativo
+            }
+        }
+        
+        if(table.getModel() instanceof VeterinarioTableModel){
+            
+            if(veterinarioSelecionado == null) {return 1;} // não selecionado
+            
+            if(!veterinarioSelecionado.getAtivo()){
+                
+                veterinarioSelecionado.setAtivo(Boolean.TRUE);
+                
+                VeterinarioDAO.getInstance().update(veterinarioSelecionado);
+            
+                jRadioButtonVeterinarioSelecionado(table);
+                
+                return 0; //sucesso
+            }
+            else{
+                return 2; //já está ativo
+            }
+        }
+        
+        return 0; //sucesso
     }
     
     public static int inativaDado(JTable table){
         if(table.getModel() instanceof ClienteTableModel){
+            
+            if(clienteSelecionado == null) {return 4;} // não selecionado
             
             if(clienteSelecionado.getAtivo()){
                 
@@ -761,7 +819,7 @@ public class Controller {
                     String filter = " WHERE id_animal = " + animal.getId() + " and terminado = false";
                     
                     List<Consulta> consultas = ConsultaDAO.getInstance().retrieveByIdCustomFilter(filter);
-                    System.out.println(consultas.size());
+                    
                     if(!consultas.isEmpty()){
                         return 2; //tem consulta ativa
                     }
@@ -780,6 +838,64 @@ public class Controller {
                 return 1; //já está inativo
             }
         }
+        
+        if(table.getModel() instanceof AnimalTableModel){
+            
+            
+            if(animalSelecionado == null) {return 4;} // não selecionado
+            
+            if(animalSelecionado.getAtivo()){
+                
+                
+                String filter = " WHERE id_animal = " + animalSelecionado.getId() + " and terminado = false";
+
+                List<Consulta> consultas = ConsultaDAO.getInstance().retrieveByIdCustomFilter(filter);
+               
+                if(!consultas.isEmpty()){
+                    return 2; //tem consulta ativa
+                }
+ 
+                animalSelecionado.setAtivo(Boolean.FALSE);
+                
+                AnimalDAO.getInstance().update(animalSelecionado);
+            
+                jRadioButtonAnimalSelecionado(table);
+                
+                return 0; //sucesso
+            }
+            else{
+                return 1; //já está inativo
+            }
+        }
+        
+        if(table.getModel() instanceof VeterinarioTableModel){
+            
+            if(veterinarioSelecionado == null) {return 4;} // não selecionado
+            
+            if(veterinarioSelecionado.getAtivo()){
+                
+                
+                String filter = " WHERE id_vet = " + veterinarioSelecionado.getId() + " and terminado = false";
+
+                List<Consulta> consultas = ConsultaDAO.getInstance().retrieveByIdCustomFilter(filter);
+               
+                if(!consultas.isEmpty()){
+                    return 2; //tem consulta ativa
+                }
+ 
+                veterinarioSelecionado.setAtivo(Boolean.FALSE);
+                
+                VeterinarioDAO.getInstance().update(veterinarioSelecionado);
+            
+                jRadioButtonVeterinarioSelecionado(table);
+                
+                return 0; //sucesso
+            }
+            else{
+                return 1; //já está inativo
+            }
+        }
+        
         return 0;
     }
 }

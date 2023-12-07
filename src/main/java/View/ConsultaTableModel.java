@@ -24,7 +24,7 @@ public class ConsultaTableModel extends GenericTableModel {
     private final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
     
     public ConsultaTableModel(List vDados) {
-        super(vDados, new String[]{"Dia", "Mes", "Ano", "Hora", "Cliente", "Animal", "Veterinario", "Obs", "Exame", "Finalizada?"});
+        super(vDados, new String[]{"Dia", "Mês", "Ano", "Hora", "Cliente", "Animal", "Veterinario", "Obs", "Exame", "Finalizada?"});
 
     }
 
@@ -94,6 +94,15 @@ public class ConsultaTableModel extends GenericTableModel {
 
         }
     }
+    
+    public static boolean tryParseInt(String value) {
+        try {
+            Integer.parseInt(value);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
 
     @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
@@ -101,18 +110,7 @@ public class ConsultaTableModel extends GenericTableModel {
 
         switch (columnIndex) {
             case 0:
-                /*if (aValue instanceof Date) {
-                consulta.setData((Date) aValue);
-                } else if (aValue instanceof String) {
-                    try {
-                        Date date = dateFormat.parse((String) aValue);
-                        consulta.setData(date);
-                        fireTableCellUpdated(rowIndex, columnIndex);
-                    } catch (ParseException ex) {
-                        // Log the exception, and you can also set a red border here
-                        Logger.getLogger(ConsultaTableModel.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }*/
+                
                 consulta.setDia((String)aValue);
                 break;
             case 1:
@@ -121,7 +119,10 @@ public class ConsultaTableModel extends GenericTableModel {
             case 2:
                 consulta.setAno((String)aValue);
             case 3:  
-                consulta.setHorario((String)aValue);
+                if (!tryParseInt((String)aValue)) {
+                    consulta.setHorario((String)aValue);
+                }
+                
                 break;
             case 4:
                 

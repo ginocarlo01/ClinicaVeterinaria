@@ -121,6 +121,7 @@ public class Consulta {
     }
 
     public void setHorario(String horario) {
+        System.out.println("Novo horário: " + horario);
         this.horario = horario;
     }
 

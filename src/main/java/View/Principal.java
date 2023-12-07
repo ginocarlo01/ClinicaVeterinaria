@@ -120,7 +120,7 @@ public class Principal extends javax.swing.JFrame {
         EmailBuscaInput = new javax.swing.JTextField();
         SexoBox = new javax.swing.JComboBox<>();
         jSeparator1 = new javax.swing.JSeparator();
-        DeleteBtn = new javax.swing.JButton();
+        AtivarBtn = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
         InativarBtn = new javax.swing.JButton();
         ConsultasPanel2 = new javax.swing.JPanel();
@@ -164,7 +164,7 @@ public class Principal extends javax.swing.JFrame {
 
         AnimalText.setText("Animal");
 
-        VeterinarioText.setText("Veterinario");
+        VeterinarioText.setText("Veterinário");
 
         NameInput.setEditable(false);
         NameInput.setText("Insira seu nome");
@@ -260,7 +260,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        BtnCadVet.setText("Cadastro Veterinario");
+        BtnCadVet.setText("Cadastro Veterinário");
         BtnCadVet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnCadVetActionPerformed(evt);
@@ -356,10 +356,10 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        DeleteBtn.setText("Ativar");
-        DeleteBtn.addActionListener(new java.awt.event.ActionListener() {
+        AtivarBtn.setText("Ativar");
+        AtivarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DeleteBtnActionPerformed(evt);
+                AtivarBtnActionPerformed(evt);
             }
         });
 
@@ -411,7 +411,7 @@ public class Principal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BtnNovo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(DeleteBtn)
+                .addComponent(AtivarBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(InativarBtn)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -441,7 +441,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(CadastrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtnNovo)
                     .addComponent(BtnTodos)
-                    .addComponent(DeleteBtn)
+                    .addComponent(AtivarBtn)
                     .addComponent(InativarBtn))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -496,7 +496,7 @@ public class Principal extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(ConsultasTable);
 
-        VetFilter.setText("Filtrar Veterinario");
+        VetFilter.setText("Filtrar Veterinário");
         VetFilter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 VetFilterActionPerformed(evt);
@@ -683,9 +683,17 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_ClinicaPanelMousePressed
 
     private void NewConsultaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewConsultaBtnActionPerformed
-         if(!Controller.createNewData(ConsultasTable)){
-             JOptionPane.showMessageDialog(this, "Selecione um cliente, um animal e um veterinario");
-         }
+        int resposta =  Controller.createNewConsulta(ConsultasTable);
+        
+        switch (resposta) {
+            case 1 -> JOptionPane.showMessageDialog(this, "Selecione um cliente, um animal e um veterinário");
+            case 2 -> JOptionPane.showMessageDialog(this, "Selecione um cliente ativo!");
+            case 3 -> JOptionPane.showMessageDialog(this, "Selecione um animal ativo!");
+            case 4 -> JOptionPane.showMessageDialog(this, "Selecione um veterinário ativo!");
+            default -> {
+            }
+        }
+        
     }//GEN-LAST:event_NewConsultaBtnActionPerformed
 
     private void ApagaConsultaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ApagaConsultaBtnActionPerformed
@@ -736,7 +744,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void VetFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VetFilterActionPerformed
         if(!Controller.FiltroVetSelecionado()){
-            JOptionPane.showMessageDialog(this, "Selecione um veterinario");
+            JOptionPane.showMessageDialog(this, "Selecione um veterinário");
             VetFilter.setSelected(false);
         }
         else{
@@ -816,41 +824,23 @@ public class Principal extends javax.swing.JFrame {
         DiaConsultaInput.setText(String.valueOf(currentDay));
         MesConsultaInput.setText(String.valueOf(currentMonth+1));
         AnoConsultaInput.setText(String.valueOf(currentYear));
+        
+        Controller.filtroAplicado(ConsultasTable, VetFilter, AnimalFilter, DiaConsultaInput, MesConsultaInput, AnoConsultaInput);
+       
     }//GEN-LAST:event_HojeBtnActionPerformed
 
-    private void DeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteBtnActionPerformed
+    private void AtivarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtivarBtnActionPerformed
         
-        /*if(!Controller.apagaBtn(MainTable)){
-            JOptionPane.showMessageDialog(this, "Selecione uma linha da coluna para poder deletar");
-        }
-        else{
-            Controller.painelConsultasSelected(ConsultasTable);
-            if(Controller.getClienteSelecionado() != null){
-                NameInput.setText(Controller.getClienteSelecionado().getNome());
-            }
-            else{
-                NameInput.setText("");
-            }
-
-            if(Controller.getAnimalSelecionado() != null){
-                AnimalInput.setText(Controller.getAnimalSelecionado().getNome());
-            }
-            else{
-                AnimalInput.setText("");
-            }
-
-            if(Controller.getVeterinarioSelecionado() != null){
-                VeterinarioInput.setText(Controller.getVeterinarioSelecionado().getNome());
-            }
-            else{
-                VeterinarioInput.setText("");
-            }
-        }*/
+       
+        int resposta = Controller.ativaDado(MainTable);
         
-        if(!Controller.ativaDado(MainTable)){
-            JOptionPane.showMessageDialog(this, "Este indivíduo já está ativado!");
+        if(resposta == 2){
+            JOptionPane.showMessageDialog(this, "Este dado já está ativo");
         }
-    }//GEN-LAST:event_DeleteBtnActionPerformed
+        else if(resposta == 1){
+            JOptionPane.showMessageDialog(this, "Selecione um dado primeiro");
+        }
+    }//GEN-LAST:event_AtivarBtnActionPerformed
 
     private void SexoBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SexoBoxActionPerformed
         // TODO add your handling code here:
@@ -898,6 +888,9 @@ public class Principal extends javax.swing.JFrame {
     private void BtnTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTodosActionPerformed
         Controller.getAllData(MainTable);
         BuscaInput.setText("");
+        CelularBuscaInput.setText("");
+        EmailBuscaInput.setText("");
+        SexoBox.setSelectedItem("Sexo");
 
     }//GEN-LAST:event_BtnTodosActionPerformed
 
@@ -908,7 +901,8 @@ public class Principal extends javax.swing.JFrame {
         EmailBuscaInput.setText("");
         SexoBox.setSelectedItem("Sexo");
 
-        DeleteBtn.setVisible(true);
+        AtivarBtn.setVisible(true);
+        InativarBtn.setVisible(true);
 
         Controller.updateHeader();
         SexoBox.setVisible(false);
@@ -929,8 +923,9 @@ public class Principal extends javax.swing.JFrame {
         EmailBuscaInput.setText("");
         SexoBox.setSelectedItem("Sexo");
 
-        DeleteBtn.setVisible(false);
-
+        AtivarBtn.setVisible(false);
+        InativarBtn.setVisible(false);
+        
         SexoBox.setVisible(false);
 
         CelularTxt.setVisible(false);
@@ -947,38 +942,53 @@ public class Principal extends javax.swing.JFrame {
         EmailBuscaInput.setText("");
         SexoBox.setSelectedItem("Sexo");
 
-        DeleteBtn.setVisible(true);
+        AtivarBtn.setVisible(true);
+        InativarBtn.setVisible(true);
 
         Controller.updateHeader();
-        if(!Controller.jRadioButtonAnimalSelecionado(MainTable)){
-            JOptionPane.showMessageDialog(this, "Selecione um cliente!");
-            BtnCadCli.setSelected(true);
-
-            Controller.setTextFields(NameInput, AnimalInput, VeterinarioInput);
-
-            BuscaInput.setText("");
-            CelularBuscaInput.setText("");
-            EmailBuscaInput.setText("");
-            SexoBox.setSelectedItem("Sexo");
-
-            SexoBox.setVisible(false);
-
-            CelularTxt.setVisible(true);
-            CelularBuscaInput.setVisible(true);
-
-            EmailTxt.setVisible(true);
-            EmailBuscaInput.setVisible(true);
-
-            Controller.jRadioButtonClientesSelecionado(MainTable);
-        }
-        else{
-            CelularTxt.setVisible(false);
-            CelularBuscaInput.setVisible(false);
-
-            EmailTxt.setVisible(false);
-            EmailBuscaInput.setVisible(false);
-
-            SexoBox.setVisible(true);
+        
+        int resposta = Controller.jRadioButtonAnimalSelecionado(MainTable);
+        
+        switch (resposta) {
+            case 1 -> {
+                JOptionPane.showMessageDialog(this, "Selecione um cliente!");
+                BtnCadCli.setSelected(true);
+                Controller.setTextFields(NameInput, AnimalInput, VeterinarioInput);
+                BuscaInput.setText("");
+                CelularBuscaInput.setText("");
+                EmailBuscaInput.setText("");
+                SexoBox.setSelectedItem("Sexo");
+                SexoBox.setVisible(false);
+                CelularTxt.setVisible(true);
+                CelularBuscaInput.setVisible(true);
+                EmailTxt.setVisible(true);
+                EmailBuscaInput.setVisible(true);
+                Controller.jRadioButtonClientesSelecionado(MainTable);
+            }
+            case 2 -> {
+                JOptionPane.showMessageDialog(this, "Selecione um cliente ativo!");
+                BtnCadCli.setSelected(true);
+                Controller.setTextFields(NameInput, AnimalInput, VeterinarioInput);
+                BuscaInput.setText("");
+                CelularBuscaInput.setText("");
+                EmailBuscaInput.setText("");
+                SexoBox.setSelectedItem("Sexo");
+                SexoBox.setVisible(false);
+                CelularTxt.setVisible(true);
+                CelularBuscaInput.setVisible(true);
+                EmailTxt.setVisible(true);
+                EmailBuscaInput.setVisible(true);
+                Controller.jRadioButtonClientesSelecionado(MainTable);
+            }
+            case 0 -> {
+                CelularTxt.setVisible(false);
+                CelularBuscaInput.setVisible(false);
+                EmailTxt.setVisible(false);
+                EmailBuscaInput.setVisible(false);
+                SexoBox.setVisible(true);
+            }
+            default -> {
+            }
         }
 
     }//GEN-LAST:event_BtnCadAniActionPerformed
@@ -989,7 +999,8 @@ public class Principal extends javax.swing.JFrame {
 
         AnimalInput.setText("");
 
-        DeleteBtn.setVisible(true);
+        AtivarBtn.setVisible(true);
+        InativarBtn.setVisible(true);
 
         BuscaInput.setText("");
         CelularBuscaInput.setText("");
@@ -1008,11 +1019,12 @@ public class Principal extends javax.swing.JFrame {
     private void InativarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InativarBtnActionPerformed
         int resposta = Controller.inativaDado(MainTable);
         
-        if(resposta == 1){
-            JOptionPane.showMessageDialog(this, "Cliente já está inativo");
-        }
-        else if(resposta == 2){
-            JOptionPane.showMessageDialog(this, "Cliente possui animais com consulta em aberto");
+        switch (resposta) {
+            case 1 -> JOptionPane.showMessageDialog(this, "Este dado já está inativo");
+            case 2 -> JOptionPane.showMessageDialog(this, "Este dado contém consulta(s) em aberto");
+            case 4 -> JOptionPane.showMessageDialog(this, "Selecione um dado primeiro");
+            default -> {
+            }
         }
     }//GEN-LAST:event_InativarBtnActionPerformed
 
@@ -1058,6 +1070,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField AnoConsultaInput;
     private javax.swing.JLabel AnoTxt;
     private javax.swing.JButton ApagaConsultaBtn;
+    private javax.swing.JButton AtivarBtn;
     private javax.swing.JRadioButton BtnCadAni;
     private javax.swing.JRadioButton BtnCadCli;
     private javax.swing.JRadioButton BtnCadEsp;
@@ -1073,7 +1086,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTabbedPane ClinicaPanel;
     private javax.swing.JPanel ConsultasPanel2;
     private javax.swing.JTable ConsultasTable;
-    private javax.swing.JButton DeleteBtn;
     private javax.swing.JTextField DiaConsultaInput;
     private javax.swing.JLabel DiaTxt;
     private javax.swing.JTextField EmailBuscaInput;
