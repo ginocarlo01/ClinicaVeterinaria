@@ -14,6 +14,10 @@ This Veterinary Clinic Management System was developed as a part of a school pro
 ## 🛠 Tools
 The only tools used for this project were Java and Apache NetBeans
 
+I used the Model-View-Controller (MVC) design pattern in this project
+
+All the code can be checked in src/main/java
+
 <a name="colaboradores"></a>
 ## 👨‍💻 Team
 [Gino Carlo](https://github.com/ginocarlo01)

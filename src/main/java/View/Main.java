@@ -34,7 +34,7 @@ public class Main {
         ClienteDAO c = ClienteDAO.getInstance();
         
         
-        //c.create("Rosangela", "Grippo", "1899", "ABC@GMAIL.COM", "325344");
+        //c.create("Aa", "aa", "1899", "ABC@GMAIL.COM", "325344");
         //c.retrieveLast();
         // Chame métodos da instância Singleton
         List<Cliente> clientes = c.retrieveAll();
